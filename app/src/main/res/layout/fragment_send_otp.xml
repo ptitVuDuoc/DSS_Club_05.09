@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.LoginFragment">
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@drawable/bg_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color"
+        android:layout_below="@+id/view1">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_padding_30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_padding_15"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/send_otp_title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/txt_code_otp"
+            style="@style/enter_edittext"
+            android:hint="@string/enter_code_otp"
+            android:inputType="number"
+            android:layout_marginRight="@dimen/margin_padding_25"
+            android:layout_marginLeft="@dimen/margin_padding_25" />
+
+        <RelativeLayout
+            android:id="@+id/btn_send_otp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_60"
+            android:layout_marginLeft="@dimen/margin_padding_35"
+            android:layout_marginRight="@dimen/margin_padding_35"
+            android:layout_marginTop="@dimen/margin_padding_30"
+            android:background="@drawable/btn_login">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/send_otp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_xlarge"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btn_resend_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_standard"
+            android:text="@string/title_forgot_otp"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/margin_padding_25"
+            android:layout_marginLeft="@dimen/margin_padding_25"
+            android:layout_marginTop="@dimen/small"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFF0004"/>
+
+    </LinearLayout>
+</RelativeLayout>

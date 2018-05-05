@@ -1,0 +1,77 @@
+<resources>
+    <!-- Default screen margins for smallest width = 320dp -->
+
+    <dimen name="fab_margin">16dp</dimen>
+    <!--standard dimen-->
+    <dimen name="xxx_small">2dp</dimen>
+    <dimen name="xx_small">5dp</dimen>
+    <dimen name="x_small">7.5dp</dimen>
+    <dimen name="small">10dp</dimen>
+    <dimen name="small_x">12dp</dimen>
+    <dimen name="normal">16dp</dimen>
+    <dimen name="large">20dp</dimen>
+    <dimen name="x_large">22dp</dimen>
+    <dimen name="xx_large">26dp</dimen>
+    <dimen name="xxx_large">30dp</dimen>
+
+
+    <dimen name="huge">56dp</dimen>
+    <dimen name="x_huge">68dp</dimen>
+    <dimen name="xx_huge">72dp</dimen>
+    <dimen name="xxx_huge">110dp</dimen>
+
+    <dimen name="font_size_xsmall">10sp</dimen>
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="font_size_standard">14sp</dimen>
+    <dimen name="font_size_large">16sp</dimen>
+    <dimen name="font_size_xlarge">20sp</dimen>
+    <dimen name="font_size_xxlarge">24sp</dimen>
+    <dimen name="font_size_huge">34sp</dimen>
+    <dimen name="font_size_xhuge">45sp</dimen>
+    <dimen name="font_size_xxhuge">56sp</dimen>
+
+    <dimen name="icon_size_small">26dp</dimen>
+    <dimen name="icon_size_standard">38dp</dimen>
+    <dimen name="icon_size_xstand">46dp</dimen>
+    <dimen name="icon_size_large">64dp</dimen>
+    <dimen name="icon_size_xlarge">82dp</dimen>
+    <dimen name="icon_size_huge">90dp</dimen>
+
+    <!-- Duoc append-->
+
+
+    <dimen name="margin_padding_16">16dp</dimen>
+    <dimen name="margin_padding_90">90dp</dimen>
+    <dimen name="margin_padding_100">100dp</dimen>
+    <dimen name="margin_padding_15">15dp</dimen>
+    <dimen name="margin_padding_5">5dp</dimen>
+    <dimen name="margin_padding_250">250dp</dimen>
+    <dimen name="margin_padding_280">280dp</dimen>
+    <dimen name="margin_padding_80">80dp</dimen>
+    <dimen name="margin_padding_60">60dp</dimen>
+    <dimen name="margin_padding_70">70dp</dimen>
+    <dimen name="margin_padding_55">55dp</dimen>
+    <dimen name="margin_padding_50">50dp</dimen>
+    <dimen name="margin_padding_40">40dp</dimen>
+    <dimen name="margin_padding_120">120dp</dimen>
+    <dimen name="margin_padding_130">130dp</dimen>
+    <dimen name="margin_padding_350">350dp</dimen>
+    <dimen name="margin_padding_300">300dp</dimen>
+    <dimen name="margin_padding_200">200dp</dimen>
+    <dimen name="margin_padding_210">210dp</dimen>
+    <dimen name="margin_padding_140">140dp</dimen>
+    <dimen name="margin_padding_150">150dp</dimen>
+    <dimen name="margin_padding_160">160dp</dimen>
+    <dimen name="margin_padding_180">180dp</dimen>
+    <dimen name="margin_padding_25">25dp</dimen>
+    <dimen name="margin_padding_30">30dp</dimen>
+    <dimen name="margin_padding_35">35dp</dimen>
+    <dimen name="margin_padding_45">45dp</dimen>
+    <dimen name="margin_padding_240">240dp</dimen>
+    <dimen name="margin_padding_400">400dp</dimen>
+    <dimen name="margin_padding_top_title">50dp</dimen>
+
+
+    <dimen name="height_menu_bottom">90dp</dimen>
+
+</resources>
