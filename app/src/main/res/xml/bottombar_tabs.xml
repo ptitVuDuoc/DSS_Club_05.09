@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_scan"
+        icon="@drawable/ic_scan"
+        title="Quét" />
+
+    <tab
+        id="@+id/tab_history"
+        icon="@drawable/ic_history"
+        title="Lịch sử" />
+
+    <tab
+        id="@+id/tab_win"
+        icon="@drawable/ic_win"
+        title="Quay thưởng" />
+
+    <tab
+        id="@+id/tab_account"
+        icon="@drawable/ic_account"
+        title="Tài khoản" />
+</tabs>

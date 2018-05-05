@@ -52,4 +52,10 @@
 
     </style>
 
+    <style name="CustomTitleTextAppearance">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <!--<item name="android:textStyle">bold</item>-->
+    </style>
+
+
 </resources>
