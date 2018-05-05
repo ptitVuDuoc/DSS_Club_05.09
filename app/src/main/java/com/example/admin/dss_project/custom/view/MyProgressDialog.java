@@ -1,4 +1,4 @@
-package com.example.admin.dss_project.custtom.dialog;
+package com.example.admin.dss_project.custom.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.admin.dss_project.R;
-import com.example.admin.dss_project.custtom.dialog.indicators.AVLoadingIndicatorView;
+import com.example.admin.dss_project.custom.view.indicators.AVLoadingIndicatorView;
 
 public class MyProgressDialog extends ProgressDialog {
 

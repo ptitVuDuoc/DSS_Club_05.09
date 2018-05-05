@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.HomeActivity;
 import com.example.admin.dss_project.activity.MainAppActivity;
-import com.example.admin.dss_project.custtom.dialog.MyProgressDialog;
+import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.model.SendCodeOTP;
 import com.example.admin.dss_project.model.ValidateOTP;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
@@ -21,8 +21,6 @@ import com.example.admin.dss_project.retrofit.ApiUtils;
 import com.example.admin.dss_project.ultility.KeyConst;
 import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
-
-import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;

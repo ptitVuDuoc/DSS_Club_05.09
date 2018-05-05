@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.example.admin.dss_project.custtom.dialog.indicators.AVLoadingIndicatorView
+    <com.example.admin.dss_project.custom.view.indicators.AVLoadingIndicatorView
         android:id="@+id/avloading_indicators"
         style="@style/AVLoadingIndicatorView"
         android:layout_width="wrap_content"

@@ -55,4 +55,7 @@
     <string name="confirm_pass_fail">Xác nhận mật khẩu không khớp!</string>
     <string name="send_otp_success">Hệ thống đã gửi mã OTP vào số điện thoại %s!</string>
     <string name="confirm_otp_success">Xác nhận mã OTP thàn công!</string>
+
+    <string name="preview_height">preview.height</string>
+    <string name="preview_width">preview.width</string>
 </resources>

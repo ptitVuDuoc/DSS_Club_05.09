@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.HomeActivity;
 import com.example.admin.dss_project.activity.MainAppActivity;
-import com.example.admin.dss_project.custtom.dialog.MyProgressDialog;
+import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
 import com.example.admin.dss_project.retrofit.ApiUtils;

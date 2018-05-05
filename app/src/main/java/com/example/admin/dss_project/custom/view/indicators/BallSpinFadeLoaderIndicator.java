@@ -1,4 +1,4 @@
-package com.example.admin.dss_project.custtom.dialog.indicators;
+package com.example.admin.dss_project.custom.view.indicators;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;

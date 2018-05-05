@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color_text_home">#023D67</color>
+    <color name="qr_code_finder_mask">#80000000</color>
 </resources>

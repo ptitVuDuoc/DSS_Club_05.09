@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ScanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/fl_main_preview">
+    </FrameLayout>
+    <com.example.admin.dss_project.custom.view.scan.QrCodeFinderView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fl_main_preview"
+        app:layout_constraintTop_toTopOf="@+id/fl_main_preview"
+        app:layout_constraintLeft_toLeftOf="@+id/fl_main_preview"
+        app:layout_constraintRight_toRightOf="@+id/fl_main_preview"
+        android:id="@+id/qr_code_view"/>
 
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>
