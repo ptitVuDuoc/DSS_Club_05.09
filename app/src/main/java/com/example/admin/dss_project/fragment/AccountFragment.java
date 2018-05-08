@@ -86,7 +86,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                         txtEmail.setText(response.body().getEmail());
 
                     }else {
-                        ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR,getString(R.string.dowload_data_fail), "" ,getContext());
+//                        ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR,getString(R.string.dowload_data_fail), "" ,getContext());
                     }
                 }
             }

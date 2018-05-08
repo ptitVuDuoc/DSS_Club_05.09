@@ -151,12 +151,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                     SendOtpFragment sendOtpFragment = new SendOtpFragment();
                                     Bundle bundle = new Bundle();
                                     bundle.putString(KeyConst.KEY_BUNDLE_NUMBER_PHONE,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
-
-                                    PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
-
                                     sendOtpFragment.setArguments(bundle);
                                     ((HomeActivity)getActivity()).addFragment(sendOtpFragment);
                                 }else {
+                                    PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
                                     Intent intent = new Intent(getActivity(), MainAppActivity.class);
                                     getActivity().finish();
                                     startActivity(intent);
