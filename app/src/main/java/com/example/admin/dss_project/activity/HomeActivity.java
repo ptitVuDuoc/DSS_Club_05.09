@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void addFragment(BaseFragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_right);
         fragmentTransaction.replace(R.id.container_home, fragment, LoginFragment.class.getSimpleName());
         fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
         fragmentTransaction.commit();

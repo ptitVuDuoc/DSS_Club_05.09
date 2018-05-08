@@ -24,8 +24,8 @@ public class MyProgressDialog extends ProgressDialog {
 
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         setContentView(R.layout.custom_progress_dialog);
-        TextView textView = (TextView) findViewById(R.id.text_message);
-        textView.setText(message);
+        TextView TextView = (TextView) findViewById(R.id.text_message);
+        TextView.setText(message);
         AVLoadingIndicatorView progressBar = (AVLoadingIndicatorView) findViewById(R.id.avloading_indicators);
     }
 

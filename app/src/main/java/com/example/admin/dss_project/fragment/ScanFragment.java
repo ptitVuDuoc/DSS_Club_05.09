@@ -45,7 +45,7 @@ public class ScanFragment extends BaseFragment {
         addControl();
         addEvent();
         init();
-        initCamera();
+//        initCamera();
     }
 
     private void addEvent() {

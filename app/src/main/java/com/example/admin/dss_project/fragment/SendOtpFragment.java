@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.dss_project.R;
@@ -36,6 +37,8 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
     private ProgressDialog pleaseDialog;
     private SweetAlertDialog pDialog;
     private Button btnConfirmDialog;
+    private TextView txtContentOTP;
+    private String numberphone;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +49,7 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initViews() {
+        numberphone = getArguments().getString(KeyConst.KEY_BUNDLE_NUMBER_PHONE);
         addControl();
         addEvent();
     }
@@ -59,12 +63,14 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
     private void addControl() {
 
         txtOTP = (EditText) findViewById(R.id.txt_code_otp);
+        txtContentOTP = (TextView) findViewById(R.id.txt_content_confirm_otp);
+        String content = getResources().getString(R.string.please_confirm_otp, numberphone);
+        txtContentOTP.setText(content);
 
     }
 
     @Override
     public void onClick(View view) {
-        final String numberphone = getArguments().getString(KeyConst.KEY_BUNDLE_NUMBER_PHONE);
         switch (view.getId()) {
             case R.id.btn_send_otp:
 
@@ -72,6 +78,8 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
                     Toast.makeText(mContext, R.string.not_empty, Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                pleaseDialog.show();
 
                 mAPIService = ApiUtils.getAPIService();
                 final JsonObject jsonObject = new JsonObject();
@@ -114,6 +122,7 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
                 break;
 
             case R.id.btn_resend_otp:
+                pleaseDialog.show();
                 mAPIService = ApiUtils.getAPIService();
                 JsonObject jsonObject2 = new JsonObject();
                 jsonObject2.addProperty(KeyConst.TOKEN, Statistic.token);
@@ -126,7 +135,7 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
                             pleaseDialog.dismiss();
 
                             if (response.body().getIsSuccess()) {
-                                String mess = getResources().getString(R.string.send_otp_success,numberphone);
+                                String mess = getResources().getString(R.string.send_otp_success, numberphone);
                                 pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
                                 pDialog.setTitleText(getString(R.string.success));
                                 pDialog.setContentText(mess);

@@ -3,9 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#15B1D7</item>
-        <item name="colorPrimaryDark">#15B1D7</item>
+        <item name="colorPrimary">#023D67</item>
+        <item name="colorPrimaryDark">#023D67</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">@color/colorAccent</item>
     </style>
 
 
@@ -57,5 +58,40 @@
         <!--<item name="android:textStyle">bold</item>-->
     </style>
 
+    <style name="txt_menu_bottom">
+        <item name="android:textSize">@dimen/font_size_xsmall</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_text_home</item>
+    </style>
+
+    <style name="txt_acc_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_padding_35</item>
+        <item name="android:layout_marginRight">@dimen/margin_padding_35</item>
+        <item name="android:layout_marginTop">@dimen/small</item>
+        <item name="android:textSize">@dimen/font_size_standard</item>
+        <item name="android:textColor">#0173B9</item>
+    </style>
+
+    <style name="txt_acc_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_padding_35</item>
+        <item name="android:layout_marginRight">@dimen/margin_padding_35</item>
+        <item name="android:layout_marginTop">@dimen/small</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="view_line_acc">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@drawable/bg_color</item>
+        <item name="android:layout_marginTop">@dimen/margin_padding_15</item>
+        <item name="android:layout_marginRight">@dimen/margin_padding_35</item>
+        <item name="android:layout_marginLeft">@dimen/margin_padding_35</item>
+    </style>
 
 </resources>

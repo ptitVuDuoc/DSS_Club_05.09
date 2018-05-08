@@ -6,25 +6,227 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainAppActivity">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_60"
+        android:background="@drawable/bg_color">
+
+        <ImageView
+            android:id="@+id/image_avatar"
+            android:layout_width="@dimen/margin_padding_50"
+            android:layout_height="@dimen/margin_padding_50"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/margin_padding_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vũ Đượcaaaaaaaaaaaaaa"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_standard"
+            app:layout_constraintLeft_toRightOf="@+id/image_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/margin_padding_15"
+            android:layout_marginLeft="@dimen/margin_padding_5"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_scores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30 điểm"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xsmall"
+            app:layout_constraintLeft_toRightOf="@+id/image_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            android:layout_marginLeft="@dimen/margin_padding_5"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/btn_nofi"
+            android:layout_width="@dimen/margin_padding_50"
+            android:layout_height="match_parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?attr/selectableItemBackgroundBorderless">
+            <ImageView
+                android:layout_width="@dimen/margin_padding_25"
+                android:layout_height="@dimen/margin_padding_30"
+                android:src="@drawable/ic_notification"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btn_reward"
+            android:layout_width="@dimen/margin_padding_120"
+            android:layout_height="@dimen/margin_padding_30"
+            android:src="@drawable/stroke_button_gift"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_nofi"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <ImageView
+            android:id="@+id/ic_gift"
+            android:layout_width="@dimen/margin_padding_15"
+            android:layout_height="@dimen/margin_padding_15"
+            android:src="@drawable/ic_gift"
+            app:layout_constraintTop_toTopOf="@+id/btn_reward"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_reward"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_reward"
+            android:layout_marginLeft="@dimen/margin_padding_15"/>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reward"
+            android:textColor="#FECB2F"
+            android:textSize="@dimen/font_size_small"
+            app:layout_constraintLeft_toRightOf="@+id/ic_gift"
+            android:layout_marginLeft="@dimen/margin_padding_5"
+            app:layout_constraintTop_toTopOf="@+id/btn_reward"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_reward"/>
+    </android.support.constraint.ConstraintLayout>
+
     <FrameLayout
         android:id="@+id/container_main_app"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomBar"/>
+        android:layout_above="@id/bottomBar"
+        android:layout_below="@+id/menu_top"/>
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:background="@android:color/white"
+    <FrameLayout
+        android:id="@+id/container_tab_account"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_padding_70"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomBar"></FrameLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_55"
         android:layout_alignParentBottom="true"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"
-        app:bb_behavior="shifting"
-        app:bb_activeTabColor="#023D67"
-        app:bb_inActiveTabColor="#023D67"
-        app:bb_inActiveTabAlpha="0.5"
-        app:bb_titleTextAppearance="@style/CustomTitleTextAppearance"/>
+        android:id="@+id/bottomBar">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/btn_scan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless" >
+
+                <ImageView
+                    android:id="@+id/ic_scan"
+                    android:layout_width="@dimen/margin_padding_25"
+                    android:layout_height="@dimen/margin_padding_25"
+                    android:src="@drawable/ic_scan"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/txt_scan"
+                    android:text="@string/scan"
+                    style="@style/txt_menu_bottom"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_scan"
+                    app:layout_constraintRight_toRightOf="@+id/ic_scan"
+                    app:layout_constraintLeft_toLeftOf="@+id/ic_scan"/>
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/btn_win"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:id="@+id/ic_win"
+                    android:layout_width="@dimen/margin_padding_25"
+                    android:layout_height="@dimen/margin_padding_25"
+                    android:src="@drawable/ic_win"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/txt_win"
+                    android:text="@string/win"
+                    style="@style/txt_menu_bottom"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_win"
+                    app:layout_constraintRight_toRightOf="@+id/ic_win"
+                    app:layout_constraintLeft_toLeftOf="@+id/ic_win"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/btn_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:id="@+id/ic_history"
+                    android:layout_width="@dimen/margin_padding_25"
+                    android:layout_height="@dimen/margin_padding_25"
+                    android:src="@drawable/ic_history"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/txt_history"
+                    android:text="@string/history"
+                    style="@style/txt_menu_bottom"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_history"
+                    app:layout_constraintRight_toRightOf="@+id/ic_history"
+                    app:layout_constraintLeft_toLeftOf="@+id/ic_history"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/btn_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:id="@+id/ic_account"
+                    android:layout_width="@dimen/margin_padding_25"
+                    android:layout_height="@dimen/margin_padding_25"
+                    android:src="@drawable/ic_account"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/txt_account"
+                    android:text="@string/account"
+                    style="@style/txt_menu_bottom"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_account"
+                    app:layout_constraintRight_toRightOf="@+id/ic_account"
+                    app:layout_constraintLeft_toLeftOf="@+id/ic_account"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color_text_home">#023D67</color>
     <color name="qr_code_finder_mask">#80000000</color>
+    <color name="color_select_tab">#FFFF0008</color>
 </resources>

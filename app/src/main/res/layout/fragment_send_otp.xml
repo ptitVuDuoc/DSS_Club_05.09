@@ -26,7 +26,7 @@
             android:layout_marginLeft="@dimen/margin_padding_15"
             android:src="@drawable/ic_back" />
 
-        <TextView
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -42,6 +42,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true">
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_content_confirm_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/txt_regis"
+            android:text="@string/please_confirm_otp"
+            android:textColor="@color/color_text_home"
+            android:layout_marginRight="@dimen/margin_padding_25"
+            android:layout_marginLeft="@dimen/margin_padding_25"
+            android:layout_marginBottom="@dimen/margin_padding_25"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/txt_code_otp"
@@ -60,7 +73,7 @@
             android:layout_marginTop="@dimen/margin_padding_30"
             android:background="@drawable/btn_login">
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -69,20 +82,23 @@
                 android:textSize="@dimen/font_size_xlarge"
                 android:textStyle="bold" />
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/btn_resend_otp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/font_size_standard"
-            android:text="@string/title_forgot_otp"
-            android:gravity="center"
-            android:layout_marginRight="@dimen/margin_padding_25"
-            android:layout_marginLeft="@dimen/margin_padding_25"
-            android:layout_marginTop="@dimen/small"
-            android:textStyle="italic"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#FFFF0004"/>
-
     </LinearLayout>
+
+    <com.example.admin.dss_project.custom.view.MyCusttomtext
+        android:id="@+id/btn_resend_otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_standard"
+        android:text="@string/title_forgot_otp"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/margin_padding_25"
+        android:layout_marginLeft="@dimen/margin_padding_25"
+        android:layout_marginTop="@dimen/small"
+        android:textStyle="italic"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFF0004"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_padding_25"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

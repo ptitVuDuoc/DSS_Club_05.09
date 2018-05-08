@@ -25,7 +25,7 @@
             android:layout_marginLeft="@dimen/margin_padding_15"
             android:src="@drawable/ic_back" />
 
-        <TextView
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -47,7 +47,7 @@
             android:paddingLeft="@dimen/margin_padding_25"
             android:paddingRight="@dimen/margin_padding_25">
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:hint="@string/enter_number_phone"
                 android:inputType="number" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_name" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_email" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_agency" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,13 +104,13 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_address" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/birth_day_name" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/txt_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding_50"
@@ -125,7 +125,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_address" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:hint="@string/enter_password"
                 android:inputType="textPassword" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                 android:hint="@string/enter_password_confirm"
                 android:inputType="textPassword" />
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                 android:layout_marginBottom="@dimen/margin_padding_30"
                 android:background="@drawable/btn_login">
 
-                <TextView
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

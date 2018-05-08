@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HistoryFragment"
-    android:background="@color/color_text_home">
+    tools:context=".fragment.EditAccountFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.example.admin.dss_project.custom.view.MyCusttomtext
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="history" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

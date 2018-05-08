@@ -51,11 +51,24 @@
     <string name="change_password_title">Đổi mật khẩu</string>
     <string name="note_change_pass">Vui lòng nhập đầy đủ thông tin vào bên dưới để có thể đổi mật khẩu</string>
     <string name="send_otp_title">Xác nhận mã OTP</string>
-    <string name="title_forgot_otp">Nhấn vào đây để gửi lại mã OTP</string>
+    <string name="title_forgot_otp">Chưa nhận được mã OTP?<u> Nhấn vào đây để gửi lại mã OTP</u></string>
     <string name="confirm_pass_fail">Xác nhận mật khẩu không khớp!</string>
     <string name="send_otp_success">Hệ thống đã gửi mã OTP vào số điện thoại %s!</string>
     <string name="confirm_otp_success">Xác nhận mã OTP thàn công!</string>
 
     <string name="preview_height">preview.height</string>
     <string name="preview_width">preview.width</string>
+    <string name="please_confirm_otp">Làm ơn kiểm tra số điện thoại %s. Bạn đã nhận được mã xác thực từ chúng tôi!</string>
+    <string name="reward">Đổi thưởng</string>
+    <string name="scan">Quét</string>
+    <string name="history">Lịch sử</string>
+    <string name="win">Quay thưởng</string>
+    <string name="account">Tài khoản</string>
+    <string name="info_acc">Thông tin tài khoản</string>
+    <string name="info">Thông tin</string>
+    <string name="agency">Tên đại lý</string>
+    <string name="email">Email</string>
+    <string name="address">Địa chỉ</string>
+    <string name="birthday">Ngày sinh</string>
+    <string name="setting">Cài đặt</string>
 </resources>

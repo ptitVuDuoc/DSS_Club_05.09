@@ -16,7 +16,7 @@
         app:indicatorColor="#f51c14"
         app:indicatorName="BallPulseIndicator" />
 
-    <TextView
+    <com.example.admin.dss_project.custom.view.MyCusttomtext
         android:id="@+id/text_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
