@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.fragment.BaseFragment;
 
-public class EditAccountFragment extends BaseFragment {
+public class EditAccountFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,5 +29,17 @@ public class EditAccountFragment extends BaseFragment {
     }
 
     private void addControl() {
+        findViewById(R.id.btn_back).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_back:
+
+                getActivity().finish();
+
+                break;
+        }
     }
 }

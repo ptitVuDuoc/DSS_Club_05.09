@@ -13,7 +13,7 @@
         android:background="@drawable/bg_color">
 
         <ImageView
-            android:id="@+id/btn_back_acc"
+            android:id="@+id/btn_logout"
             android:layout_width="@dimen/margin_padding_25"
             android:layout_height="@dimen/margin_padding_25"
             android:src="@drawable/ic_logout"
@@ -32,10 +32,11 @@
             android:textSize="@dimen/font_size_xlarge"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_back_acc"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_back_acc"/>
+            app:layout_constraintTop_toTopOf="@id/btn_logout"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_logout"/>
 
         <ImageView
+            android:id="@+id/btn_edit_acc"
             android:layout_width="@dimen/margin_padding_30"
             android:layout_height="@dimen/margin_padding_30"
             android:src="@drawable/ic_edit_acc"
@@ -125,6 +126,7 @@
                 android:text = "@string/agency"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_name_agency"
                 android:text="Bsoft"
                 style="@style/txt_acc_content"/>
 
@@ -136,6 +138,7 @@
                 android:text = "@string/email"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_email"
                 android:text="Vuvanduoc95@gmail.com"
                 style="@style/txt_acc_content"/>
 
@@ -147,6 +150,7 @@
                 android:text = "@string/address"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_address"
                 android:text="Hải phòng"
                 style="@style/txt_acc_content"/>
 
@@ -158,6 +162,7 @@
                 android:text = "@string/birthday"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_birthday"
                 android:text="12/08/1995"
                 style="@style/txt_acc_content"/>
 
@@ -180,7 +185,7 @@
 
             <LinearLayout
                 android:id="@+id/btn_change_pass"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="@dimen/margin_padding_35"

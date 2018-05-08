@@ -43,4 +43,7 @@ public interface APIRegisterUser {
     @POST("SendCodeOTP")
     Call<SendCodeOTP> postRawJSONGetCodeOTP(@Body JsonObject locationPost);
 
+    @POST("GetUserInfo")
+    Call<User> postRawJSONGetUserInfo(@Body JsonObject locationPost);
+
 }

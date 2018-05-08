@@ -3,6 +3,7 @@ package com.example.admin.dss_project.fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,6 +151,9 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                     SendOtpFragment sendOtpFragment = new SendOtpFragment();
                                     Bundle bundle = new Bundle();
                                     bundle.putString(KeyConst.KEY_BUNDLE_NUMBER_PHONE,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+
+                                    PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+
                                     sendOtpFragment.setArguments(bundle);
                                     ((HomeActivity)getActivity()).addFragment(sendOtpFragment);
                                 }else {
@@ -159,7 +163,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                 }
 
                             }else {
-                                ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR, getString(R.string.login_fail), response.body().getMessage(),getContext());
+                                String content = response.body().getMessage();
+                                ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR, getString(R.string.login_fail), content ,getContext());
                             }
 
                         }

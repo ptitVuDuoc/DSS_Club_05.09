@@ -39,7 +39,7 @@ public class ChangePassWordFragment extends BaseFragment implements View.OnClick
         switch (view.getId()){
             case R.id.btn_back:
 
-                getFragmentManager().popBackStack();
+                getActivity().finish();
 
                 break;
         }

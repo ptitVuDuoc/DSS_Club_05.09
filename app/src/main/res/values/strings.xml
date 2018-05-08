@@ -50,6 +50,7 @@
     <string name="title_forgot_pass">Vui lòng nhập số điện thoại của bạn và chúng tôi sẽ gửi bạn mật khẩu khôi phục</string>
     <string name="change_password_title">Đổi mật khẩu</string>
     <string name="note_change_pass">Vui lòng nhập đầy đủ thông tin vào bên dưới để có thể đổi mật khẩu</string>
+    <string name="note_edit_acc">Vui lòng nhập đầy đủ thông tin vào bên dưới để có thể sửa đổi thông tin</string>
     <string name="send_otp_title">Xác nhận mã OTP</string>
     <string name="title_forgot_otp">Chưa nhận được mã OTP?<u> Nhấn vào đây để gửi lại mã OTP</u></string>
     <string name="confirm_pass_fail">Xác nhận mật khẩu không khớp!</string>
@@ -71,4 +72,11 @@
     <string name="address">Địa chỉ</string>
     <string name="birthday">Ngày sinh</string>
     <string name="setting">Cài đặt</string>
+    <string name="edit_acc">Sửa thông tin</string>
+    <string name="firt_name_acc">Họ và tên</string>
+    <string name="name_angency_acc">Tên đại lý</string>
+    <string name="content_logout">Bạn có muốn đăng xuất tài khoản?</string>
+    <string name="log_out">Đăng xuất</string>
+    <string name="yes">Đồng ý</string>
+    <string name="dowload_data_fail">Tải dữ liệu không thành công!</string>
 </resources>

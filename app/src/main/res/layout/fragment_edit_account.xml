@@ -1,14 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.EditAccountFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.LoginFragment"
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@drawable/bg_color" />
+
+    <RelativeLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color"
+        android:layout_below="@+id/view1">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_padding_30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_padding_15"
+            android:src="@drawable/ic_back" />
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/edit_acc"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/menu_top">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/margin_padding_25"
+            android:layout_marginLeft="@dimen/margin_padding_25">
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_regis"
+                android:text="@string/note_edit_acc"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/margin_padding_25"
+                android:textStyle="italic"/>
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                style="@style/txt_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firt_name_acc" />
+
+            <EditText
+                android:id="@+id/txt_number_phone"
+                style="@style/enter_edittext"
+                android:hint="@string/enter_name" />
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                style="@style/txt_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_angency_acc" />
+
+            <EditText
+                android:id="@+id/txt_old_password"
+                style="@style/enter_edittext"
+                android:hint="@string/enter_agency" />
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                style="@style/txt_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/txt_email"
+                style="@style/enter_edittext"
+                android:hint="@string/enter_email" />
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                style="@style/txt_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address" />
+
+            <EditText
+                android:id="@+id/txt_address"
+                style="@style/enter_edittext"
+                android:hint="@string/enter_address" />
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                style="@style/txt_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/birth_day_name" />
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_50"
+                android:layout_marginTop="@dimen/small"
+                android:background="@drawable/stroke"
+                android:gravity="center_vertical"
+                android:hint="@string/enter_birth_day"
+                android:padding="@dimen/small"
+                android:textColor="@android:color/background_dark"
+                android:textSize="@dimen/font_size_standard" />
+
+            <RelativeLayout
+                android:id="@+id/btn_forgot"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_60"
+                android:layout_marginLeft="@dimen/margin_padding_15"
+                android:layout_marginRight="@dimen/margin_padding_15"
+                android:layout_marginTop="@dimen/margin_padding_30"
+                android:layout_marginBottom="@dimen/margin_padding_30"
+                android:background="@drawable/btn_login">
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/change_password_title"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_size_xlarge"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
