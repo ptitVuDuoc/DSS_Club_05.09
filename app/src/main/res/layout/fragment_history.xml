@@ -1,15 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HistoryFragment"
-    android:background="@color/color_text_home">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.example.admin.dss_project.custom.view.MyCusttomtext
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/view_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_padding_15">
+
+        <ImageView
+            android:id="@+id/btn_history_reward"
+            android:layout_width="@dimen/margin_padding_140"
+            android:layout_height="@dimen/margin_padding_35"
+            android:src="@drawable/stroke_btn_history_gif"/>
+
+        <TextView
+            android:id="@+id/txt_history_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="@string/txt_history_reward"
+            android:textSize="@dimen/font_size_standard"
+            app:layout_constraintTop_toTopOf="@+id/btn_history_reward"
+            app:layout_constraintBottom_toBottomOf="@id/btn_history_reward"
+            app:layout_constraintLeft_toLeftOf="@id/btn_history_reward"
+            app:layout_constraintRight_toRightOf="@id/btn_history_reward"/>
+
+        <ImageView
+            android:id="@+id/btn_history_register_seri"
+            android:layout_width="@dimen/margin_padding_140"
+            android:layout_height="@dimen/margin_padding_35"
+            android:src="@drawable/stroke_btn_history_regis_seri"
+            app:layout_constraintLeft_toRightOf="@id/btn_history_reward"/>
+
+        <TextView
+            android:id="@+id/txt_history_regis_seri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_bg_btn_history"
+            android:text="@string/txt_history_register_seri"
+            android:textSize="@dimen/font_size_standard"
+            app:layout_constraintTop_toTopOf="@+id/btn_history_register_seri"
+            app:layout_constraintBottom_toBottomOf="@id/btn_history_register_seri"
+            app:layout_constraintLeft_toLeftOf="@id/btn_history_register_seri"
+            app:layout_constraintRight_toRightOf="@id/btn_history_register_seri"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/container_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="history" />
+        android:layout_marginTop="@dimen/margin_padding_15"
+        android:layout_below="@+id/view_header">
+    </FrameLayout>
 
-</FrameLayout>
+</RelativeLayout>

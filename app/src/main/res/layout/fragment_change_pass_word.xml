@@ -65,13 +65,13 @@
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/number_phone_use_acc" />
+                android:text="@string/password_old" />
 
             <EditText
-                android:id="@+id/txt_number_phone"
+                android:id="@+id/txt_old_password"
                 style="@style/enter_edittext"
-                android:hint="@string/enter_number_phone"
-                android:inputType="number" />
+                android:hint="@string/enter_old_password"
+                android:inputType="textPassword" />
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
@@ -80,10 +80,10 @@
                 android:text="@string/password_name" />
 
             <EditText
-                android:id="@+id/txt_old_password"
+                android:id="@+id/txt_new_password"
                 style="@style/enter_edittext"
                 android:hint="@string/enter_new_password"
-                android:inputType="number" />
+                android:inputType="textPassword" />
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
@@ -92,13 +92,13 @@
                 android:text="@string/confirm_password_name" />
 
             <EditText
-                android:id="@+id/txt_new_password"
+                android:id="@+id/txt_confirm_password"
                 style="@style/enter_edittext"
-                android:hint="@string/enter_old_password"
-                android:inputType="number" />
+                android:inputType="textPassword"
+                android:hint="@string/enter_confirm_pass"/>
 
             <RelativeLayout
-                android:id="@+id/btn_forgot"
+                android:id="@+id/btn_change_pass"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding_60"
                 android:layout_marginLeft="@dimen/margin_padding_15"

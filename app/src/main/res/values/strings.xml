@@ -55,7 +55,7 @@
     <string name="title_forgot_otp">Chưa nhận được mã OTP?<u> Nhấn vào đây để gửi lại mã OTP</u></string>
     <string name="confirm_pass_fail">Xác nhận mật khẩu không khớp!</string>
     <string name="send_otp_success">Hệ thống đã gửi mã OTP vào số điện thoại %s!</string>
-    <string name="confirm_otp_success">Xác nhận mã OTP thàn công!</string>
+    <string name="confirm_otp_success">Xác nhận mã OTP thành công!</string>
 
     <string name="preview_height">preview.height</string>
     <string name="preview_width">preview.width</string>
@@ -79,4 +79,12 @@
     <string name="log_out">Đăng xuất</string>
     <string name="yes">Đồng ý</string>
     <string name="dowload_data_fail">Tải dữ liệu không thành công!</string>
+    <string name="txt_history_reward">Lịch sử đổi quà</string>
+    <string name="txt_history_register_seri">Đăng kí seri</string>
+    <string name="scores"> điểm</string>
+    <string name="password_old">Nhập mật khẩu cũ(*):</string>
+    <string name="enter_confirm_pass">Nhập lại mật khẩu mới</string>
+    <string name="pass_new_fail">Mật khẩu cũ không đúng!</string>
+    <string name="change_pass_success">Đổi mật khẩu thành công!</string>
+    <string name="change_pass_fail">Đổi mật khẩu không thành công!</string>
 </resources>

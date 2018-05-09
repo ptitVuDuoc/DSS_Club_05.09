@@ -33,6 +33,8 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     private ProgressDialog pleaseDialog;
     private APIRegisterUser mAPIService;
     private TextView txtNameAcc,txtNameAgency,txtEmail,txtAddress,txtBirthday;
+    private TextView txtScores;
+    private User user = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +63,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
         txtEmail = (TextView) findViewById(R.id.txt_email);
         txtAddress = (TextView) findViewById(R.id.txt_address);
         txtBirthday = (TextView) findViewById(R.id.txt_birthday);
+        txtScores = (TextView) findViewById(R.id.txt_scores);
     }
 
     private void setContent(){
@@ -78,12 +81,15 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                     pleaseDialog.dismiss();
 
                     if(response.body().getIsSuccess()){
+                        user = response.body();
 
                         txtNameAcc.setText(response.body().getHoVaTen());
                         txtNameAgency.setText(response.body().getTenDaiLy());
                         txtAddress.setText(response.body().getDiaChi());
-                        txtBirthday.setText(response.body().getNgaySinh().toString());
+                        txtBirthday.setText(response.body().getNgaySinh());
                         txtEmail.setText(response.body().getEmail());
+                        String txtSc = response.body().getSoDiemHienTai().toString()+ " "+getString(R.string.scores);
+                        txtScores.setText( txtSc);
 
                     }else {
 //                        ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR,getString(R.string.dowload_data_fail), "" ,getContext());
@@ -105,6 +111,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
             case R.id.btn_change_pass:
 
                 Intent intentPass = new Intent(getActivity(), SettingAccountActivity.class);
+                intentPass.putExtra(KeyConst.USER,user);
                 intentPass.putExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT, Statistic.KEY_CHANGE_PASS);
                 startActivity(intentPass);
                 break;

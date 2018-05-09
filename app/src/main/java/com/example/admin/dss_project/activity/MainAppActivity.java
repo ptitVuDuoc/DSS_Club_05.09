@@ -3,6 +3,7 @@ package com.example.admin.dss_project.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -30,6 +31,8 @@ import com.example.admin.dss_project.fragment.HistoryFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
 import com.example.admin.dss_project.fragment.ScanFragment;
 import com.example.admin.dss_project.fragment.WinFragment;
+import com.example.admin.dss_project.model.User;
+import com.example.admin.dss_project.ultility.KeyConst;
 
 public class MainAppActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,6 +46,8 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     private final int CLICK_ACCOUNT = 4;
     private TextView txtScan, txtHistory, txtAccount, txtWin;
     private ImageView iconScan, iconHistory, iconWin, iconAccount;
+    private TextView txtScores;
+    private TextView txtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,12 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
             requestPermision();
         }
 
+        Intent intent = getIntent();
+        User user = (User) intent.getSerializableExtra(KeyConst.USER);
+        txtName.setText(user.getHoVaTen());
+        String txtSc = user.getSoDiemHienTai().toString() + " " + "điểm";
+        txtScores.setText(txtSc);
+
         ScanFragment previewFragment = new ScanFragment();
         addFragment(previewFragment,R.id.container_main_app);
 
@@ -78,6 +89,8 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         iconHistory = findViewById(R.id.ic_history);
         iconAccount = findViewById(R.id.ic_account);
         iconWin = findViewById(R.id.ic_win);
+        txtName  = findViewById(R.id.txt_name);
+        txtScores  = findViewById(R.id.txt_scores);
     }
 
     private boolean checkCameraHardware(Context context) {
@@ -146,7 +159,7 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_left, R.anim.exit_to_left);
-        fragmentTransaction.replace(container, fragment, LoginFragment.class.getSimpleName());
+        fragmentTransaction.add(container, fragment, LoginFragment.class.getSimpleName());
         fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
         fragmentTransaction.commit();
     }
@@ -253,6 +266,27 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                 addFragment(winFragment,R.id.container_main_app);
                 break;
 
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Fragment fragmentContainerMain =  getSupportFragmentManager().findFragmentById(R.id.container_main_app);
+        Fragment fragmentContainerTabAcc =  getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
+        Fragment fragmentContainerTabHistory =  getSupportFragmentManager().findFragmentById(R.id.container_history);
+
+        if (fragmentContainerMain instanceof ScanFragment){
+            finish();
+            return;
+        }
+
+        if(fragmentContainerMain instanceof HistoryFragment || fragmentContainerMain instanceof WinFragment
+                || fragmentContainerTabAcc instanceof AccountFragment){
+            getSupportFragmentManager().popBackStack();
+            ScanFragment previewFragment = new ScanFragment();
+            addFragment(previewFragment,R.id.container_main_app);
+            return;
         }
     }
 }

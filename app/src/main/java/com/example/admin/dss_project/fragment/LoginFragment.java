@@ -3,6 +3,7 @@ package com.example.admin.dss_project.fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ import com.example.admin.dss_project.ultility.KeyConst;
 import com.example.admin.dss_project.ultility.PrefUtils;
 import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
+
+import java.io.Serializable;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
@@ -89,6 +92,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         });
 
         if(PrefUtils.getBoolean(getContext(),KeyConst.KEY_PREF_CHECK_REMEMBER)){
+            checkRemember.setChecked(PrefUtils.getBoolean(getContext(),KeyConst.KEY_PREF_CHECK_REMEMBER));
             txtNumberPhone.setText(PrefUtils.getString(getContext(),KeyConst.KEY_PREF_USER));
             txtPassWord.setText(PrefUtils.getString(getContext(),KeyConst.KEY_PREF_PASS_WORD));
         }
@@ -157,6 +161,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                     PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
                                     Intent intent = new Intent(getActivity(), MainAppActivity.class);
                                     getActivity().finish();
+                                    intent.putExtra(KeyConst.USER, response.body());
                                     startActivity(intent);
                                 }
 

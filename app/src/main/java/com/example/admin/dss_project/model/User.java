@@ -4,7 +4,9 @@ package com.example.admin.dss_project.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     @SerializedName("__type")
     @Expose
@@ -32,7 +34,7 @@ public class User {
     private String maXacThuc;
     @SerializedName("NgaySinh")
     @Expose
-    private Object ngaySinh;
+    private String ngaySinh;
     @SerializedName("SoDiemHienTai")
     @Expose
     private Integer soDiemHienTai;
@@ -110,11 +112,11 @@ public class User {
         this.maXacThuc = maXacThuc;
     }
 
-    public Object getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Object ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

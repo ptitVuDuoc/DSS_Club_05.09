@@ -18,6 +18,7 @@ import com.example.admin.dss_project.model.Register;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
 import com.example.admin.dss_project.retrofit.ApiUtils;
 import com.example.admin.dss_project.ultility.KeyConst;
+import com.example.admin.dss_project.ultility.PrefUtils;
 import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
 
@@ -142,6 +143,11 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                 Bundle bundle = new Bundle();
                                 bundle.putString(KeyConst.KEY_BUNDLE_NUMBER_PHONE, jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
                                 sendOtpFragment.setArguments(bundle);
+
+                                PrefUtils.putString(getContext(),KeyConst.KEY_PREF_USER,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+                                PrefUtils.putString(getContext(),KeyConst.KEY_PREF_PASS_WORD,jsonObject.get(KeyConst.PASSWORD).getAsString());
+                                PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+
                                 ((HomeActivity) getActivity()).addFragment(sendOtpFragment);
                             } else {
                                 String mess = response.body().getMessage();

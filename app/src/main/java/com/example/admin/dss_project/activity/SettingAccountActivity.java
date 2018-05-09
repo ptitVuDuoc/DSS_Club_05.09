@@ -12,10 +12,13 @@ import com.example.admin.dss_project.fragment.BaseFragment;
 import com.example.admin.dss_project.fragment.ChangePassWordFragment;
 import com.example.admin.dss_project.fragment.EditAccountFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
+import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.ultility.KeyConst;
 import com.example.admin.dss_project.ultility.Statistic;
 
 public class SettingAccountActivity extends AppCompatActivity {
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class SettingAccountActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int key = intent.getIntExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT,0);
+        user = (User) intent.getSerializableExtra(KeyConst.USER);
 
         switch (key){
             case Statistic.KEY_CHANGE_PASS:
@@ -44,6 +48,10 @@ public class SettingAccountActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public User getUser(){
+        return user;
     }
 
     private void addEvent() {

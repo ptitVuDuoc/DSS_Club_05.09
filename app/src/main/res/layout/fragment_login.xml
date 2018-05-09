@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:text="@string/remember_me"
             android:textSize="@dimen/font_size_standard"
-            android:checked="true"
+            android:checked="false"
             android:textColor="@color/color_text_home"
             app:buttonTint="@color/color_text_home"
             android:layout_below="@+id/view_center"

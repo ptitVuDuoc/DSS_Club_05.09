@@ -6,4 +6,6 @@
     <color name="color_text_home">#023D67</color>
     <color name="qr_code_finder_mask">#80000000</color>
     <color name="color_select_tab">#FFFF0008</color>
+    <color name="color_bg_btn_history">#024572</color>
+    <color name="color_white">#FFFFFF</color>
 </resources>
