@@ -22,4 +22,5 @@ public class KeyConst {
     public static final String PASS_OLD = "MatKhauCu";
     public static final String PASS_NEW = "MatKhauMoi";
 
+    public static final String KEY_CHECK_EDIT_PROFILE = "KEY_CHECK_EDIT_PROFILE";
 }

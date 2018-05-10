@@ -38,12 +38,21 @@ public class SettingAccountActivity extends AppCompatActivity {
         switch (key){
             case Statistic.KEY_CHANGE_PASS:
                 ChangePassWordFragment changePassWordFragment = new ChangePassWordFragment();
-                addFragment(changePassWordFragment);
+                addFragment(changePassWordFragment, ChangePassWordFragment.class.getSimpleName());
                 break;
 
             case Statistic.KEY_EDIT_ACCOUNT:
                 EditAccountFragment editAccountFragment = new EditAccountFragment();
-                addFragment(editAccountFragment);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT,user);
+                editAccountFragment.setArguments(bundle);
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+                fragmentTransaction.add(R.id.container_setting_acc, editAccountFragment, EditAccountFragment.class.getSimpleName());
+                fragmentTransaction.addToBackStack(EditAccountFragment.class.getSimpleName());
+                fragmentTransaction.commit();
                 break;
         }
 
@@ -60,12 +69,12 @@ public class SettingAccountActivity extends AppCompatActivity {
     private void addControl() {
     }
 
-    public void addFragment(BaseFragment fragment){
+    public void addFragment(BaseFragment fragment, String name){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        fragmentTransaction.replace(R.id.container_setting_acc, fragment, LoginFragment.class.getSimpleName());
-        fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
+        fragmentTransaction.add(R.id.container_setting_acc, fragment, name);
+        fragmentTransaction.addToBackStack(name);
         fragmentTransaction.commit();
     }
 

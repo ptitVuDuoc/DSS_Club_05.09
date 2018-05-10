@@ -107,6 +107,7 @@ public class ChangePassWordFragment extends BaseFragment implements View.OnClick
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                                         pDialog.dismiss();
+                                        PrefUtils.putString(getContext(),KeyConst.KEY_PREF_PASS_WORD,txtPassNew.getText().toString());
                                         getActivity().finish();
                                     }
                                 });
@@ -131,7 +132,7 @@ public class ChangePassWordFragment extends BaseFragment implements View.OnClick
 
                     @Override
                     public void onFailure(Call<ChangePass> call, Throwable t) {
-
+                        pleaseDialog.dismiss();
                     }
                 });
 

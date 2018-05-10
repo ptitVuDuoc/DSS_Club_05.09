@@ -223,7 +223,9 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                     return;
                 }
 
-                getSupportFragmentManager().popBackStack();
+                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                    getSupportFragmentManager().popBackStack();
+                }
                 ScanFragment scanFragment = new ScanFragment();
                 addFragment(scanFragment,R.id.container_main_app);
 
@@ -237,7 +239,9 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                     return;
                 }
 
-                getSupportFragmentManager().popBackStack();
+                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                    getSupportFragmentManager().popBackStack();
+                }
                 HistoryFragment historyFragment = new HistoryFragment();
                 addFragment(historyFragment,R.id.container_main_app);
                 break;
@@ -249,7 +253,9 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                     return;
                 }
 
-                getSupportFragmentManager().popBackStack();
+                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                    getSupportFragmentManager().popBackStack();
+                }
                 AccountFragment accountFragment = new AccountFragment();
                 addFragment(accountFragment,R.id.container_tab_account);
                 break;
@@ -261,7 +267,9 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                     return;
                 }
 
-                getSupportFragmentManager().popBackStack();
+                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                    getSupportFragmentManager().popBackStack();
+                }
                 WinFragment winFragment = new WinFragment();
                 addFragment(winFragment,R.id.container_main_app);
                 break;

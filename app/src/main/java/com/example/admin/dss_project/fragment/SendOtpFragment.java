@@ -116,7 +116,7 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
 
                     @Override
                     public void onFailure(Call<ValidateOTP> call, Throwable t) {
-
+                        pleaseDialog.dismiss();
                     }
                 });
                 break;

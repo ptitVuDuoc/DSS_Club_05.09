@@ -158,7 +158,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
                     @Override
                     public void onFailure(Call<Register> call, Throwable t) {
-
+                        pleaseDialog.dismiss();
                     }
                 });
                 break;

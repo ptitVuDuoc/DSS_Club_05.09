@@ -7,11 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.LoginFragment">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/bg_color" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_padding_50"
@@ -158,10 +153,10 @@
             <RelativeLayout
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_padding_60"
+                android:layout_height="@dimen/margin_padding_50"
                 android:layout_below="@+id/view_center"
-                android:layout_marginLeft="@dimen/small"
-                android:layout_marginRight="@dimen/small"
+                android:layout_marginLeft="@dimen/margin_padding_35"
+                android:layout_marginRight="@dimen/margin_padding_35"
                 android:layout_marginTop="@dimen/margin_padding_30"
                 android:layout_marginBottom="@dimen/margin_padding_30"
                 android:background="@drawable/btn_login">

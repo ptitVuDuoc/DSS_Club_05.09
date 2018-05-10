@@ -113,7 +113,7 @@ public class ForgotPassWordFragment extends BaseFragment implements View.OnClick
 
                     @Override
                     public void onFailure(Call<ForgotPass> call, Throwable t) {
-
+                        pleaseDialog.dismiss();
                     }
                 });
 

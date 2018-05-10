@@ -8,18 +8,11 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/bg_color" />
-
     <RelativeLayout
         android:id="@+id/menu_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_padding_50"
-        android:background="@drawable/bg_color"
-        android:layout_below="@+id/view1">
+        android:background="@drawable/bg_color">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -100,9 +93,9 @@
             <RelativeLayout
                 android:id="@+id/btn_change_pass"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_padding_60"
-                android:layout_marginLeft="@dimen/margin_padding_15"
-                android:layout_marginRight="@dimen/margin_padding_15"
+                android:layout_height="@dimen/margin_padding_50"
+                android:layout_marginLeft="@dimen/margin_padding_35"
+                android:layout_marginRight="@dimen/margin_padding_35"
                 android:layout_marginTop="@dimen/margin_padding_30"
                 android:layout_marginBottom="@dimen/margin_padding_30"
                 android:background="@drawable/btn_login">

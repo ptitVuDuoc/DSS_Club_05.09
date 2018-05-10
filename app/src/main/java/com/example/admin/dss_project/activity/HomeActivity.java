@@ -10,8 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.fragment.BaseFragment;
@@ -31,9 +35,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        }
 
         setContentView(R.layout.activity_home);
 
@@ -44,6 +48,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         LoginFragment fragment = new LoginFragment();
         addFragment(fragment);
 
+    }
+
+    public void setAnimationButton(RelativeLayout animationButton){
+        ScaleAnimation animation = new ScaleAnimation(1.1f, 1.1f, 1.1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(50);
+        animationButton.startAnimation(animation);
     }
 
     private void addEvent() {

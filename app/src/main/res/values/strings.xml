@@ -59,7 +59,7 @@
 
     <string name="preview_height">preview.height</string>
     <string name="preview_width">preview.width</string>
-    <string name="please_confirm_otp">Làm ơn kiểm tra số điện thoại %s. Bạn đã nhận được mã xác thực từ chúng tôi!</string>
+    <string name="please_confirm_otp">Vui lòng kiểm tra số điện thoại %s. Bạn đã nhận được mã xác thực từ chúng tôi!</string>
     <string name="reward">Đổi thưởng</string>
     <string name="scan">Quét</string>
     <string name="history">Lịch sử</string>
@@ -77,7 +77,7 @@
     <string name="name_angency_acc">Tên đại lý</string>
     <string name="content_logout">Bạn có muốn đăng xuất tài khoản?</string>
     <string name="log_out">Đăng xuất</string>
-    <string name="yes">Đồng ý</string>
+    <string name="yes">Đ ý</string>
     <string name="dowload_data_fail">Tải dữ liệu không thành công!</string>
     <string name="txt_history_reward">Lịch sử đổi quà</string>
     <string name="txt_history_register_seri">Đăng kí seri</string>
@@ -87,4 +87,7 @@
     <string name="pass_new_fail">Mật khẩu cũ không đúng!</string>
     <string name="change_pass_success">Đổi mật khẩu thành công!</string>
     <string name="change_pass_fail">Đổi mật khẩu không thành công!</string>
+    <string name="edit_Acc_success">Sửa thông tin thành công!</string>
+    <string name="edit_Acc_fail">Sủa thông tin không thành công!</string>
+    <string name="save_info">Lưu thông tin</string>
 </resources>

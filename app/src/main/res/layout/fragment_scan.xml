@@ -20,4 +20,15 @@
         app:layout_constraintRight_toRightOf="@+id/fl_main_preview"
         android:id="@+id/qr_code_view"/>
 
+    <ImageView
+        android:id="@+id/btn_enter_code"
+        android:layout_width="@dimen/margin_padding_30"
+        android:layout_height="@dimen/margin_padding_30"
+        android:src="@drawable/entering_code"
+        android:tint="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/margin_padding_50"
+        android:layout_marginRight="@dimen/margin_padding_50"/>
+
 </android.support.constraint.ConstraintLayout>

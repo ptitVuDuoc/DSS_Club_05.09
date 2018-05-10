@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,13 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     protected void initViews() {
         addControl();
         addEvent();
-        setContent();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setContent();
+            }
+        },300);
     }
 
     private void addEvent() {
@@ -106,6 +113,16 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        if(PrefUtils.getBoolean(getContext(),KeyConst.KEY_CHECK_EDIT_PROFILE)){
+            setContent();
+            PrefUtils.putBoolean(getContext(),KeyConst.KEY_CHECK_EDIT_PROFILE,false);
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_change_pass:
@@ -119,6 +136,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
             case R.id.btn_edit_acc:
 
                 Intent intentEdit = new Intent(getActivity(), SettingAccountActivity.class);
+                intentEdit.putExtra(KeyConst.USER,user);
                 intentEdit.putExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT,Statistic.KEY_EDIT_ACCOUNT);
                 startActivity(intentEdit);
                 break;
@@ -133,7 +151,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                         pDialog.dismiss();
                     }
                 });
-                pDialog.setConfirmButton(getString(R.string.yes), new SweetAlertDialog.OnSweetClickListener() {
+                pDialog.setConfirmButton(getString(R.string.log_out), new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         Intent intent = new Intent(getActivity(), HomeActivity.class);

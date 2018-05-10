@@ -1,6 +1,7 @@
 package com.example.admin.dss_project.retrofit;
 
 import com.example.admin.dss_project.model.ChangePass;
+import com.example.admin.dss_project.model.EditAcc;
 import com.example.admin.dss_project.model.ForgotPass;
 import com.example.admin.dss_project.model.Register;
 import com.example.admin.dss_project.model.SendCodeOTP;
@@ -49,6 +50,9 @@ public interface APIRegisterUser {
 
     @POST("ChangePassword")
     Call<ChangePass> postRawJSONChangePass(@Body JsonObject locationPost);
+
+    @POST("UpdateUserInfo")
+    Call<EditAcc> postRawJSONEditAcc(@Body JsonObject locationPost);
 
 
 }
