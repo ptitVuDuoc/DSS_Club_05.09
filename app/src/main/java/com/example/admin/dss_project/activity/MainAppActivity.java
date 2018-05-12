@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ import com.example.admin.dss_project.fragment.WinFragment;
 import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.ultility.KeyConst;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainAppActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static Camera mCamera = null;
@@ -48,6 +51,10 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView iconScan, iconHistory, iconWin, iconAccount;
     private TextView txtScores;
     private TextView txtName;
+    public static final int WARNING = 1;
+    public static final int ERROR = 2;
+    private SweetAlertDialog pDialog;
+    private Button btnConfirmDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +98,10 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         iconWin = findViewById(R.id.ic_win);
         txtName  = findViewById(R.id.txt_name);
         txtScores  = findViewById(R.id.txt_scores);
+    }
+
+    public void updateSocres(String scores){
+        txtScores.setText(scores +" điểm");
     }
 
     private boolean checkCameraHardware(Context context) {
@@ -275,6 +286,28 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
         }
+    }
+
+    public void showDialog(int type, String title, String content, Context context){
+
+        switch (type){
+
+            case WARNING:
+                pDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
+                break;
+
+            case ERROR:
+                pDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
+                break;
+        }
+//        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText(title);
+        pDialog.setContentText(content);
+        pDialog.setCancelable(false);
+        pDialog.show();
+        btnConfirmDialog = pDialog.findViewById(R.id.confirm_button);
+        btnConfirmDialog.setBackgroundColor(Color.parseColor("#DC6B59"));
+        btnConfirmDialog.setText(R.string.cancel);
     }
 
     @Override

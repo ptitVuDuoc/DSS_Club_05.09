@@ -5,15 +5,189 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-    <View
+    <LinearLayout
+        android:id="@+id/view_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_50"
+            android:background="@drawable/bg_color">
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/register_seri"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_xlarge"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            style="@style/txt_acc_title"
+            android:text = "@string/code_seria"/>
+
+        <EditText
+            android:id="@+id/txt_seri"
+            style="@style/enter_edittext"
+            android:hint="@string/enter_seri"
+            android:layout_marginLeft="@dimen/margin_padding_35"
+            android:layout_marginRight="@dimen/margin_padding_35"/>
+
+
+        <RelativeLayout
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_50"
+            android:layout_marginLeft="@dimen/margin_padding_60"
+            android:layout_marginRight="@dimen/margin_padding_60"
+            android:layout_marginTop="@dimen/margin_padding_30"
+            android:layout_marginBottom="@dimen/margin_padding_30"
+            android:background="@drawable/btn_login">
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/btn_register"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_xlarge"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_text_home"/>
+        android:id="@+id/view_detail_register_seria"
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/btn_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="oke"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_50"
+                android:background="@drawable/bg_color">
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/txt_title_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/detail_register"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_size_xlarge"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_product"
+                style="@style/txt_title_detail_regiter_seria"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_detail_register"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/code_product"
+                style="@style/txt_title_detail_regiter_seria"/>
+
+            <TextView
+                android:id="@+id/txt_code_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_detail_register"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_seria"
+                style="@style/txt_title_detail_regiter_seria"/>
+
+            <TextView
+                android:id="@+id/txt_number_seria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_detail_register"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/code_reward"
+                style="@style/txt_title_detail_regiter_seria"/>
+
+            <TextView
+                android:id="@+id/code_reward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_detail_register"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_registẻ_seria"
+                style="@style/txt_title_detail_regiter_seria"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txt_date_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/txt_detail_register"
+                android:visibility="gone"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sores"
+                android:textColor="@android:color/black"
+                style="@style/txt_title_detail_regiter_seria" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin_padding_15"
+                    android:layout_height="@dimen/margin_padding_15"
+                    android:src="@drawable/ic_star"
+                    android:layout_marginTop="@dimen/margin_padding_5"
+                    android:layout_marginLeft="@dimen/margin_padding_15"/>
+
+                <TextView
+                    android:id="@+id/txt_scores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   style="@style/txt_detail_register"
+                    android:layout_marginLeft="@dimen/margin_padding_5"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

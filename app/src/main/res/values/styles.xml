@@ -99,5 +99,26 @@
         <item name="android:layout_marginLeft">@dimen/margin_padding_60</item>
         <item name="android:layout_marginRight">@dimen/margin_padding_60</item>
     </style>
+    
+    <style name="txt_detail_register">
+
+        <item name="android:layout_marginLeft">@dimen/margin_padding_15</item>
+        <item name="android:layout_marginRight">@dimen/margin_padding_15</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_padding_5</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+
+    </style>
+
+    <style name="txt_title_detail_regiter_seria">
+
+        <item name="android:layout_marginLeft">@dimen/margin_padding_15</item>
+        <item name="android:layout_marginRight">@dimen/margin_padding_15</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginTop">@dimen/margin_padding_15</item>
+        <item name="android:textSize">@dimen/font_size_standard</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
 
 </resources>

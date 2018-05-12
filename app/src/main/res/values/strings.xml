@@ -11,6 +11,7 @@
     <string name="forgot_password_title">Quên mật khẩu</string>
     <string name="do_not_have_an_account">Bạn chưa có tài khoản?</string>
     <string name="register"><u>Đăng kí</u></string>
+    <string name="btn_register">Đăng kí</string>
     <string name="enter_name">Nhập họ và tên</string>
     <string name="enter_email">Nhập email</string>
     <string name="enter_agency">Nhập tên đại lý</string>
@@ -36,20 +37,20 @@
     <string name="send_otp_fail">Gửi mã OTP không thành công</string>
     <string name="enter_phone">Nhập số điện thoại</string>
     <string name="enter_pass">Nhập mật khẩu</string>
-    <string name="number_phone_use_acc">Số điện thoại dùng làm tài khoản(*):</string>
-    <string name="firt_name">Họ và tên đầy đủ(*):</string>
-    <string name="angency_name">Tên đại lý(*):</string>
-    <string name="email_name">Địa chỉ email dùng để đăng kí tài khoản(*):</string>
+    <string name="number_phone_use_acc">Số điện thoại dùng làm tài khoản(<font color='red'><font color='red'>*</font></font>):</string>
+    <string name="firt_name">Họ và tên đầy đủ(<font color='red'>*</font>):</string>
+    <string name="angency_name">Tên đại lý(<font color='red'>*</font>):</string>
+    <string name="email_name">Địa chỉ email dùng để đăng kí tài khoản(<font color='red'>*</font>):</string>
     <string name="address_name">Nhập địa chỉ hiện tại:</string>
     <string name="birth_day_name">Ngày sinh của bạn:</string>
-    <string name="password_name">Nhập mật khẩu(*):</string>
-    <string name="confirm_password_name">Xác nhận mật khẩu(*):</string>
-    <string name="note">Chú ý: Thông tin dấu(*) là bắt buộc</string>
+    <string name="password_name">Nhập mật khẩu(<font color='red'>*</font>):</string>
+    <string name="confirm_password_name">Xác nhận mật khẩu(<font color='red'>*</font>):</string>
+    <string name="note">Chú ý: Thông tin dấu(<font color='red'>*</font>) là bắt buộc</string>
     <string name="enter_password_confirm">Nhập lại mật khẩu</string>
     <string name="number_phone_fail">Sai số điện thoại</string>
     <string name="title_forgot_pass">Vui lòng nhập số điện thoại của bạn và chúng tôi sẽ gửi bạn mật khẩu khôi phục</string>
     <string name="change_password_title">Đổi mật khẩu</string>
-    <string name="note_change_pass">Vui lòng nhập đầy đủ thông tin vào bên dưới để có thể đổi mật khẩu</string>
+    <string name="note_change_pass">Vui lòng nhập đầy đủ thông tin để có thể đổi mật khẩu</string>
     <string name="note_edit_acc">Vui lòng nhập đầy đủ thông tin vào bên dưới để có thể sửa đổi thông tin</string>
     <string name="send_otp_title">Xác nhận mã OTP</string>
     <string name="title_forgot_otp">Chưa nhận được mã OTP?<u> Nhấn vào đây để gửi lại mã OTP</u></string>
@@ -82,7 +83,7 @@
     <string name="txt_history_reward">Lịch sử đổi quà</string>
     <string name="txt_history_register_seri">Đăng kí seri</string>
     <string name="scores"> điểm</string>
-    <string name="password_old">Nhập mật khẩu cũ(*):</string>
+    <string name="password_old">Nhập mật khẩu cũ(<font color='red'>*</font>):</string>
     <string name="enter_confirm_pass">Nhập lại mật khẩu mới</string>
     <string name="pass_new_fail">Mật khẩu cũ không đúng!</string>
     <string name="change_pass_success">Đổi mật khẩu thành công!</string>
@@ -90,4 +91,16 @@
     <string name="edit_Acc_success">Sửa thông tin thành công!</string>
     <string name="edit_Acc_fail">Sủa thông tin không thành công!</string>
     <string name="save_info">Lưu thông tin</string>
+    <string name="enter_seri">Nhập seria</string>
+    <string name="register_seri">Đăng kí seria</string>
+    <string name="code_seria">Mã seria</string>
+    <string name="register_seria_success">Đăng kí seria thành công!</string>
+    <string name="register_seria_fail">Đăng kí seria không thành công!</string>
+    <string name="detail_register">Chi tiết thông tin đăng kí seria</string>
+    <string name="name_product">Tên hàng hóa:</string>
+    <string name="code_product">Mã hàng hóa:</string>
+    <string name="number_seria">Số seri:</string>
+    <string name="code_reward">Mã số dự thưởng:</string>
+    <string name="date_registẻ_seria">Ngày đăng kí:</string>
+    <string name="sores">Số điêm:</string>
 </resources>

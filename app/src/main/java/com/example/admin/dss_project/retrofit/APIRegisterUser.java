@@ -5,6 +5,7 @@ import com.example.admin.dss_project.model.EditAcc;
 import com.example.admin.dss_project.model.ForgotPass;
 import com.example.admin.dss_project.model.Register;
 import com.example.admin.dss_project.model.SendCodeOTP;
+import com.example.admin.dss_project.model.SeriInfo;
 import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.model.ValidateOTP;
 import com.google.gson.JsonObject;
@@ -53,6 +54,9 @@ public interface APIRegisterUser {
 
     @POST("UpdateUserInfo")
     Call<EditAcc> postRawJSONEditAcc(@Body JsonObject locationPost);
+
+    @POST("RegisterSeria")
+    Call<SeriInfo> postRawJSONRegisterSeria(@Body JsonObject locationPost);
 
 
 }
