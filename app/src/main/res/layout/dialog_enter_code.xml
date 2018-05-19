@@ -26,6 +26,21 @@
                 android:textSize="@dimen/font_size_xlarge"
                 android:textStyle="bold"/>
 
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/btn_close"
+                android:layout_width="@dimen/margin_padding_40"
+                android:layout_height="@dimen/margin_padding_40"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_close"
+                    android:layout_margin="@dimen/small"/>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
         </RelativeLayout>
 
         <com.example.admin.dss_project.custom.view.MyCusttomtext
@@ -91,66 +106,66 @@
 
             </RelativeLayout>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_product"
                 style="@style/txt_title_detail_regiter_seria"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_product"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/txt_code_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number_seria"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/txt_number_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_reward"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/code_reward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/date_registẻ_seria"
+                android:text="@string/date_register_seria"
                 style="@style/txt_title_detail_regiter_seria"
                 android:visibility="gone"/>
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/txt_date_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,7 +173,7 @@
                 android:visibility="gone"/>
 
 
-            <TextView
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sores"
@@ -177,7 +192,7 @@
                     android:layout_marginTop="@dimen/margin_padding_5"
                     android:layout_marginLeft="@dimen/margin_padding_15"/>
 
-                <TextView
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
                     android:id="@+id/txt_scores"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

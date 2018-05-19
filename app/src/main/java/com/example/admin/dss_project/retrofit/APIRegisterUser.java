@@ -3,6 +3,8 @@ package com.example.admin.dss_project.retrofit;
 import com.example.admin.dss_project.model.ChangePass;
 import com.example.admin.dss_project.model.EditAcc;
 import com.example.admin.dss_project.model.ForgotPass;
+import com.example.admin.dss_project.model.GetListRegitedSeria;
+import com.example.admin.dss_project.model.Gift;
 import com.example.admin.dss_project.model.Register;
 import com.example.admin.dss_project.model.SendCodeOTP;
 import com.example.admin.dss_project.model.SeriInfo;
@@ -58,5 +60,10 @@ public interface APIRegisterUser {
     @POST("RegisterSeria")
     Call<SeriInfo> postRawJSONRegisterSeria(@Body JsonObject locationPost);
 
+    @POST("GetListSeriaRegistered")
+    Call<GetListRegitedSeria> postRawJSONGetListRegistedSeria(@Body JsonObject locationPost);
+
+    @POST("GetListGift")
+    Call<Gift> postRawJSONGetListGift(@Body JsonObject locationPost);
 
 }

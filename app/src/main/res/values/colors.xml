@@ -8,4 +8,10 @@
     <color name="color_select_tab">#FFFF0008</color>
     <color name="color_bg_btn_history">#024572</color>
     <color name="color_white">#FFFFFF</color>
+
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <color name="viewfinder_border">#ffafed44</color>
+    <color name="actionbar_opacity">#33000000</color>
+
 </resources>

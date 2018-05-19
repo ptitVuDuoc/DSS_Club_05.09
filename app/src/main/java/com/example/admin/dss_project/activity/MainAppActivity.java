@@ -2,33 +2,29 @@ package com.example.admin.dss_project.activity;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.hardware.Camera;
-import android.os.Build;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
+import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.dss_project.R;
-import com.example.admin.dss_project.custom.view.scan.CameraPreview;
-import com.example.admin.dss_project.custom.view.scan.Constant;
-import com.example.admin.dss_project.custom.view.scan.QrCodeFinderView;
 import com.example.admin.dss_project.fragment.AccountFragment;
 import com.example.admin.dss_project.fragment.BaseFragment;
 import com.example.admin.dss_project.fragment.HistoryFragment;
+import com.example.admin.dss_project.fragment.ListGiftFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
 import com.example.admin.dss_project.fragment.ScanFragment;
 import com.example.admin.dss_project.fragment.WinFragment;
@@ -39,20 +35,19 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainAppActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static Camera mCamera = null;
-    public static QrCodeFinderView qrCodeFinderView;
-    private int requestCamera = 0;
-    private int isCheckClick = -1;
+    public static final int WARNING = 1;
+    public static final int ERROR = 2;
+    private static final int ZXING_CAMERA_PERMISSION = 1;
     private final int CLICK_SCAN = 1;
     private final int CLICK_HISTORY = 2;
     private final int CLICK_WIN = 3;
     private final int CLICK_ACCOUNT = 4;
+    private int requestCamera = 0;
+    private int isCheckClick = -1;
     private TextView txtScan, txtHistory, txtAccount, txtWin;
     private ImageView iconScan, iconHistory, iconWin, iconAccount;
     private TextView txtScores;
     private TextView txtName;
-    public static final int WARNING = 1;
-    public static final int ERROR = 2;
     private SweetAlertDialog pDialog;
     private Button btnConfirmDialog;
 
@@ -60,21 +55,43 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
-        init();
+        launchActivity();
 
+        init();
         txtScan.setTextColor(getResources().getColor(R.color.color_select_tab));
         iconScan.setColorFilter(getResources().getColor(R.color.color_select_tab));
+    }
+
+    public void launchActivity() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, ZXING_CAMERA_PERMISSION);
+        } else {
+            //            Intent intent = new Intent(this, clss);
+            //            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case ZXING_CAMERA_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //                    if(mClss != null) {
+                    //                        Intent intent = new Intent(this, mClss);
+                    //                        startActivity(intent);
+                    //                    }
+                } else {
+                    Toast.makeText(this, "Please grant camera permission to use the QR Scanner", Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
     }
 
     private void init() {
         addControl();
         addEvent();
-
-         if (!checkCameraHardware(this)) {
-            showErrorHardware();
-        } else {
-            requestPermision();
-        }
 
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra(KeyConst.USER);
@@ -82,8 +99,12 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         String txtSc = user.getSoDiemHienTai().toString() + " " + "điểm";
         txtScores.setText(txtSc);
 
-        ScanFragment previewFragment = new ScanFragment();
-        addFragment(previewFragment,R.id.container_main_app);
+        ScanFragment scanFragment = new ScanFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container_main_app, scanFragment, LoginFragment.class.getSimpleName());
+        fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
+        fragmentTransaction.commit();
 
     }
 
@@ -96,74 +117,12 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         iconHistory = findViewById(R.id.ic_history);
         iconAccount = findViewById(R.id.ic_account);
         iconWin = findViewById(R.id.ic_win);
-        txtName  = findViewById(R.id.txt_name);
-        txtScores  = findViewById(R.id.txt_scores);
+        txtName = findViewById(R.id.txt_name);
+        txtScores = findViewById(R.id.txt_scores);
     }
 
-    public void updateSocres(String scores){
-        txtScores.setText(scores +" điểm");
-    }
-
-    private boolean checkCameraHardware(Context context) {
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            // this device has a camera
-            return true;
-        } else {
-            // no camera on this device
-            return false;
-        }
-    }
-
-    private void showErrorHardware() {
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(this);
-        }
-        builder.setTitle("abc")
-                .setMessage("def")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        requestPermision();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
-
-    private void requestPermision() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED ||
-                    checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            != PackageManager.PERMISSION_GRANTED ||
-                    checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        requestCamera);
-            } else {
-                setUpMain();
-            }
-        } else {
-            setUpMain();
-        }
-    }
-
-    private void setUpMain() {
-        initLoadData();
-    }
-
-    private void initLoadData() {
-        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-        CameraPreview.previewHeight = sharedPref.getInt(getResources().getString(R.string.preview_height), Constant.INT_DEFAULT_CAMERA_PREVIEW_HEIGHT);
-        CameraPreview.previewWidth = sharedPref.getInt(getResources().getString(R.string.preview_width), Constant.INT_DEFAULT_CAMERA_PREVIEW_WIDTH);
+    public void updateSocres(String scores) {
+        txtScores.setText(scores + " điểm");
     }
 
     public void addFragment(BaseFragment fragment, int container) {
@@ -181,10 +140,11 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.btn_history).setOnClickListener(this);
         findViewById(R.id.btn_win).setOnClickListener(this);
         findViewById(R.id.btn_account).setOnClickListener(this);
+        findViewById(R.id.btn_reward).setOnClickListener(this);
 
     }
 
-    private void setColorMenuBottom(){
+    private void setColorMenuBottom() {
         txtScan.setTextColor(getResources().getColor(R.color.color_text_home));
         txtAccount.setTextColor(getResources().getColor(R.color.color_text_home));
         txtWin.setTextColor(getResources().getColor(R.color.color_text_home));
@@ -193,7 +153,7 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         iconWin.setColorFilter(getResources().getColor(R.color.color_text_home));
         iconHistory.setColorFilter(getResources().getColor(R.color.color_text_home));
         iconAccount.setColorFilter(getResources().getColor(R.color.color_text_home));
-        switch (isCheckClick){
+        switch (isCheckClick) {
             case CLICK_SCAN:
                 txtScan.setTextColor(getResources().getColor(R.color.color_select_tab));
                 iconScan.setColorFilter(getResources().getColor(R.color.color_select_tab));
@@ -221,8 +181,21 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
         Fragment fragmentAcc = getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_nofi:
+
+                break;
+
+            case R.id.btn_reward:
+
+                if (fragmentAcc instanceof ListGiftFragment) return;
+
+                if(fragment instanceof ScanFragment){
+                    ((ScanFragment) fragment).stopCamera();
+                }
+
+                ListGiftFragment listGiftFragment = new ListGiftFragment();
+                addFragment(listGiftFragment, R.id.container_tab_account);
 
                 break;
 
@@ -230,67 +203,86 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                 isCheckClick = CLICK_SCAN;
                 setColorMenuBottom();
 
-                if(fragment instanceof ScanFragment){
+                if (fragment instanceof ScanFragment) {
                     return;
                 }
 
-                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                     getSupportFragmentManager().popBackStack();
                 }
                 ScanFragment scanFragment = new ScanFragment();
-                addFragment(scanFragment,R.id.container_main_app);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.container_main_app, scanFragment, LoginFragment.class.getSimpleName());
+                fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
+                fragmentTransaction.commit();
 
                 break;
 
             case R.id.btn_history:
+
                 isCheckClick = CLICK_HISTORY;
                 setColorMenuBottom();
 
-                if(fragment instanceof HistoryFragment){
+                if (fragment instanceof HistoryFragment) {
                     return;
                 }
 
-                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                if(fragment instanceof ScanFragment){
+                    ((ScanFragment)fragment).stopCamera();
+                }
+
+                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                     getSupportFragmentManager().popBackStack();
                 }
                 HistoryFragment historyFragment = new HistoryFragment();
-                addFragment(historyFragment,R.id.container_main_app);
+                addFragment(historyFragment, R.id.container_main_app);
                 break;
             case R.id.btn_account:
+
                 isCheckClick = CLICK_ACCOUNT;
                 setColorMenuBottom();
 
-                if(fragmentAcc instanceof AccountFragment){
+                if (fragmentAcc instanceof AccountFragment) {
                     return;
                 }
 
-                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                if(fragment instanceof ScanFragment){
+                    ((ScanFragment)fragment).stopCamera();
+                }
+
+                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                     getSupportFragmentManager().popBackStack();
                 }
                 AccountFragment accountFragment = new AccountFragment();
-                addFragment(accountFragment,R.id.container_tab_account);
+                addFragment(accountFragment, R.id.container_tab_account);
                 break;
             case R.id.btn_win:
+
                 isCheckClick = CLICK_WIN;
                 setColorMenuBottom();
 
-                if(fragment instanceof WinFragment){
+                if (fragment instanceof WinFragment) {
                     return;
                 }
 
-                for(int i = 0; i <getSupportFragmentManager().getBackStackEntryCount();i++){
+                if(fragment instanceof ScanFragment){
+                    ((ScanFragment)fragment).stopCamera();
+                }
+
+                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                     getSupportFragmentManager().popBackStack();
                 }
                 WinFragment winFragment = new WinFragment();
-                addFragment(winFragment,R.id.container_main_app);
+                addFragment(winFragment, R.id.container_main_app);
                 break;
 
         }
     }
 
-    public void showDialog(int type, String title, String content, Context context){
+    public void showDialog(int type, String title, String content, Context context) {
 
-        switch (type){
+        switch (type) {
 
             case WARNING:
                 pDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
@@ -313,20 +305,34 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onBackPressed() {
 
-        Fragment fragmentContainerMain =  getSupportFragmentManager().findFragmentById(R.id.container_main_app);
-        Fragment fragmentContainerTabAcc =  getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
-        Fragment fragmentContainerTabHistory =  getSupportFragmentManager().findFragmentById(R.id.container_history);
+        final Fragment fragmentContainerMain = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
+        Fragment fragmentContainerTabAcc = getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
+        Fragment fragmentContainerTabHistory = getSupportFragmentManager().findFragmentById(R.id.container_history);
 
-        if (fragmentContainerMain instanceof ScanFragment){
+        if (fragmentContainerTabAcc instanceof ListGiftFragment) {
+            getSupportFragmentManager().popBackStack();
+
+            if (fragmentContainerMain instanceof ScanFragment) {
+                ((ScanFragment) fragmentContainerMain).resumeCamera();
+            }
+
+            return;
+        }
+
+        if (fragmentContainerMain instanceof ScanFragment) {
             finish();
             return;
         }
 
-        if(fragmentContainerMain instanceof HistoryFragment || fragmentContainerMain instanceof WinFragment
-                || fragmentContainerTabAcc instanceof AccountFragment){
+        if (fragmentContainerMain instanceof HistoryFragment || fragmentContainerMain instanceof WinFragment
+                || fragmentContainerTabAcc instanceof AccountFragment) {
             getSupportFragmentManager().popBackStack();
             ScanFragment previewFragment = new ScanFragment();
-            addFragment(previewFragment,R.id.container_main_app);
+            addFragment(previewFragment, R.id.container_main_app);
+
+            isCheckClick = CLICK_SCAN;
+            setColorMenuBottom();
+
             return;
         }
     }

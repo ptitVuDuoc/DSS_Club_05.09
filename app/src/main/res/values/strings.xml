@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">DSS_Project</string>
+    <string name="app_name">DSS Club</string>
+
+
+    <string name="select_camera">Select a Camera</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -76,7 +81,7 @@
     <string name="edit_acc">Sửa thông tin</string>
     <string name="firt_name_acc">Họ và tên</string>
     <string name="name_angency_acc">Tên đại lý</string>
-    <string name="content_logout">Bạn có muốn đăng xuất tài khoản?</string>
+    <string name="content_logout">Bạn có chắc chắn đăng xuất không?</string>
     <string name="log_out">Đăng xuất</string>
     <string name="yes">Đ ý</string>
     <string name="dowload_data_fail">Tải dữ liệu không thành công!</string>
@@ -97,10 +102,22 @@
     <string name="register_seria_success">Đăng kí seria thành công!</string>
     <string name="register_seria_fail">Đăng kí seria không thành công!</string>
     <string name="detail_register">Chi tiết thông tin đăng kí seria</string>
-    <string name="name_product">Tên hàng hóa:</string>
     <string name="code_product">Mã hàng hóa:</string>
     <string name="number_seria">Số seri:</string>
     <string name="code_reward">Mã số dự thưởng:</string>
-    <string name="date_registẻ_seria">Ngày đăng kí:</string>
+    <string name="date_register_seria">Ngày đăng kí:</string>
     <string name="sores">Số điêm:</string>
+    <string name="filter_history">Chọn thời gian lịch sử</string>
+    <string name="btn_filter">Lọc danh sách</string>
+    <string name="enter_start_day">Ngày bắt đầu</string>
+    <string name="enter_end_day">Ngày kết thúc</string>
+    <string name="start_day">Từ ngày:</string>
+    <string name="end_day">Đến ngày:</string>
+    <string name="txt_detail">Chi tiết</string>
+    <string name="name_product">Tên hàng hóa:</string>
+    <string name="load_camera">Đang tải camera</string>
+    <string name="no_active">Bạn chưa có hoạt động nào</string>
+    <string name="title_list_gift">Danh sách quà</string>
+    <string name="load_image">Đang tải ảnh</string>
+    <string name="name_product_item">Tên sản phẩm</string>
 </resources>

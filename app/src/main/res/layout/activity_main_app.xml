@@ -24,18 +24,16 @@
 
         <com.example.admin.dss_project.custom.view.MyCusttomtext
             android:id="@+id/txt_name"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/margin_padding_120"
             android:layout_height="wrap_content"
-            android:text="Vũ Đượcaaaaaaaaaaaaaa"
             android:textColor="@android:color/white"
             android:textSize="@dimen/font_size_standard"
             app:layout_constraintLeft_toRightOf="@+id/image_avatar"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/margin_padding_15"
             android:layout_marginLeft="@dimen/margin_padding_5"
-            android:maxLength="15"
-            android:maxLines="1"
-            android:ellipsize="end"/>
+            android:ellipsize="end"
+            android:maxLines="1" />
 
         <com.example.admin.dss_project.custom.view.MyCusttomtext
             android:id="@+id/txt_scores"

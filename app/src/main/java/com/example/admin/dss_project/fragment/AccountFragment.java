@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.HomeActivity;
 import com.example.admin.dss_project.activity.MainAppActivity;
@@ -106,7 +107,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                pleaseDialog.dismiss();
             }
         });
 

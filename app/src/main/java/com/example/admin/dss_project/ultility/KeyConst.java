@@ -24,4 +24,7 @@ public class KeyConst {
 
     public static final String KEY_CHECK_EDIT_PROFILE = "KEY_CHECK_EDIT_PROFILE";
     public static final String SERI = "Seria";
+    public static final String START_DAY = "NgayBatDau";
+    public static final String END_DAY = "NgayKetThuc";
+    public static final String PAGE_NUMBER = "PageNumber";
 }

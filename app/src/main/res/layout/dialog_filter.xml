@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/filter_history"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/margin_padding_40"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_close"
+                android:layout_margin="@dimen/small"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <com.example.admin.dss_project.custom.view.MyCusttomtext
+        style="@style/txt_acc_title"
+        android:text = "@string/start_day"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_padding_35"
+        android:layout_marginRight="@dimen/margin_padding_35">
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_start_day"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginTop="@dimen/small"
+            android:background="@drawable/stroke"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_start_day"
+            android:padding="@dimen/small"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/font_size_standard" />
+
+        <ImageView
+            android:layout_width="@dimen/x_large"
+            android:layout_height="@dimen/x_large"
+            android:src="@drawable/ic_calender"
+            app:layout_constraintRight_toRightOf="@id/txt_start_day"
+            app:layout_constraintTop_toTopOf="@id/txt_start_day"
+            app:layout_constraintBottom_toBottomOf="@id/txt_start_day"
+            android:layout_marginRight="@dimen/small"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <com.example.admin.dss_project.custom.view.MyCusttomtext
+        style="@style/txt_acc_title"
+        android:text = "@string/end_day"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_padding_35"
+        android:layout_marginRight="@dimen/margin_padding_35">
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:id="@+id/txt_end_day"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginTop="@dimen/small"
+            android:background="@drawable/stroke"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_end_day"
+            android:padding="@dimen/small"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/font_size_standard" />
+
+        <ImageView
+            android:layout_width="@dimen/x_large"
+            android:layout_height="@dimen/x_large"
+            android:src="@drawable/ic_calender"
+            app:layout_constraintRight_toRightOf="@id/txt_end_day"
+            app:layout_constraintTop_toTopOf="@id/txt_end_day"
+            app:layout_constraintBottom_toBottomOf="@id/txt_end_day"
+            android:layout_marginRight="@dimen/small"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_filter_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:layout_marginLeft="@dimen/margin_padding_60"
+        android:layout_marginRight="@dimen/margin_padding_60"
+        android:layout_marginTop="@dimen/margin_padding_30"
+        android:layout_marginBottom="@dimen/margin_padding_30"
+        android:background="@drawable/btn_login">
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/btn_filter"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

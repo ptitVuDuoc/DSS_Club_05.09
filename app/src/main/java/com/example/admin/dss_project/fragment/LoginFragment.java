@@ -145,6 +145,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
                     }else {
                         String content = response.body().getMessage();
+                        if(content.contains("chưa")){
+                            ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR, getString(R.string.login_fail), "Số điện thoại hiện tại chưa được đăng kí!" ,getContext());
+                            return;
+                        }
                         ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR, getString(R.string.login_fail), content ,getContext());
                     }
 
