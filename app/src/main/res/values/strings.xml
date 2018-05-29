@@ -30,16 +30,15 @@
     <string name="Please">Xin chờ...!</string>
     <string name="net_work_off">Mạng ngoại tuyến</string>
     <string name="on_net_work">Bạn cần bật mạng</string>
-    <string name="cancel">Thoát</string>
     <string name="not_empty">Không được để trống!</string>
     <string name="login_fail">Đăng nhập thất bại</string>
     <string name="false_account">Sai thông tin tài khoản</string>
-    <string name="register_failed">Đăng kí tài khoản không thành công</string>
+    <string name="register_failed">Đăng kí tài khoản không thành công!</string>
     <string name="send_otp">Gửi mã OTP</string>
     <string name="success">Thành công!</string>
-    <string name="get_pass_fail">Lấy mật khẩu không thành công</string>
+    <string name="get_pass_fail">Lấy mật khẩu không thành công!</string>
     <string name="oke">Đồng ý</string>
-    <string name="send_otp_fail">Gửi mã OTP không thành công</string>
+    <string name="send_otp_fail">Gửi mã OTP không thành công!</string>
     <string name="enter_phone">Nhập số điện thoại</string>
     <string name="enter_pass">Nhập mật khẩu</string>
     <string name="number_phone_use_acc">Số điện thoại dùng làm tài khoản(<font color='red'><font color='red'>*</font></font>):</string>
@@ -81,9 +80,9 @@
     <string name="edit_acc">Sửa thông tin</string>
     <string name="firt_name_acc">Họ và tên</string>
     <string name="name_angency_acc">Tên đại lý</string>
-    <string name="content_logout">Bạn có chắc chắn đăng xuất không?</string>
+    <string name="content_logout">Bạn có chắc chắn muốn đăng xuất không?   </string>
     <string name="log_out">Đăng xuất</string>
-    <string name="yes">Đ ý</string>
+    <string name="yes">Đồng ý</string>
     <string name="dowload_data_fail">Tải dữ liệu không thành công!</string>
     <string name="txt_history_reward">Lịch sử đổi quà</string>
     <string name="txt_history_register_seri">Đăng kí seri</string>
@@ -120,4 +119,16 @@
     <string name="title_list_gift">Danh sách quà</string>
     <string name="load_image">Đang tải ảnh</string>
     <string name="name_product_item">Tên sản phẩm</string>
+    <string name="reward_success">Đổi quà thành công. Quà tặng sẽ được gửi về địa chỉ tài khoản đăng ký!</string>
+    <string name="reward_fail">Đổi quà không thành công!</string>
+    <string name="confirm_reward">Xác nhận đổi quà</string>
+    <string name="how_to_reward">Bạn có chắc chắn muốn đổi quà này!</string>
+    <string name="reward_gift">Đổi quà</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="title_info_gift">Thông tin quà tặng</string>
+    <string name="info_gift">Mô tả</string>
+    <string name="cancel">Thoát</string>
+    <string name="name_gift">Tên quà tặng:</string>
+    <string name="code_gift">Mã quà tặng:</string>
+    <string name="txt_status">Tình trạng:</string>
 </resources>

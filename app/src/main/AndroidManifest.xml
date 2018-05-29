@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -19,16 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
-
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0"
             tools:node="replace" />
-
 
         <activity
             android:name=".activity.HomeActivity"
@@ -44,7 +40,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SettingAccountActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.GiftActivity"></activity>
     </application>
 
 </manifest>

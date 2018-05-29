@@ -14,9 +14,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.fragment.AccountFragment;
 import com.example.admin.dss_project.fragment.BaseFragment;
 import com.example.admin.dss_project.fragment.HistoryFragment;
+import com.example.admin.dss_project.fragment.InfoGiftFragment;
 import com.example.admin.dss_project.fragment.ListGiftFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
 import com.example.admin.dss_project.fragment.ScanFragment;
@@ -46,10 +49,12 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     private int isCheckClick = -1;
     private TextView txtScan, txtHistory, txtAccount, txtWin;
     private ImageView iconScan, iconHistory, iconWin, iconAccount;
-    private TextView txtScores;
+    public static TextView txtScores;
     private TextView txtName;
     private SweetAlertDialog pDialog;
     private Button btnConfirmDialog;
+    private int countClickListGift = 0;
+    private CardView menuBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +100,11 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra(KeyConst.USER);
-        txtName.setText(user.getHoVaTen());
-        String txtSc = user.getSoDiemHienTai().toString() + " " + "điểm";
-        txtScores.setText(txtSc);
+        if(user != null){
+            txtName.setText(user.getHoVaTen());
+            String txtSc = user.getSoDiemHienTai().toString() + " " + "điểm";
+            txtScores.setText(txtSc);
+        }
 
         ScanFragment scanFragment = new ScanFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -119,9 +126,10 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         iconWin = findViewById(R.id.ic_win);
         txtName = findViewById(R.id.txt_name);
         txtScores = findViewById(R.id.txt_scores);
+        menuBottom = findViewById(R.id.bottomBar);
     }
 
-    public void updateSocres(String scores) {
+    public static void updateSocres(String scores) {
         txtScores.setText(scores + " điểm");
     }
 
@@ -188,14 +196,16 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_reward:
 
-                if (fragmentAcc instanceof ListGiftFragment) return;
+
+                if (countClickListGift != 0) return;
 
                 if(fragment instanceof ScanFragment){
                     ((ScanFragment) fragment).stopCamera();
                 }
 
-                ListGiftFragment listGiftFragment = new ListGiftFragment();
-                addFragment(listGiftFragment, R.id.container_tab_account);
+                Intent intent = new Intent(MainAppActivity.this,GiftActivity.class);
+                startActivity(intent);
+                countClickListGift = 1;
 
                 break;
 
@@ -280,6 +290,12 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        countClickListGift = 0;
+    }
+
     public void showDialog(int type, String title, String content, Context context) {
 
         switch (type) {
@@ -308,16 +324,6 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         final Fragment fragmentContainerMain = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
         Fragment fragmentContainerTabAcc = getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
         Fragment fragmentContainerTabHistory = getSupportFragmentManager().findFragmentById(R.id.container_history);
-
-        if (fragmentContainerTabAcc instanceof ListGiftFragment) {
-            getSupportFragmentManager().popBackStack();
-
-            if (fragmentContainerMain instanceof ScanFragment) {
-                ((ScanFragment) fragmentContainerMain).resumeCamera();
-            }
-
-            return;
-        }
 
         if (fragmentContainerMain instanceof ScanFragment) {
             finish();

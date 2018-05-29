@@ -58,14 +58,14 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="@dimen/small"
             android:layout_marginRight="@dimen/small"
-            android:layout_marginTop="@dimen/small"
+            android:layout_marginTop="@dimen/xx_small"
             android:paddingLeft="@dimen/small"
             app:layout_constraintTop_toBottomOf="@+id/img_product"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@string/name_product_item"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/font_size_standard"
+            android:textSize="@dimen/font_size_small"
             android:textStyle="bold"
             android:gravity="center"/>
 
@@ -78,18 +78,18 @@
                 android:id="@+id/ic_star"
                 android:layout_width="@dimen/large"
                 android:layout_height="@dimen/large"
-                android:layout_marginLeft="@dimen/small"
-                android:layout_marginTop="@dimen/small"
                 android:src="@drawable/ic_star"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginTop="@dimen/small"/>
 
             <TextView
                 android:id="@+id/txt_scores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_padding_5"
-                android:text="-100 điểm"
+                android:text="- điểm"
                 android:textColor="#961A1C"
                 android:textSize="@dimen/font_size_small"
                 app:layout_constraintBottom_toBottomOf="@+id/ic_star"
@@ -98,18 +98,18 @@
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:id="@+id/btn_change_reward"
-                android:layout_width="@dimen/margin_padding_50"
-                android:layout_height="@dimen/margin_padding_50"
+                android:layout_width="@dimen/margin_padding_45"
+                android:layout_height="@dimen/margin_padding_45"
                 app:layout_constraintBottom_toBottomOf="@+id/ic_star"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ic_star">
+                app:layout_constraintTop_toTopOf="@+id/ic_star"
+                android:background="?attr/selectableItemBackgroundBorderless">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/small"
-                    android:src="@drawable/ic_reward"
-                    android:tint="#FECB2F" />
+                    android:layout_margin="@dimen/x_small"
+                    android:src="@drawable/ic_reward" />
             </android.support.v7.widget.LinearLayoutCompat>
 
         </android.support.constraint.ConstraintLayout>

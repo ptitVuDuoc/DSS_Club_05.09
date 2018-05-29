@@ -16,7 +16,7 @@
             android:layout_height="@dimen/margin_padding_50"
             android:background="@drawable/bg_color">
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
         </RelativeLayout>
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <TextView
             style="@style/txt_acc_title"
             android:text = "@string/code_seria"/>
 
@@ -65,7 +65,7 @@
             android:layout_marginBottom="@dimen/margin_padding_30"
             android:background="@drawable/btn_login">
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -94,7 +94,7 @@
                 android:layout_height="@dimen/margin_padding_50"
                 android:background="@drawable/bg_color">
 
-                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                <TextView
                     android:id="@+id/txt_title_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,68 +104,82 @@
                     android:textSize="@dimen/font_size_xlarge"
                     android:textStyle="bold"/>
 
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:id="@+id/btn_close_2"
+                    android:layout_width="@dimen/margin_padding_40"
+                    android:layout_height="@dimen/margin_padding_40"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_close"
+                    android:layout_margin="@dimen/small"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+
             </RelativeLayout>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_product"
                 style="@style/txt_title_detail_regiter_seria"
                 android:visibility="gone"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"
                 android:visibility="gone"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_product"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:id="@+id/txt_code_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number_seria"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:id="@+id/txt_number_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_reward"
                 style="@style/txt_title_detail_regiter_seria"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:id="@+id/code_reward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_detail_register"/>
 
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date_register_seria"
                 style="@style/txt_title_detail_regiter_seria"
                 android:visibility="gone"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:id="@+id/txt_date_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -173,7 +187,7 @@
                 android:visibility="gone"/>
 
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sores"
@@ -192,7 +206,7 @@
                     android:layout_marginTop="@dimen/margin_padding_5"
                     android:layout_marginLeft="@dimen/margin_padding_15"/>
 
-                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                <TextView
                     android:id="@+id/txt_scores"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

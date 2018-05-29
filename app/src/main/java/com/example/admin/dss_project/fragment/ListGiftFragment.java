@@ -1,13 +1,11 @@
 package com.example.admin.dss_project.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.admin.dss_project.R;
+import com.example.admin.dss_project.activity.GiftActivity;
 import com.example.admin.dss_project.adapter.ListGiftAdapter;
 import com.example.admin.dss_project.custom.view.MyProgressDialog;
-import com.example.admin.dss_project.fragment.BaseFragment;
+import com.example.admin.dss_project.listen.OnLoadMoreListener;
 import com.example.admin.dss_project.model.Gift;
 import com.example.admin.dss_project.model.ListGift;
-import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
 import com.example.admin.dss_project.retrofit.ApiUtils;
 import com.example.admin.dss_project.ultility.KeyConst;
@@ -29,16 +27,18 @@ import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListGiftFragment extends BaseFragment implements ListGiftAdapter.OnStickerListener, View.OnClickListener {
+public class ListGiftFragment extends BaseFragment implements ListGiftAdapter.OnStickerListener, View.OnClickListener, OnLoadMoreListener {
     private RecyclerView recyclerView;
     private ProgressDialog pleaseDialog;
     private APIRegisterUser mAPIService;
+    private ListGiftAdapter listGiftAdapter;
+    private ArrayList<ListGift> listGifts = new ArrayList<>();
+    private int pageNumber = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,12 +51,14 @@ public class ListGiftFragment extends BaseFragment implements ListGiftAdapter.On
     protected void initViews() {
         addControl();
         addEvent();
+        createRecycler();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 callAPI();
             }
-        },200);
+        }, 200);
+
     }
 
     private void addEvent() {
@@ -67,30 +69,36 @@ public class ListGiftFragment extends BaseFragment implements ListGiftAdapter.On
         pleaseDialog = MyProgressDialog.newInstance(mContext, mContext.getResources().getString(R.string.Please));
     }
 
-    private void createRecycler(List<ListGift> listGift){
+    private void createRecycler() {
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_list_gift);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        ListGiftAdapter stickerAdapter = new ListGiftAdapter(recyclerView, getActivity(),  listGift).setOnStickerListener(this);
-        recyclerView.setAdapter(stickerAdapter);
+        listGiftAdapter = new ListGiftAdapter(recyclerView, getActivity(), listGifts).setOnItemListGiftListener(this);
+        recyclerView.setAdapter(listGiftAdapter);
+        listGiftAdapter.setOnLoadMoreListener(this);
     }
 
-    private void callAPI(){
+    private void callAPI() {
         pleaseDialog.show();
+        pageNumber++;
         mAPIService = ApiUtils.getAPIService();
-        final JsonObject jsonObject = new JsonObject();
+        JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
-        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC));
-        jsonObject.addProperty(KeyConst.PAGE_NUMBER, 1);
+        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(), KeyConst.NUMBER_PHONE_STATISTIC));
+        jsonObject.addProperty(KeyConst.PAGE_NUMBER, pageNumber);
 
         mAPIService.postRawJSONGetListGift(jsonObject).enqueue(new Callback<Gift>() {
             @Override
             public void onResponse(Call<Gift> call, Response<Gift> response) {
-                if(response != null){
+                if (response != null) {
                     pleaseDialog.dismiss();
 
-                    if(response.body().getIsSuccess()){
-                        createRecycler(response.body().getListGift());
+                    if (response.body().getIsSuccess()) {
+                        listGifts.addAll(response.body().getListGift());
+                        listGiftAdapter.notifyDataSetChanged();
+                        listGiftAdapter.setLoaded();
+                    } else {
+                        pageNumber--;
                     }
                 }
             }
@@ -98,23 +106,53 @@ public class ListGiftFragment extends BaseFragment implements ListGiftAdapter.On
             @Override
             public void onFailure(Call<Gift> call, Throwable t) {
                 pleaseDialog.dismiss();
+                pageNumber--;
             }
         });
     }
 
+    private void showDetailGift(int position , ArrayList<ListGift> listGifts) {
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        InfoGiftFragment infoGiftFragment = new InfoGiftFragment();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.add(R.id.container_main, infoGiftFragment, LoginFragment.class.getSimpleName());
+        fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(KeyConst.BUNLDE_ID_GIFT,listGifts.get(position).getQuaTangID());
+        infoGiftFragment.setArguments(bundle);
+
+        fragmentTransaction.commit();
+
+    }
+
     @Override
     public void onItemClickListener(int position) {
+        showDetailGift(position, listGifts);
+
+    }
+
+    @Override
+    public void onRewardClickListener(int position) {
+        ((GiftActivity) getActivity()).showDialogConfirm(listGifts.get(position).getQuaTangID(), getContext(), pleaseDialog);
 
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_back:
 
                 getActivity().onBackPressed();
 
                 break;
         }
+    }
+
+    @Override
+    public void onLoadMore() {
+        callAPI();
     }
 }

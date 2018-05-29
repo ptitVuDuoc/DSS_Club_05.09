@@ -1,11 +1,15 @@
 package com.example.admin.dss_project.retrofit;
 
 import com.example.admin.dss_project.model.ChangePass;
+import com.example.admin.dss_project.model.DetailGift;
 import com.example.admin.dss_project.model.EditAcc;
 import com.example.admin.dss_project.model.ForgotPass;
+import com.example.admin.dss_project.model.GetListGiftRegisterd;
 import com.example.admin.dss_project.model.GetListRegitedSeria;
+import com.example.admin.dss_project.model.GetScoresAcc;
 import com.example.admin.dss_project.model.Gift;
 import com.example.admin.dss_project.model.Register;
+import com.example.admin.dss_project.model.RewardGift;
 import com.example.admin.dss_project.model.SendCodeOTP;
 import com.example.admin.dss_project.model.SeriInfo;
 import com.example.admin.dss_project.model.User;
@@ -65,5 +69,18 @@ public interface APIRegisterUser {
 
     @POST("GetListGift")
     Call<Gift> postRawJSONGetListGift(@Body JsonObject locationPost);
+
+    @POST("RegisterGift")
+    Call<RewardGift> postRawJSONRewradGift(@Body JsonObject locationPost);
+
+    @POST("GetGiftInfo")
+    Call<DetailGift> postRawJSONDetailGift(@Body JsonObject locationPost);
+
+    @POST("GetScoreUser")
+    Call<GetScoresAcc> postRawJSONGetScoresAcc(@Body JsonObject locationPost);
+
+    @POST("GetListGiftRegistered")
+    Call<GetListGiftRegisterd> postRawJSONGetListGiftRegistered(@Body JsonObject locationPost);
+
 
 }

@@ -3,6 +3,7 @@ package com.example.admin.dss_project.fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.BottomSheetDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -181,24 +182,37 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         super.onResume();
 
         showLoadCamera();
-        new AsyncTask<Void, Void, Void>() {
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            protected Void doInBackground(Void... params) {
+            public void run() {
                 if(mScannerView != null){
                     mScannerView.setResultHandler(ScanFragment.this);
                     mScannerView.startCamera(mCameraId);
                     mScannerView.setAutoFocus(mAutoFocus);
                     mScannerView.resumeCameraPreview(ScanFragment.this);
                 }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
                 hideLoadCamera();
             }
-        }.execute();
+        },200);
+//        new AsyncTask<Void, Void, Void>() {
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                if(mScannerView != null){
+//                    mScannerView.setResultHandler(ScanFragment.this);
+//                    mScannerView.startCamera(mCameraId);
+//                    mScannerView.setAutoFocus(mAutoFocus);
+//                    mScannerView.resumeCameraPreview(ScanFragment.this);
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void aVoid) {
+//                super.onPostExecute(aVoid);
+//                hideLoadCamera();
+//            }
+//        }.execute();
     }
 
     @Override
@@ -224,11 +238,17 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         btnRegiterSeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mBottomSheetDialog.isShowing()) return;
                 clickRegister(txtSeri.getText().toString(), sheetView);
             }
         });
         sheetView.findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickCloseDialog();
+            }
+        });
+
+        sheetView.findViewById(R.id.btn_close_2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickCloseDialog();
@@ -250,6 +270,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         switch (view.getId()) {
             case R.id.btn_enter_code:
                 mScannerView.stopCameraPreview();
+                if (mBottomSheetDialog != null && mBottomSheetDialog.isShowing()) return;
                 showDialogEnterCode(null);
                 break;
         }
@@ -277,7 +298,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
 
                     if (response.body().getIsSuccess()) {
 
-                        Toast.makeText(mainActivity, R.string.register_seria_success, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.register_seria_success, Toast.LENGTH_SHORT).show();
                         view.findViewById(R.id.view_detail_register_seria).setVisibility(View.VISIBLE);
                         view.findViewById(R.id.view_register).setVisibility(View.GONE);
                         setContentDetail(view, response.body());

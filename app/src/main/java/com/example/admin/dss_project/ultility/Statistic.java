@@ -7,5 +7,7 @@ public class Statistic {
     public static final int KEY_EDIT_ACCOUNT = 1;
     public static final int KEY_CHANGE_PASS = 2;
     public static  String DAY_START_REGISTER_SIREA ;
+    public static  String DAY_START_REGISTER_GIFT ;
     public static  String DAY_END_REGISTER_SIREA ;
+    public static  String DAY_END_REGISTER_GIFT ;
 }

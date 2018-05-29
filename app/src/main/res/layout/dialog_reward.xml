@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_padding_400"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_dialog"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/happy"
+        android:layout_marginBottom="@dimen/margin_padding_70"
+        android:layout_marginLeft="@dimen/xx_large"
+        android:layout_marginRight="@dimen/xx_large"
+        android:layout_marginTop="@dimen/xx_large"/>
+
+    <ImageView
+        android:id="@+id/btn_confirm"
+        android:layout_width="@dimen/margin_padding_150"
+        android:layout_height="@dimen/margin_padding_60"
+        android:src="@drawable/btn_confirm"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_padding_25"/>
+
+</RelativeLayout>

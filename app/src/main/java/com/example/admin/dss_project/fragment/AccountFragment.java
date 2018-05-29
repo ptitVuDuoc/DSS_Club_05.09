@@ -2,7 +2,6 @@ package com.example.admin.dss_project.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.HomeActivity;
-import com.example.admin.dss_project.activity.MainAppActivity;
 import com.example.admin.dss_project.activity.SettingAccountActivity;
 import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.model.User;
@@ -34,7 +31,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     private SweetAlertDialog pDialog;
     private ProgressDialog pleaseDialog;
     private APIRegisterUser mAPIService;
-    private TextView txtNameAcc,txtNameAgency,txtEmail,txtAddress,txtBirthday;
+    private TextView txtNameAcc, txtNameAgency, txtEmail, txtAddress, txtBirthday;
     private TextView txtScores;
     private User user = null;
 
@@ -55,7 +52,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
             public void run() {
                 setContent();
             }
-        },300);
+        }, 300);
     }
 
     private void addEvent() {
@@ -74,21 +71,21 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
         txtScores = (TextView) findViewById(R.id.txt_scores);
     }
 
-    private void setContent(){
+    private void setContent() {
 
         pleaseDialog.show();
         mAPIService = ApiUtils.getAPIService();
         final JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
-        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC));
+        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(), KeyConst.NUMBER_PHONE_STATISTIC));
 
         mAPIService.postRawJSONGetUserInfo(jsonObject).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if(response != null){
+                if (response != null) {
                     pleaseDialog.dismiss();
 
-                    if(response.body().getIsSuccess()){
+                    if (response.body().getIsSuccess()) {
                         user = response.body();
 
                         txtNameAcc.setText(response.body().getHoVaTen());
@@ -96,10 +93,10 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                         txtAddress.setText(response.body().getDiaChi());
                         txtBirthday.setText(response.body().getNgaySinh());
                         txtEmail.setText(response.body().getEmail());
-                        String txtSc = response.body().getSoDiemHienTai().toString()+ " "+getString(R.string.scores);
-                        txtScores.setText( txtSc);
+                        String txtSc = response.body().getSoDiemHienTai().toString() + " " + getString(R.string.scores);
+                        txtScores.setText(txtSc);
 
-                    }else {
+                    } else {
 //                        ((HomeActivity)getActivity()).showDialog(HomeActivity.ERROR,getString(R.string.dowload_data_fail), "" ,getContext());
                     }
                 }
@@ -117,19 +114,19 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
     public void onResume() {
         super.onResume();
 
-        if(PrefUtils.getBoolean(getContext(),KeyConst.KEY_CHECK_EDIT_PROFILE)){
+        if (PrefUtils.getBoolean(getContext(), KeyConst.KEY_CHECK_EDIT_PROFILE)) {
             setContent();
-            PrefUtils.putBoolean(getContext(),KeyConst.KEY_CHECK_EDIT_PROFILE,false);
+            PrefUtils.putBoolean(getContext(), KeyConst.KEY_CHECK_EDIT_PROFILE, false);
         }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_change_pass:
 
                 Intent intentPass = new Intent(getActivity(), SettingAccountActivity.class);
-                intentPass.putExtra(KeyConst.USER,user);
+                intentPass.putExtra(KeyConst.USER, user);
                 intentPass.putExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT, Statistic.KEY_CHANGE_PASS);
                 startActivity(intentPass);
                 break;
@@ -137,8 +134,8 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
             case R.id.btn_edit_acc:
 
                 Intent intentEdit = new Intent(getActivity(), SettingAccountActivity.class);
-                intentEdit.putExtra(KeyConst.USER,user);
-                intentEdit.putExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT,Statistic.KEY_EDIT_ACCOUNT);
+                intentEdit.putExtra(KeyConst.USER, user);
+                intentEdit.putExtra(KeyConst.KEY_PUT_EXTRA_SETTING_ACCOUNT, Statistic.KEY_EDIT_ACCOUNT);
                 startActivity(intentEdit);
                 break;
 
@@ -167,4 +164,5 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 break;
         }
     }
+
 }

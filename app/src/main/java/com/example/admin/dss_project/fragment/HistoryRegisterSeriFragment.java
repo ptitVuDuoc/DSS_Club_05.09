@@ -105,11 +105,13 @@ public class HistoryRegisterSeriFragment extends BaseFragment implements View.On
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0 ) {
-                    findViewById(R.id.btn_filter).setVisibility(View.GONE);
-                } else if (dy < 0) {
-                    findViewById(R.id.btn_filter).setVisibility(View.VISIBLE);
-                }
+//                if (dy > 0 ) {
+//                    if(R.id.btn_filter == 0) return;
+//                    findViewById(R.id.btn_filter).setVisibility(View.GONE);
+//                } else if (dy < 0) {
+//                    if(R.id.btn_filter == 0) return;
+//                    findViewById(R.id.btn_filter).setVisibility(View.VISIBLE);
+//                }
             }
         });
 

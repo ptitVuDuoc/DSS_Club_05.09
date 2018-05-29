@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.InfoGiftFragment"
+    android:background="@android:color/white"
+    android:id="@+id/view_infoGift">
+
+    <RelativeLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_padding_30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/small"
+            android:src="@drawable/ic_back" />
+
+        <com.example.admin.dss_project.custom.view.MyCusttomtext
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/title_info_gift"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/btn_reward"
+            android:layout_width="@dimen/margin_padding_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_reward"
+                android:layout_margin="@dimen/small"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/menu_top">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/dialog_load_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_280">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="@dimen/margin_padding_30"
+                    android:layout_height="@dimen/margin_padding_30"
+                    android:layout_centerInParent="true"/>
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:id="@+id/text_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="@string/load_image"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/progress_bar"
+                    android:layout_marginTop="@dimen/margin_padding_5"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/image_gift"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_280"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_name_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="@dimen/margin_padding_15"
+                android:layout_marginRight="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:textSize="@dimen/font_size_large"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@+id/image_gift" />
+
+            <ImageView
+                android:id="@+id/ic_star"
+                android:layout_width="@dimen/large"
+                android:layout_height="@dimen/large"
+                android:src="@drawable/ic_star"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name_gift"
+                android:layout_marginTop="@dimen/small"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="@dimen/margin_padding_15"/>
+
+            <TextView
+                android:id="@+id/txt_scores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/ic_star"
+                app:layout_constraintBottom_toBottomOf="@+id/ic_star"
+                app:layout_constraintLeft_toRightOf="@+id/ic_star"
+                android:layout_marginLeft="@dimen/margin_padding_15"
+                android:textColor="@color/color_select_tab"
+                android:textSize="@dimen/font_size_standard"/>
+
+            <LinearLayout
+                android:id="@+id/title_describe"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_padding_35"
+                android:background="#E8E9ED"
+                app:layout_constraintTop_toBottomOf="@+id/ic_star"
+                android:layout_marginTop="@dimen/small">
+
+                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_size_standard"
+                    android:textColor="@android:color/black"
+                    android:text="@string/info_gift"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_padding_15"/>
+
+            </LinearLayout>
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_describe"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginLeft="@dimen/margin_padding_15"
+                android:layout_marginRight="@dimen/small"
+                android:textSize="@dimen/font_size_standard"
+                android:textColor="@android:color/black"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>

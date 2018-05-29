@@ -16,10 +16,12 @@ import com.example.admin.dss_project.activity.HomeActivity;
 import com.example.admin.dss_project.activity.MainAppActivity;
 import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.model.SendCodeOTP;
+import com.example.admin.dss_project.model.User;
 import com.example.admin.dss_project.model.ValidateOTP;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
 import com.example.admin.dss_project.retrofit.ApiUtils;
 import com.example.admin.dss_project.ultility.KeyConst;
+import com.example.admin.dss_project.ultility.PrefUtils;
 import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
 
@@ -69,6 +71,38 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
 
     }
 
+    private void setClickLogin() {
+        pleaseDialog.show();
+        mAPIService = ApiUtils.getAPIService();
+        final JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
+        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(),KeyConst.KEY_PREF_USER));
+        jsonObject.addProperty(KeyConst.PASSWORD, PrefUtils.getString(getContext(),KeyConst.KEY_PREF_PASS_WORD));
+
+        mAPIService.postRawJSONLogin(jsonObject).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response != null) {
+                    pleaseDialog.dismiss();
+
+                    if (response.body().getIsSuccess()) {
+                        PrefUtils.putString(getContext(), KeyConst.NUMBER_PHONE_STATISTIC, jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+                        Intent intent = new Intent(getActivity(), MainAppActivity.class);
+                        getActivity().finish();
+                        intent.putExtra(KeyConst.USER, response.body());
+                        startActivity(intent);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                pleaseDialog.dismiss();
+            }
+        });
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -103,9 +137,10 @@ public class SendOtpFragment extends BaseFragment implements View.OnClickListene
                                     @Override
                                     public void onClick(View view) {
                                         pDialog.dismiss();
-                                        Intent intent = new Intent(getActivity(), MainAppActivity.class);
-                                        getActivity().finish();
-                                        startActivity(intent);
+//                                        Intent intent = new Intent(getActivity(), MainAppActivity.class);
+//                                        getActivity().finish();
+//                                        startActivity(intent);
+                                        setClickLogin();
                                     }
                                 });
                             } else {

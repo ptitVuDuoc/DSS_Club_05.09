@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,17 +25,15 @@ import com.example.admin.dss_project.model.ListGift;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
-
 public class ListGiftAdapter extends RecyclerView.Adapter<ListGiftAdapter.ViewHolder>{
 
     private Context mContext;
     private List<ListGift> mListGift = new ArrayList<>();
-    private ListGiftAdapter.OnStickerListener mStickerListener;
+    private ListGiftAdapter.OnStickerListener mItemListener;
     private RecyclerView recyclerView;
     private int lastVisibleItem, totalItemCount;
     private boolean isLoading;
-    private int visibleThreshold = 5;
+    private int visibleThreshold = 2;
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
 
@@ -46,8 +43,8 @@ public class ListGiftAdapter extends RecyclerView.Adapter<ListGiftAdapter.ViewHo
         this.onLoadMoreListener = mOnLoadMoreListener;
     }
 
-    public ListGiftAdapter setOnStickerListener(ListGiftAdapter.OnStickerListener listener) {
-        mStickerListener = listener;
+    public ListGiftAdapter setOnItemListGiftListener(ListGiftAdapter.OnStickerListener listener) {
+        mItemListener = listener;
         return this;
     }
 
@@ -106,6 +103,7 @@ public class ListGiftAdapter extends RecyclerView.Adapter<ListGiftAdapter.ViewHo
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        holder.viewLoadImage.setVisibility(View.VISIBLE);
                         return false;
                     }
 
@@ -118,6 +116,28 @@ public class ListGiftAdapter extends RecyclerView.Adapter<ListGiftAdapter.ViewHo
                 })
                 .into(holder.imageView);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mItemListener != null){
+                    mItemListener.onItemClickListener(position);
+                }
+            }
+        });
+
+        holder.btnChangeReward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mItemListener != null){
+                    mItemListener.onRewardClickListener(position);
+                }
+            }
+        });
+
+    }
+
+    public void setLoaded() {
+        isLoading = false;
     }
 
     @Override
@@ -145,6 +165,7 @@ public class ListGiftAdapter extends RecyclerView.Adapter<ListGiftAdapter.ViewHo
 
     public interface OnStickerListener {
         void onItemClickListener(int position);
+        void onRewardClickListener(int position);
     }
     
 }

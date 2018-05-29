@@ -81,8 +81,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         pDialog.setCancelable(false);
         pDialog.show();
         btnConfirmDialog = pDialog.findViewById(R.id.confirm_button);
-        btnConfirmDialog.setBackgroundColor(Color.parseColor("#DC6B59"));
-        btnConfirmDialog.setText(R.string.cancel);
+//        btnConfirmDialog.setBackgroundColor(Color.parseColor("#DC6B59"));
+        pDialog.setCancelText(getResources().getString(R.string.cancel));
+        btnConfirmDialog.setVisibility(View.GONE);
     }
 
     public void addFragment(BaseFragment fragment){
