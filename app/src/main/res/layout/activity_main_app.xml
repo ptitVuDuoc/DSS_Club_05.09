@@ -54,6 +54,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="?attr/selectableItemBackgroundBorderless">
             <ImageView
+                android:id="@+id/ic_notifi"
                 android:layout_width="@dimen/margin_padding_25"
                 android:layout_height="@dimen/margin_padding_30"
                 android:src="@drawable/ic_notification"
@@ -61,6 +62,30 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/bg_cricle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/number_notifi"
+                app:layout_constraintCircle="@+id/ic_notifi"
+                app:layout_constraintCircleRadius="@dimen/small"
+                app:layout_constraintCircleAngle="50"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/txt_number_notifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_xsmall"
+                app:layout_constraintTop_toTopOf="@+id/bg_cricle"
+                app:layout_constraintBottom_toBottomOf="@+id/bg_cricle"
+                app:layout_constraintRight_toRightOf="@+id/bg_cricle"
+                app:layout_constraintLeft_toLeftOf="@+id/bg_cricle"
+                android:visibility="gone"/>
+
         </android.support.constraint.ConstraintLayout>
 
         <ImageView
@@ -107,6 +132,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomBar"></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_register_seria"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

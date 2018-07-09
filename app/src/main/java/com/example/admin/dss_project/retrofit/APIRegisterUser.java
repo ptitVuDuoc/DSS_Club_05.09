@@ -1,13 +1,20 @@
 package com.example.admin.dss_project.retrofit;
 
 import com.example.admin.dss_project.model.ChangePass;
+import com.example.admin.dss_project.model.CheckExistsQRcode;
+import com.example.admin.dss_project.model.CheckInQRcode;
 import com.example.admin.dss_project.model.DetailGift;
+import com.example.admin.dss_project.model.DetailNotifi;
 import com.example.admin.dss_project.model.EditAcc;
 import com.example.admin.dss_project.model.ForgotPass;
 import com.example.admin.dss_project.model.GetListGiftRegisterd;
+import com.example.admin.dss_project.model.GetListNotifi;
 import com.example.admin.dss_project.model.GetListRegitedSeria;
 import com.example.admin.dss_project.model.GetScoresAcc;
+import com.example.admin.dss_project.model.GetSizeNotifi;
 import com.example.admin.dss_project.model.Gift;
+import com.example.admin.dss_project.model.ListRegisterSeria;
+import com.example.admin.dss_project.model.PostRawRegiterSeria;
 import com.example.admin.dss_project.model.Register;
 import com.example.admin.dss_project.model.RewardGift;
 import com.example.admin.dss_project.model.SendCodeOTP;
@@ -82,5 +89,22 @@ public interface APIRegisterUser {
     @POST("GetListGiftRegistered")
     Call<GetListGiftRegisterd> postRawJSONGetListGiftRegistered(@Body JsonObject locationPost);
 
+    @POST("RegisterArraySeria")
+    Call<ListRegisterSeria> postRawJSONListRegisterSeria(@Body PostRawRegiterSeria postRawRegiterSeria);
+
+    @POST("CheckExistsQRcode")
+    Call<CheckExistsQRcode> postRawJSONCheckExistsQRcode(@Body JsonObject locationPost);
+
+    @POST("CheckInQRcode")
+    Call<CheckInQRcode> postRawJSONCheckQRcode(@Body JsonObject locationPost);
+
+    @POST("GetListNotification")
+    Call<GetListNotifi> postRawJSONGetListNotifi(@Body JsonObject locationPost);
+
+    @POST("GetCountNotification")
+    Call<GetSizeNotifi> postRawJSONGetCountNotification(@Body JsonObject locationPost);
+
+    @POST("GetNotificationInfo")
+    Call<DetailNotifi> postRawJSONGetInfoNotifi(@Body JsonObject locationPost);
 
 }

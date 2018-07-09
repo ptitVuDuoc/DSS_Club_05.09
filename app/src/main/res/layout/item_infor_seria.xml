@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/small">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_70"
+        android:layout_marginLeft="@dimen/margin_padding_15"
+        android:layout_marginRight="@dimen/margin_padding_15"
+        app:cardCornerRadius="@dimen/margin_padding_5">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_seria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_size_large"
+                android:textColor="@android:color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="@dimen/large"
+                android:layout_marginTop="@dimen/x_small"
+                android:layout_marginRight="@dimen/large"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <ImageView
+                android:id="@+id/ic_status"
+                android:layout_width="@dimen/large"
+                android:layout_height="@dimen/large"
+                android:src="@drawable/ic_success"
+                app:layout_constraintTop_toBottomOf="@+id/txt_seria"
+                android:layout_marginLeft="@dimen/large"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="@dimen/x_small"/>
+
+            <com.example.admin.dss_project.custom.view.MyCusttomtext
+                android:id="@+id/txt_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/ic_status"
+                android:layout_marginLeft="@dimen/margin_padding_5"
+                app:layout_constraintTop_toTopOf="@+id/ic_status"
+                app:layout_constraintBottom_toBottomOf="@id/ic_status"
+                android:textSize="@dimen/font_size_standard"/>
+
+            <ImageView
+                android:layout_width="@dimen/x_large"
+                android:layout_height="@dimen/x_large"
+                android:src="@drawable/ic_left"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

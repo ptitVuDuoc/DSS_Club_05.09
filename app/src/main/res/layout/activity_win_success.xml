@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/view_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_padding_210"
+            android:src="@drawable/win_success"/>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomTextNofi
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_win_success"
+            android:textSize="@dimen/font_size_xhuge"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/margin_padding_25"/>
+
+        <com.example.admin.dss_project.custom.view.MyCusttomTextNofi
+            android:id="@+id/txt_gift_name"
+            android:layout_width="@dimen/margin_padding_200"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            android:text="ban da trung 1 mu bao hiem va 1 oto"
+            android:textSize="@dimen/font_size_xlarge"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/btn_confirm"
+            android:layout_width="@dimen/margin_padding_100"
+            android:layout_height="@dimen/margin_padding_100"
+            android:src="@drawable/ic_back_win_success"
+            app:layout_constraintTop_toBottomOf="@+id/view_text"
+            android:layout_marginTop="@dimen/margin_padding_50"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

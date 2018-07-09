@@ -75,7 +75,8 @@
             <EditText
                 android:id="@+id/txt_email"
                 style="@style/enter_edittext"
-                android:hint="@string/enter_email" />
+                android:hint="@string/enter_email"
+                android:inputType="textEmailAddress"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"
@@ -105,20 +106,22 @@
                 android:layout_height="wrap_content"
                 android:text="@string/birth_day_name" />
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <EditText
                 android:id="@+id/txt_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding_50"
                 android:layout_marginTop="@dimen/small"
                 android:background="@drawable/stroke"
                 android:gravity="center_vertical"
-                android:hint="@string/enter_birth_day"
+                android:hint="dd/MM/yyyy"
                 android:padding="@dimen/small"
                 android:textColor="@android:color/background_dark"
                 android:textSize="@dimen/font_size_standard"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_address" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_address"
+                android:inputType="phone"
+                android:maxLength="10"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
                 style="@style/txt_regis"

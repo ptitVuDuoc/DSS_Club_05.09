@@ -131,4 +131,18 @@
     <string name="name_gift">Tên quà tặng:</string>
     <string name="code_gift">Mã quà tặng:</string>
     <string name="txt_status">Tình trạng:</string>
+    <string name="add">Thêm</string>
+    <string name="san_continue">Quét tiếp</string>
+    <string name="list_seria_register">Danh sách seria</string>
+    <string name="enter_code_seria">Nhập mã seria</string>
+    <string name="delete_success">Xóa thành công!</string>
+    <string name="success_infor_regiter_seria">Thành công!</string>
+    <string name="list_infor_regiter_seria">Thông tin đăng kí seria</string>
+    <string name="error_infor_regiter_seria">Lỗi mã seria</string>
+    <string name="register_infor_detail">Thông tin chi tiết</string>
+    <string name="win_now">Hệ thống không có chương trình quét mã trúng thưởng trong thời gian hiện tại</string>
+    <string name="win_reward">Chương trình quét mã trúng thưởng</string>
+    <string name="your_win_success">Bạn đã trúng</string>
+    <string name="title_activity_winfail">WinfailActivity</string>
+    <string name="title_notification">Thông báo</string>
 </resources>

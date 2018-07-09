@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.listen.OnLoadMoreListener;
 import com.example.admin.dss_project.model.ListGiftRegistered;
-import com.example.admin.dss_project.model.ListSeriaRegistered;
 
 import java.util.ArrayList;
 
@@ -112,7 +111,7 @@ public class HistoryRewardAdapter extends RecyclerView.Adapter<HistoryRewardAdap
         public ViewHolder(View itemView) {
             super(itemView);
 
-            txtNameProduct = (TextView) itemView.findViewById(R.id.txt_name_tiem);
+            txtNameProduct = (TextView) itemView.findViewById(R.id.txt_seria);
             txtDate = (TextView) itemView.findViewById(R.id.txt_date);
             txtStatus = (TextView) itemView.findViewById(R.id.txt_status);
 

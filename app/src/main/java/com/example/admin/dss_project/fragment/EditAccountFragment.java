@@ -3,6 +3,8 @@ package com.example.admin.dss_project.fragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +37,7 @@ public class EditAccountFragment extends BaseFragment implements View.OnClickLis
     private EditText txtNameAgency;
     private EditText txtEmail;
     private EditText txtAddress;
-    private TextView txtBirthday;
+    private EditText txtBirthday;
     private DatePickerDialog datePickerDialog;
     private ProgressDialog pleaseDialog;
     private APIRegisterUser mAPIService;
@@ -60,7 +62,33 @@ public class EditAccountFragment extends BaseFragment implements View.OnClickLis
         txtNameAgency = (EditText) findViewById(R.id.txt_name_agency);
         txtEmail = (EditText) findViewById(R.id.txt_email);
         txtAddress = (EditText) findViewById(R.id.txt_address);
-        txtBirthday = (TextView) findViewById(R.id.txt_birthday);
+        txtBirthday = (EditText) findViewById(R.id.txt_birthday);
+
+        txtBirthday.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                switch (editable.length()){
+                    case 2:
+                        txtBirthday.setText(txtBirthday.getText().toString()+"/");
+                        txtBirthday.setSelection(txtBirthday.getText().length());
+                        break;
+
+                    case 5:
+                        txtBirthday.setText(txtBirthday.getText().toString()+"/");
+                        txtBirthday.setSelection(txtBirthday.getText().length());
+                }
+            }
+        });
     }
 
     private void setText(){
@@ -141,24 +169,6 @@ public class EditAccountFragment extends BaseFragment implements View.OnClickLis
                 break;
 
             case R.id.txt_birthday:
-
-                Calendar calendar = Calendar.getInstance();
-
-                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, final int i, final int i1, final int i2) {
-                        Calendar cal = Calendar.getInstance();
-                        cal.set(Calendar.DAY_OF_MONTH, i2);
-                        cal.set(Calendar.MONTH, i1);
-                        cal.set(Calendar.YEAR, i);
-                        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String txt = fmt.format(cal.getTimeInMillis());
-                        txtBirthday.setText(txt);
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-//                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-                datePickerDialog.show();
 
                 break;
         }

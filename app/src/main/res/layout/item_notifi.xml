@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ic_notifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_title_notifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_large"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/ic_notifi"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/small"
+        android:layout_marginLeft="@dimen/margin_padding_5"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/txt_content_notifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/ic_notifi"
+        android:textSize="@dimen/font_size_standard"
+        android:maxLines="3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_notifi"
+        android:layout_marginTop="@dimen/margin_padding_5"
+        android:layout_marginLeft="@dimen/margin_padding_5"
+        android:textColor="@android:color/black"
+        android:alpha="0.7"/>
+
+    <TextView
+        android:id="@+id/txt_date_notifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_small"
+        app:layout_constraintLeft_toRightOf="@+id/ic_notifi"
+        app:layout_constraintTop_toBottomOf="@+id/txt_content_notifi"
+        android:layout_marginTop="@dimen/small"
+        android:layout_marginLeft="@dimen/margin_padding_5"
+        android:textColor="@android:color/black"
+        android:alpha="0.7"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:background="@android:color/black"
+        android:alpha="0.8"
+        app:layout_constraintLeft_toRightOf="@+id/ic_notifi"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_date_notifi"
+        android:layout_marginTop="@dimen/small"
+        android:layout_marginLeft="@dimen/margin_padding_5"/>
+
+</android.support.constraint.ConstraintLayout>

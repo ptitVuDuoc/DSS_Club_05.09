@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F1F1F4"
+    android:id="@+id/view_infor_register_seria">
+
+    <RelativeLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/list_infor_regiter_seria"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/margin_padding_40"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/small"
+                android:src="@drawable/ic_back" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_list_infor_register_seria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/menu_top"
+        android:layout_marginTop="@dimen/small"/>
+
+</android.support.constraint.ConstraintLayout>

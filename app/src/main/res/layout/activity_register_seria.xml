@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/register_seri"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/margin_padding_40"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/small_x"
+                android:src="@drawable/ic_close" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_seria"
+        android:text="@string/code_seria"
+        android:layout_height="@dimen/margin_padding_35"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:padding="@dimen/small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_top"
+        android:background="#E8E9ED"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/view_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/txt_seria"
+        android:layout_marginTop="@dimen/small">
+
+        <EditText
+            android:id="@+id/edt_seri"
+            style="@style/enter_edittext"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/margin_padding_25"
+            android:layout_weight="7"
+            android:hint="@string/enter_seri" />
+
+        <TextView
+            android:id="@+id/btn_add"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginRight="@dimen/small"
+            android:layout_marginTop="@dimen/x_small"
+            android:layout_weight="3"
+            android:background="@drawable/btn_add"
+            android:gravity="center"
+            android:text="@string/add"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_standard" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_list_seria"
+        android:layout_height="@dimen/margin_padding_35"
+        android:layout_width="match_parent"
+        android:text="@string/list_seria_register"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/small"
+        android:layout_marginTop="@dimen/large"
+        app:layout_constraintTop_toBottomOf="@+id/view_input"
+        android:background="#E8E9ED"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_list_register_seria"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_list_seria"
+        app:layout_constraintBottom_toTopOf="@+id/menu_bottom"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginTop="@dimen/small"/>
+
+    <LinearLayout
+        android:id="@+id/menu_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_padding_15">
+
+        <TextView
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/margin_padding_35"
+            android:layout_marginTop="@dimen/margin_padding_30"
+            android:layout_weight="1"
+            android:background="@drawable/btn_scan_contiinue"
+            android:gravity="center"
+            android:text="@string/btn_register"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_standard"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_continue"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_marginLeft="@dimen/margin_padding_35"
+            android:layout_marginRight="@dimen/small"
+            android:layout_marginTop="@dimen/margin_padding_30"
+            android:layout_weight="1"
+            android:background="@drawable/btn_scan_contiinue"
+            android:gravity="center"
+            android:text="@string/san_continue"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_standard"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/container_infor_register_seria"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</android.support.constraint.ConstraintLayout>

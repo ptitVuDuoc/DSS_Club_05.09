@@ -1,88 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
-
-    <LinearLayout
-        android:id="@+id/view_register"
+    <RelativeLayout
+        android:id="@+id/menu_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_padding_50"
-            android:background="@drawable/bg_color">
-
-            <TextView
-                android:id="@+id/txt_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/register_seri"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/font_size_xlarge"
-                android:textStyle="bold"/>
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:id="@+id/btn_close"
-                android:layout_width="@dimen/margin_padding_40"
-                android:layout_height="@dimen/margin_padding_40"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_close"
-                    android:layout_margin="@dimen/small"/>
-
-            </android.support.v7.widget.LinearLayoutCompat>
-
-        </RelativeLayout>
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
 
         <TextView
-            style="@style/txt_acc_title"
-            android:text = "@string/code_seria"/>
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/register_infor_detail"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_xlarge"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/txt_seri"
-            style="@style/enter_edittext"
-            android:hint="@string/enter_seri"
-            android:layout_marginLeft="@dimen/margin_padding_35"
-            android:layout_marginRight="@dimen/margin_padding_35"/>
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/margin_padding_40"
+            android:layout_height="@dimen/margin_padding_40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/small_x"
+                android:src="@drawable/ic_close" />
 
-        <RelativeLayout
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_padding_50"
-            android:layout_marginLeft="@dimen/margin_padding_60"
-            android:layout_marginRight="@dimen/margin_padding_60"
-            android:layout_marginTop="@dimen/margin_padding_30"
-            android:layout_marginBottom="@dimen/margin_padding_30"
-            android:background="@drawable/btn_login">
+        </android.support.v7.widget.LinearLayoutCompat>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/btn_register"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/font_size_xlarge"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/view_detail_register_seria"
-        android:visibility="gone">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,7 +60,7 @@
                     android:text="@string/detail_register"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/font_size_xlarge"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:id="@+id/btn_close_2"
@@ -111,88 +69,88 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_close"
-                    android:layout_margin="@dimen/small"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/small_x"
+                        android:src="@drawable/ic_close" />
                 </android.support.v7.widget.LinearLayoutCompat>
 
             </RelativeLayout>
 
             <TextView
+                style="@style/txt_title_detail_regiter_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_product"
-                style="@style/txt_title_detail_regiter_seria"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/txt_detail_register"
-                android:visibility="gone"/>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/code_product"
-                style="@style/txt_title_detail_regiter_seria"/>
+                android:visibility="gone" />
+
+            <TextView
+                style="@style/txt_title_detail_regiter_seria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/code_product" />
 
             <TextView
                 android:id="@+id/txt_code_product"
+                style="@style/txt_detail_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/txt_detail_register"/>
+                android:layout_height="wrap_content" />
 
 
             <TextView
+                style="@style/txt_title_detail_regiter_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/number_seria"
-                style="@style/txt_title_detail_regiter_seria"/>
+                android:text="@string/number_seria" />
 
             <TextView
                 android:id="@+id/txt_number_seria"
+                style="@style/txt_detail_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/txt_detail_register"/>
+                android:layout_height="wrap_content" />
 
 
             <TextView
+                style="@style/txt_title_detail_regiter_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/code_reward"
-                style="@style/txt_title_detail_regiter_seria"/>
+                android:text="@string/code_reward" />
 
             <TextView
                 android:id="@+id/code_reward"
+                style="@style/txt_detail_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/txt_detail_register"/>
+                android:layout_height="wrap_content" />
 
 
             <TextView
+                style="@style/txt_title_detail_regiter_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date_register_seria"
-                style="@style/txt_title_detail_regiter_seria"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/txt_date_register"
+                style="@style/txt_detail_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/txt_detail_register"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
 
             <TextView
+                style="@style/txt_title_detail_regiter_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sores"
-                android:textColor="@android:color/black"
-                style="@style/txt_title_detail_regiter_seria" />
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -202,16 +160,16 @@
                 <ImageView
                     android:layout_width="@dimen/margin_padding_15"
                     android:layout_height="@dimen/margin_padding_15"
-                    android:src="@drawable/ic_star"
+                    android:layout_marginLeft="@dimen/margin_padding_15"
                     android:layout_marginTop="@dimen/margin_padding_5"
-                    android:layout_marginLeft="@dimen/margin_padding_15"/>
+                    android:src="@drawable/ic_star" />
 
                 <TextView
                     android:id="@+id/txt_scores"
+                    style="@style/txt_detail_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   style="@style/txt_detail_register"
-                    android:layout_marginLeft="@dimen/margin_padding_5"/>
+                    android:layout_marginLeft="@dimen/margin_padding_5" />
 
 
             </LinearLayout>

@@ -3,6 +3,8 @@ package com.example.admin.dss_project.fragment;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,16 @@ public class WinFragment extends BaseFragment implements View.OnClickListener {
         btnPlay = (ImageView) findViewById(R.id.btn_play);
     }
 
+    private void clickPlay(){
+        ScanQRcodeFragment scanQRcodeFragment = new ScanQRcodeFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.replace(R.id.container_home, scanQRcodeFragment, LoginFragment.class.getSimpleName());
+        fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
+        fragmentTransaction.commit();
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -47,35 +59,13 @@ public class WinFragment extends BaseFragment implements View.OnClickListener {
                 ScaleAnimation animation = new ScaleAnimation(1.1f, 1.1f, 1.1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 animation.setDuration(50);
                 btnPlay.startAnimation(animation);
-                if(true) return;
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        dialog = new Dialog(getContext());
-                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        dialog.setCancelable(false);
-                        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                        dialog.setContentView(R.layout.dialog_reward);
-                        final ImageView btnConfirm = (ImageView) dialog.findViewById(R.id.btn_confirm);
-                        btnConfirm.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                ScaleAnimation animation2 = new ScaleAnimation(1.1f, 1.1f, 1.1f, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                                animation2.setDuration(50);
-                                btnConfirm.startAnimation(animation2);
-
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        dialog.dismiss();
-                                    }
-                                }, 150);
-                            }
-                        });
-                        dialog.show();
-
+                        clickPlay();
                     }
-                }, 150);
+                },100);
 
                 break;
         }

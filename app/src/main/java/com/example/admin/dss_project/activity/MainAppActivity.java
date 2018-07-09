@@ -1,11 +1,11 @@
 package com.example.admin.dss_project.activity;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
@@ -15,26 +15,38 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.dss_project.R;
+import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.fragment.AccountFragment;
 import com.example.admin.dss_project.fragment.BaseFragment;
 import com.example.admin.dss_project.fragment.HistoryFragment;
-import com.example.admin.dss_project.fragment.InfoGiftFragment;
-import com.example.admin.dss_project.fragment.ListGiftFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
 import com.example.admin.dss_project.fragment.ScanFragment;
+import com.example.admin.dss_project.fragment.ScanQRcodeFragment;
 import com.example.admin.dss_project.fragment.WinFragment;
+import com.example.admin.dss_project.model.CheckExistsQRcode;
+import com.example.admin.dss_project.model.GetScoresAcc;
+import com.example.admin.dss_project.model.GetSizeNotifi;
 import com.example.admin.dss_project.model.User;
+import com.example.admin.dss_project.retrofit.APIRegisterUser;
+import com.example.admin.dss_project.retrofit.ApiUtils;
 import com.example.admin.dss_project.ultility.KeyConst;
+import com.example.admin.dss_project.ultility.PrefUtils;
+import com.example.admin.dss_project.ultility.Statistic;
+import com.google.gson.JsonObject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainAppActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,6 +67,8 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     private Button btnConfirmDialog;
     private int countClickListGift = 0;
     private CardView menuBottom;
+    private APIRegisterUser mAPIServiceGetSize;
+    private TextView txtCountNewNotifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +97,6 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         switch (requestCode) {
             case ZXING_CAMERA_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //                    if(mClss != null) {
-                    //                        Intent intent = new Intent(this, mClss);
-                    //                        startActivity(intent);
-                    //                    }
                 } else {
                     Toast.makeText(this, "Please grant camera permission to use the QR Scanner", Toast.LENGTH_SHORT).show();
                 }
@@ -106,13 +116,14 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
             txtScores.setText(txtSc);
         }
 
+        setSizeNotifi();
+
         ScanFragment scanFragment = new ScanFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container_main_app, scanFragment, LoginFragment.class.getSimpleName());
         fragmentTransaction.addToBackStack(LoginFragment.class.getSimpleName());
         fragmentTransaction.commit();
-
     }
 
     private void addControl() {
@@ -127,6 +138,16 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         txtName = findViewById(R.id.txt_name);
         txtScores = findViewById(R.id.txt_scores);
         menuBottom = findViewById(R.id.bottomBar);
+        txtCountNewNotifi = findViewById(R.id.txt_number_notifi);
+    }
+
+    public void showHideKeyBoard(Activity activity){
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static void updateSocres(String scores) {
@@ -150,6 +171,33 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.btn_account).setOnClickListener(this);
         findViewById(R.id.btn_reward).setOnClickListener(this);
 
+    }
+
+    private void setSizeNotifi(){
+        final JsonObject jsonObject = new JsonObject();
+        mAPIServiceGetSize = ApiUtils.getAPIService();
+        mAPIServiceGetSize.postRawJSONGetCountNotification(jsonObject).enqueue(new Callback<GetSizeNotifi>() {
+            @Override
+            public void onResponse(Call<GetSizeNotifi> call, Response<GetSizeNotifi> response) {
+                if (response != null) {
+                    if (response.body().getIsSuccess()) {
+                        int intNotifi = response.body().getCount() - PrefUtils.getInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI);
+                        if(intNotifi > 0){
+                            findViewById(R.id.bg_cricle).setVisibility(View.VISIBLE);
+                            txtCountNewNotifi.setVisibility(View.VISIBLE);
+                            txtCountNewNotifi.setText(""+intNotifi);
+                        }else {
+                            findViewById(R.id.bg_cricle).setVisibility(View.GONE);
+                            txtCountNewNotifi.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetSizeNotifi> call, Throwable t) {
+            }
+        });
     }
 
     private void setColorMenuBottom() {
@@ -183,28 +231,67 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    private boolean isCheck = false;
+    private ProgressDialog pleaseDialog;
+
+    private boolean clickWin(){
+
+        pleaseDialog = MyProgressDialog.newInstance(MainAppActivity.this, getApplicationContext().getResources().getString(R.string.Please));
+        pleaseDialog.show();
+
+        APIRegisterUser mAPIService = ApiUtils.getAPIService();
+        JsonObject jsonObject = new JsonObject();
+//        jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
+//        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getApplicationContext(), KeyConst.NUMBER_PHONE_STATISTIC));
+
+        mAPIService.postRawJSONCheckExistsQRcode(jsonObject).enqueue(new Callback<CheckExistsQRcode>() {
+            @Override
+            public void onResponse(Call<CheckExistsQRcode> call, Response<CheckExistsQRcode> response) {
+                if (response != null) {
+                    isCheck = response.body().getIsSuccess();
+                    pleaseDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CheckExistsQRcode> call, Throwable t) {
+                pleaseDialog.dismiss();
+            }
+        });
+
+        return isCheck;
+    }
+
     @Override
     public void onClick(View view) {
 
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
         Fragment fragmentAcc = getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
 
         switch (view.getId()) {
             case R.id.btn_nofi:
+
+                Intent intent = new Intent(MainAppActivity.this,NotificationActivity.class);
+                startActivity(intent);
+
+                findViewById(R.id.bg_cricle).setVisibility(View.GONE);
+                txtCountNewNotifi.setVisibility(View.GONE);
 
                 break;
 
             case R.id.btn_reward:
 
 
-                if (countClickListGift != 0) return;
+                if (countClickListGift != 0){
+                    return;
+                }
 
                 if(fragment instanceof ScanFragment){
                     ((ScanFragment) fragment).stopCamera();
                 }
 
-                Intent intent = new Intent(MainAppActivity.this,GiftActivity.class);
-                startActivity(intent);
+                Intent intentNoti = new Intent(MainAppActivity.this,GiftActivity.class);
+                startActivity(intentNoti);
                 countClickListGift = 1;
 
                 break;
@@ -269,22 +356,59 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btn_win:
 
-                isCheckClick = CLICK_WIN;
-                setColorMenuBottom();
+                pleaseDialog = MyProgressDialog.newInstance(MainAppActivity.this, getApplicationContext().getResources().getString(R.string.Please));
+                pleaseDialog.show();
 
-                if (fragment instanceof WinFragment) {
-                    return;
-                }
+                APIRegisterUser mAPIService = ApiUtils.getAPIService();
+                JsonObject jsonObject = new JsonObject();
+                mAPIService.postRawJSONCheckExistsQRcode(jsonObject).enqueue(new Callback<CheckExistsQRcode>() {
+                    @Override
+                    public void onResponse(Call<CheckExistsQRcode> call, Response<CheckExistsQRcode> response) {
+                        if (response != null) {
+                            isCheck = response.body().getIsSuccess();
+                            pleaseDialog.dismiss();
+                            if(!isCheck){
+                                SweetAlertDialog pDialog = new SweetAlertDialog(MainAppActivity.this, SweetAlertDialog.ERROR_TYPE);
+                                pDialog.setTitleText(getApplicationContext().getString(R.string.win_reward));
+                                pDialog.setContentText(getString(R.string.win_now));
+                                pDialog.setCancelText(getApplicationContext().getString(R.string.cancel));
+                                pDialog.setCancelable(false);
+                                pDialog.show();
+                                Button button = pDialog.findViewById(R.id.confirm_button);
+                                button.setVisibility(View.GONE);
+                            }else {
 
-                if(fragment instanceof ScanFragment){
-                    ((ScanFragment)fragment).stopCamera();
-                }
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        isCheckClick = CLICK_WIN;
+                                        setColorMenuBottom();
 
-                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-                    getSupportFragmentManager().popBackStack();
-                }
-                WinFragment winFragment = new WinFragment();
-                addFragment(winFragment, R.id.container_main_app);
+                                        if (fragment instanceof WinFragment) {
+                                            return;
+                                        }
+
+                                        if(fragment instanceof ScanFragment){
+                                            ((ScanFragment)fragment).stopCamera();
+                                        }
+
+                                        for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                                            getSupportFragmentManager().popBackStack();
+                                        }
+                                        WinFragment winFragment = new WinFragment();
+                                        addFragment(winFragment, R.id.container_main_app);
+                                    }
+                                },200);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CheckExistsQRcode> call, Throwable t) {
+                        pleaseDialog.dismiss();
+                    }
+                });
                 break;
 
         }
@@ -294,28 +418,29 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     protected void onResume() {
         super.onResume();
         countClickListGift = 0;
+        getScoresUser();
     }
 
-    public void showDialog(int type, String title, String content, Context context) {
+    private void getScoresUser(){
+        APIRegisterUser mAPIService = ApiUtils.getAPIService();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
+        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getApplicationContext(), KeyConst.NUMBER_PHONE_STATISTIC));
 
-        switch (type) {
+        mAPIService.postRawJSONGetScoresAcc(jsonObject).enqueue(new Callback<GetScoresAcc>() {
+            @Override
+            public void onResponse(Call<GetScoresAcc> call, Response<GetScoresAcc> response) {
+                if (response != null) {
+                    if (response.body().getIsSuccess()) {
+                        updateSocres(response.body().getSoDiemHienTai().toString());
+                    }
+                }
+            }
 
-            case WARNING:
-                pDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
-                break;
-
-            case ERROR:
-                pDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
-                break;
-        }
-//        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText(title);
-        pDialog.setContentText(content);
-        pDialog.setCancelable(false);
-        pDialog.show();
-        btnConfirmDialog = pDialog.findViewById(R.id.confirm_button);
-        btnConfirmDialog.setBackgroundColor(Color.parseColor("#DC6B59"));
-        btnConfirmDialog.setText(R.string.cancel);
+            @Override
+            public void onFailure(Call<GetScoresAcc> call, Throwable t) {
+            }
+        });
     }
 
     @Override
@@ -323,14 +448,17 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
 
         final Fragment fragmentContainerMain = getSupportFragmentManager().findFragmentById(R.id.container_main_app);
         Fragment fragmentContainerTabAcc = getSupportFragmentManager().findFragmentById(R.id.container_tab_account);
-        Fragment fragmentContainerTabHistory = getSupportFragmentManager().findFragmentById(R.id.container_history);
+        Fragment fragmentContainerScanQRcode= getSupportFragmentManager().findFragmentById(R.id.container_scan_qrcode);
+        Fragment fragmentContainerWinfragment= getSupportFragmentManager().findFragmentById(R.id.container_home);
 
         if (fragmentContainerMain instanceof ScanFragment) {
             finish();
             return;
         }
 
-        if (fragmentContainerMain instanceof HistoryFragment || fragmentContainerMain instanceof WinFragment
+        if (fragmentContainerWinfragment instanceof ScanQRcodeFragment){
+            getSupportFragmentManager().popBackStack();
+        }else if (fragmentContainerMain instanceof HistoryFragment || fragmentContainerMain instanceof WinFragment
                 || fragmentContainerTabAcc instanceof AccountFragment) {
             getSupportFragmentManager().popBackStack();
             ScanFragment previewFragment = new ScanFragment();

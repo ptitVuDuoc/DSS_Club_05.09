@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
-                android:id="@+id/txt_name_tiem"
+                android:id="@+id/txt_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -31,11 +31,11 @@
                 android:maxLines="1"/>
 
             <ImageView
-                android:id="@+id/ic_calendar"
+                android:id="@+id/ic_status"
                 android:layout_width="@dimen/large"
                 android:layout_height="@dimen/large"
                 android:src="@drawable/ic_calender"
-                app:layout_constraintTop_toBottomOf="@+id/txt_name_tiem"
+                app:layout_constraintTop_toBottomOf="@+id/txt_seria"
                 android:layout_marginLeft="@dimen/large"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="@dimen/x_small"/>
@@ -44,10 +44,10 @@
                 android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/ic_calendar"
+                app:layout_constraintLeft_toRightOf="@+id/ic_status"
                 android:layout_marginLeft="@dimen/margin_padding_5"
-                app:layout_constraintTop_toTopOf="@+id/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="@id/ic_calendar"
+                app:layout_constraintTop_toTopOf="@+id/ic_status"
+                app:layout_constraintBottom_toBottomOf="@id/ic_status"
                 android:textSize="@dimen/font_size_standard"/>
 
             <ImageView
@@ -55,9 +55,9 @@
                 android:layout_width="@dimen/large"
                 android:layout_height="@dimen/large"
                 android:src="@drawable/ic_star"
-                app:layout_constraintTop_toBottomOf="@+id/ic_calendar"
+                app:layout_constraintTop_toBottomOf="@+id/ic_status"
                 android:layout_marginTop="@dimen/margin_padding_5"
-                app:layout_constraintLeft_toLeftOf="@+id/ic_calendar"/>
+                app:layout_constraintLeft_toLeftOf="@+id/ic_status"/>
 
             <com.example.admin.dss_project.custom.view.MyCusttomtext
                 android:id="@+id/txt_scores"

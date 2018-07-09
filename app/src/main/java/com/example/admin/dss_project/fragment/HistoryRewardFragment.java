@@ -7,11 +7,14 @@ import android.os.Handler;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -45,8 +48,8 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
     private TextView txtEndDay;
     private TextView txtStartDay;
     private BottomSheetDialog mBottomSheetDialog;
-    private TextView txtDayStart;
-    private TextView txtDayEnd;
+    private EditText txtDayStart;
+    private EditText txtDayEnd;
     private DatePickerDialog datePickerDialog;
     private RelativeLayout btnFilterDialog;
     private View sheetView;
@@ -56,6 +59,8 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
     private ArrayList<ListGiftRegistered> list = new ArrayList<>();
     private int maxPageNumber;
     private HistoryRewardAdapter historyRewardAdapter;
+    private int len;
+    private int len2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -109,8 +114,6 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
     private void callAPI(String startDay, String endDay){
         pleaseDialog.show();
 
-//        if(mPageNumber == maxPageNumber) return ;
-
         mPageNumber++;
         mAPIService = ApiUtils.getAPIService();
         final JsonObject jsonObject = new JsonObject();
@@ -161,59 +164,72 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
         btnFilterDialog = view.findViewById(R.id.btn_filter_list);
         txtDayStart.setText(Statistic.DAY_START_REGISTER_GIFT);
         txtDayEnd.setText(Statistic.DAY_END_REGISTER_GIFT);
+
+        txtDayStart.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                len2 = charSequence.length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                switch (editable.length()){
+                    case 2:
+                        if(editable.length() > len2){
+                            editable.append("/");
+                        }
+                        break;
+
+                    case 5:
+                        if(editable.length() > len2){
+                            editable.append("/");
+                        }
+                        break;
+                }
+            }
+        });
+
+        txtDayEnd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                len = charSequence.length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                switch (editable.length()){
+                    case 2:
+                        if(editable.length() > len){
+                            editable.append("/");
+                        }
+                        break;
+
+                    case 5:
+                        if(editable.length() > len){
+                            editable.append("/");
+                        }
+                        break;
+                }
+            }
+        });
+
         setDateFilter();
     }
 
     private void setDateFilter(){
-        txtDayStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
 
-                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, final int i, final int i1, final int i2) {
-                        Calendar cal = Calendar.getInstance();
-                        cal.set(Calendar.DAY_OF_MONTH, i2);
-                        cal.set(Calendar.MONTH, i1);
-                        cal.set(Calendar.YEAR, i);
-                        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String txt = fmt.format(cal.getTimeInMillis());
-                        Statistic.DAY_START_REGISTER_GIFT = txt;
-
-                        txtDayStart.setText(Statistic.DAY_START_REGISTER_GIFT);
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-                datePickerDialog.show();
-            }
-        });
-
-        txtDayEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-
-                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, final int i, final int i1, final int i2) {
-                        Calendar cal = Calendar.getInstance();
-                        cal.set(Calendar.DAY_OF_MONTH, i2);
-                        cal.set(Calendar.MONTH, i1);
-                        cal.set(Calendar.YEAR, i);
-                        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String txt = fmt.format(cal.getTimeInMillis());
-                        Statistic.DAY_END_REGISTER_GIFT = txt;
-
-                        txtDayEnd.setText(Statistic.DAY_END_REGISTER_GIFT);
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-                datePickerDialog.show();
-            }
-        });
+        Statistic.DAY_START_REGISTER_GIFT = txtDayStart.getText().toString();
+        Statistic.DAY_END_REGISTER_GIFT = txtDayEnd.getText().toString();
 
         btnFilterDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,13 +251,6 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-//                if (dy > 0) {
-//                    if(R.id.btn_filter == 0) return;
-//                    findViewById(R.id.btn_filter).setVisibility(View.GONE);
-//                } else if (dy < 0) {
-//                    if(R.id.btn_filter == 0) return;
-//                    findViewById(R.id.btn_filter).setVisibility(View.VISIBLE);
-//                }
             }
         });
 

@@ -3,13 +3,13 @@ package com.example.admin.dss_project.fragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.dss_project.R;
@@ -23,10 +23,6 @@ import com.example.admin.dss_project.ultility.PrefUtils;
 import com.example.admin.dss_project.ultility.Statistic;
 import com.google.gson.JsonObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +31,7 @@ import retrofit2.Response;
 public class RegisterFragment extends BaseFragment implements View.OnClickListener {
 
     private DatePickerDialog datePickerDialog;
-    private TextView txtBirthday;
+    private EditText txtBirthday;
     private APIRegisterUser mAPIService;
     private ProgressDialog pleaseDialog;
     private EditText txtNumberPhone;
@@ -45,6 +41,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     private EditText txtAddress;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
+    private int len;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,7 +65,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
     private void addControl() {
 
-        txtBirthday = (TextView) findViewById(R.id.txt_birthday);
+        txtBirthday = (EditText) findViewById(R.id.txt_birthday);
         txtNumberPhone = (EditText) findViewById(R.id.txt_number_phone);
         txtName = (EditText) findViewById(R.id.txt_name);
         txtEmail = (EditText) findViewById(R.id.txt_email);
@@ -76,31 +73,38 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         txtAddress = (EditText) findViewById(R.id.txt_address);
         txtPassword = (EditText) findViewById(R.id.txt_password);
         txtConfirmPassword = (EditText) findViewById(R.id.txt_password_confirm);
+        txtBirthday.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                len = charSequence.length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                switch (editable.length()) {
+                    case 2:
+                        if(editable.length() > len){
+                            editable.append("/");
+                        }
+                        break;
+
+                    case 5:
+                        if(editable.length() > len){
+                            editable.append("/");
+                        }
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txt_birthday:
-
-                Calendar calendar = Calendar.getInstance();
-
-                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, final int i, final int i1, final int i2) {
-                        Calendar cal = Calendar.getInstance();
-                        cal.set(Calendar.DAY_OF_MONTH, i2);
-                        cal.set(Calendar.MONTH, i1);
-                        cal.set(Calendar.YEAR, i);
-                        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        String txt = fmt.format(cal.getTimeInMillis());
-                        txtBirthday.setText(txt);
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-//                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-                datePickerDialog.show();
-
                 break;
 
             case R.id.btn_register:
@@ -113,7 +117,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                 } else if (txtNumberPhone.getText().toString().length() > 11 || txtNumberPhone.getText().toString().length() < 10) {
                     Toast.makeText(mContext, R.string.number_phone_fail, Toast.LENGTH_SHORT).show();
                     return;
-                }else if(!txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())){
+                } else if (!txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())) {
                     Toast.makeText(mContext, R.string.confirm_pass_fail, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -145,9 +149,9 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                 bundle.putString(KeyConst.KEY_BUNDLE_NUMBER_PHONE, jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
                                 sendOtpFragment.setArguments(bundle);
 
-                                PrefUtils.putString(getContext(),KeyConst.KEY_PREF_USER,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
-                                PrefUtils.putString(getContext(),KeyConst.KEY_PREF_PASS_WORD,jsonObject.get(KeyConst.PASSWORD).getAsString());
-                                PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+                                PrefUtils.putString(getContext(), KeyConst.KEY_PREF_USER, jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+                                PrefUtils.putString(getContext(), KeyConst.KEY_PREF_PASS_WORD, jsonObject.get(KeyConst.PASSWORD).getAsString());
+                                PrefUtils.putString(getContext(), KeyConst.NUMBER_PHONE_STATISTIC, jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
 
                                 ((HomeActivity) getActivity()).addFragment(sendOtpFragment);
                             } else {

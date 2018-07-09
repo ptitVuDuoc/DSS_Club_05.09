@@ -104,14 +104,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/birth_day_name" />
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <EditText
                 android:id="@+id/txt_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding_50"
                 android:layout_marginTop="@dimen/small"
                 android:background="@drawable/stroke"
                 android:gravity="center_vertical"
-                android:hint="@string/enter_birth_day"
+                android:hint="dd/MM/yyyy"
                 android:padding="@dimen/small"
                 android:textColor="@android:color/background_dark"
                 android:textSize="@dimen/font_size_standard" />

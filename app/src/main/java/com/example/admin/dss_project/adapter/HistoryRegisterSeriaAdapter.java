@@ -3,21 +3,16 @@ package com.example.admin.dss_project.adapter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.listen.OnLoadMoreListener;
-import com.example.admin.dss_project.model.GetListRegitedSeria;
 import com.example.admin.dss_project.model.ListSeriaRegistered;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HistoryRegisterSeriaAdapter extends RecyclerView.Adapter<HistoryRegisterSeriaAdapter.ViewHolder> {
     private Context mContext;
@@ -120,7 +115,7 @@ public class HistoryRegisterSeriaAdapter extends RecyclerView.Adapter<HistoryReg
         public ViewHolder(View itemView) {
             super(itemView);
 
-            txtNameProduct = (TextView) itemView.findViewById(R.id.txt_name_tiem);
+            txtNameProduct = (TextView) itemView.findViewById(R.id.txt_seria);
             txtDate = (TextView) itemView.findViewById(R.id.txt_date);
             txtScores = (TextView) itemView.findViewById(R.id.txt_scores);
 

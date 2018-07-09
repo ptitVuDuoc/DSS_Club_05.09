@@ -55,4 +55,9 @@
         app:layout_constraintRight_toRightOf="@id/circle"
         android:layout_marginBottom="@dimen/margin_padding_15"/>
 
+    <FrameLayout
+        android:id="@+id/container_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

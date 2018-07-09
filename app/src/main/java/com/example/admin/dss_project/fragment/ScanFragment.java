@@ -1,10 +1,13 @@
 package com.example.admin.dss_project.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.HomeActivity;
 import com.example.admin.dss_project.activity.MainAppActivity;
+import com.example.admin.dss_project.activity.RegisterSeriaActivity;
 import com.example.admin.dss_project.custom.view.MyProgressDialog;
 import com.example.admin.dss_project.model.SeriInfo;
 import com.example.admin.dss_project.retrofit.APIRegisterUser;
@@ -27,6 +31,8 @@ import com.example.admin.dss_project.scan.ultility.ZXingScannerView;
 import com.example.admin.dss_project.ultility.KeyConst;
 import com.example.admin.dss_project.ultility.PrefUtils;
 import com.example.admin.dss_project.ultility.Statistic;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -49,7 +55,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
     private MainAppActivity mainActivity = null;
     private BottomSheetDialog mBottomSheetDialog;
     private EditText txtSeri;
-    private RelativeLayout btnRegiterSeri;
+    private TextView btnRegiterSeri;
     private ProgressDialog pleaseDialog;
     private ProgressDialog pleaseDialogCamera;
     private TextView txtCodeProduct;
@@ -78,6 +84,8 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         addEvent();
 
         init();
+
+        Statistic.initDataList();
 
     }
 
@@ -128,7 +136,9 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
 //            Ringtone r = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
 //            r.play();
 //        } catch (Exception e) {}
-        showDialogEnterCode(rawResult.getText());
+        Intent intent = new Intent(getContext(), RegisterSeriaActivity.class);
+        intent.putExtra(KeyConst.BUNLDE_CODE_SERIA,rawResult.getText());
+        startActivity(intent);
     }
 
     public void setupFormats() {
@@ -149,7 +159,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
     }
 
     public void stopCamera() {
-        if(mScannerView == null)return;
+        if (mScannerView == null) return;
         mScannerView.stopCameraPreview();
     }
 
@@ -186,7 +196,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(mScannerView != null){
+                if (mScannerView != null) {
                     mScannerView.setResultHandler(ScanFragment.this);
                     mScannerView.startCamera(mCameraId);
                     mScannerView.setAutoFocus(mAutoFocus);
@@ -194,7 +204,7 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
                 }
                 hideLoadCamera();
             }
-        },200);
+        }, 200);
 //        new AsyncTask<Void, Void, Void>() {
 //            @Override
 //            protected Void doInBackground(Void... params) {
@@ -221,113 +231,25 @@ public class ScanFragment extends BaseFragment implements View.OnClickListener,
         setHasOptionsMenu(true);
     }
 
-    public void showDialogEnterCode(String code) {
-
-        mBottomSheetDialog = new BottomSheetDialog(getActivity());
-        sheetView = getActivity().getLayoutInflater().inflate(R.layout.dialog_enter_code, null);
-        btnRegiterSeri = sheetView.findViewById(R.id.btn_register);
-        txtSeri = sheetView.findViewById(R.id.txt_seri);
-        mBottomSheetDialog.setCancelable(false);
-        mBottomSheetDialog.setContentView(sheetView);
-
-        if (code != null) {
-            txtSeri.setText(code);
-        }
-
-        mBottomSheetDialog.show();
-        btnRegiterSeri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickRegister(txtSeri.getText().toString(), sheetView);
-            }
-        });
-        sheetView.findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickCloseDialog();
-            }
-        });
-
-        sheetView.findViewById(R.id.btn_close_2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickCloseDialog();
-            }
-        });
-    }
 
     private void clickCloseDialog() {
         mBottomSheetDialog.dismiss();
 
-        if(mScannerView == null) return;
+        if (mScannerView == null) return;
         mScannerView.setResultHandler(this);
         mScannerView.setAutoFocus(mAutoFocus);
-        mScannerView.resumeCameraPreview(this    );
+        mScannerView.resumeCameraPreview(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_enter_code:
-                mScannerView.stopCameraPreview();
-                if (mBottomSheetDialog != null && mBottomSheetDialog.isShowing()) return;
-                showDialogEnterCode(null);
+                Intent intent = new Intent(getContext(), RegisterSeriaActivity.class);
+                intent.putExtra(KeyConst.BUNLDE_CODE_SERIA,"");
+                startActivity(intent);
                 break;
         }
-    }
-
-    private void clickRegister(String s, final View view) {
-
-        pleaseDialog.show();
-
-        if (s.isEmpty()) return;
-
-        APIRegisterUser mAPIService = ApiUtils.getAPIService();
-
-        final JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
-        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getContext(), KeyConst.NUMBER_PHONE_STATISTIC));
-        jsonObject.addProperty(KeyConst.SERI, s);
-
-        mAPIService.postRawJSONRegisterSeria(jsonObject).enqueue(new Callback<SeriInfo>() {
-            @Override
-            public void onResponse(Call<SeriInfo> call, Response<SeriInfo> response) {
-                if (response != null) {
-
-                    pleaseDialog.dismiss();
-
-                    if (response.body().getIsSuccess()) {
-
-                        Toast.makeText(getContext(), R.string.register_seria_success, Toast.LENGTH_SHORT).show();
-                        view.findViewById(R.id.view_detail_register_seria).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.view_register).setVisibility(View.GONE);
-                        setContentDetail(view, response.body());
-                        ((MainAppActivity) getActivity()).updateSocres(response.body().getSoDiemHienTai().toString());
-
-                    } else {
-                        String mess = response.body().getMessage();
-                        ((MainAppActivity) getActivity()).showDialog(HomeActivity.ERROR, getString(R.string.register_seria_fail), mess, getContext());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SeriInfo> call, Throwable t) {
-                pleaseDialog.dismiss();
-            }
-        });
-    }
-
-    private void setContentDetail(View view, SeriInfo seriInfo) {
-        txtCodeProduct = (TextView) view.findViewById(R.id.txt_code_product);
-        txtNumberSeria = (TextView) view.findViewById(R.id.txt_number_seria);
-        txtReward = (TextView) view.findViewById(R.id.code_reward);
-        txtSocres = (TextView) view.findViewById(R.id.txt_scores);
-
-        txtCodeProduct.setText(seriInfo.getMaHangHoa());
-        txtNumberSeria.setText(seriInfo.getSeria());
-        txtReward.setText(seriInfo.getMaSoDuThuong());
-        txtSocres.setText(seriInfo.getSoDiem().toString() + " điểm");
     }
 
     @Override

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailNotifiActivity">
+
+    <RelativeLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_50"
+        android:background="@drawable/bg_color">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_padding_30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/small"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/txt_title_detail_notifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_large"
+            android:layout_toRightOf="@+id/btn_back"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/small"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarOne"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progressTint="@color/color_select_tab"
+        android:layout_below="@id/menu_top"/>
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/progressBarOne"/>
+
+</RelativeLayout>

@@ -48,17 +48,19 @@
         android:layout_marginLeft="@dimen/margin_padding_35"
         android:layout_marginRight="@dimen/margin_padding_35">
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <EditText
             android:id="@+id/txt_start_day"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_padding_40"
             android:layout_marginTop="@dimen/small"
             android:background="@drawable/stroke"
             android:gravity="center_vertical"
-            android:hint="@string/enter_start_day"
+            android:hint="dd/MM/yyyy"
             android:padding="@dimen/small"
             android:textColor="@android:color/background_dark"
-            android:textSize="@dimen/font_size_standard" />
+            android:textSize="@dimen/font_size_standard"
+            android:inputType="phone"
+            android:maxLength="10"/>
 
         <ImageView
             android:layout_width="@dimen/x_large"
@@ -82,17 +84,19 @@
         android:layout_marginLeft="@dimen/margin_padding_35"
         android:layout_marginRight="@dimen/margin_padding_35">
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <EditText
             android:id="@+id/txt_end_day"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_padding_40"
             android:layout_marginTop="@dimen/small"
             android:background="@drawable/stroke"
             android:gravity="center_vertical"
-            android:hint="@string/enter_end_day"
+            android:hint="dd/MM/yyyy"
             android:padding="@dimen/small"
             android:textColor="@android:color/background_dark"
-            android:textSize="@dimen/font_size_standard" />
+            android:textSize="@dimen/font_size_standard"
+            android:inputType="phone"
+            android:maxLength="10"/>
 
         <ImageView
             android:layout_width="@dimen/x_large"

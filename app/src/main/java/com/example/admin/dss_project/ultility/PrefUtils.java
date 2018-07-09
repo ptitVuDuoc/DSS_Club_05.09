@@ -11,7 +11,7 @@ public class PrefUtils {
 
 
     private static final String DEF_NAME_PREF = "com.love.counter.DEF_NAME_PREF";
-    private static final int NONE_INT_VAL = -9999;
+    private static final int NONE_INT_VAL = 0;
     private static final long NONE_LONG_AL = 0;
     private static final boolean NONE_BOOLEAN_AL = false;
 

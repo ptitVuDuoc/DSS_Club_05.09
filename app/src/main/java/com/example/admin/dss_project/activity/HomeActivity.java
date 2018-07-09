@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -20,6 +21,8 @@ import android.widget.RelativeLayout;
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.fragment.BaseFragment;
 import com.example.admin.dss_project.fragment.LoginFragment;
+import com.example.admin.dss_project.ultility.Statistic;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -41,12 +44,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_home);
 
-
         addControll();
         addEvent();
 
         LoginFragment fragment = new LoginFragment();
         addFragment(fragment);
+
+        FirebaseMessaging.getInstance().subscribeToTopic(Statistic.TOPIC);
 
     }
 

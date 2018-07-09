@@ -33,14 +33,14 @@
         <item name="maxHeight">24dip</item>
         <item name="indicatorName">BallPulseIndicator</item>
     </style>
-    
+
     <style name="txt_regis">
         <item name="android:textColor">@color/color_text_home</item>
         <item name="android:textSize">@dimen/font_size_large</item>
         <!--<item name="android:paddingLeft">@dimen/margin_padding_15</item>-->
         <item name="android:layout_marginTop">@dimen/margin_padding_25</item>
     </style>
-    
+
     <style name="enter_edittext">
         <item name="android:layout_height">@dimen/margin_padding_50</item>
         <item name="android:layout_width">match_parent</item>
@@ -93,13 +93,13 @@
         <item name="android:layout_marginRight">@dimen/margin_padding_35</item>
         <item name="android:layout_marginLeft">@dimen/margin_padding_35</item>
     </style>
-    
+
     <style name="button">
         <item name="android:layout_height">@dimen/margin_padding_50</item>
         <item name="android:layout_marginLeft">@dimen/margin_padding_60</item>
         <item name="android:layout_marginRight">@dimen/margin_padding_60</item>
     </style>
-    
+
     <style name="txt_detail_register">
 
         <item name="android:layout_marginLeft">@dimen/margin_padding_15</item>
@@ -120,5 +120,9 @@
         <item name="android:textStyle">bold</item>
 
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
