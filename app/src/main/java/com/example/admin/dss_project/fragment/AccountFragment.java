@@ -152,6 +152,9 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                 pDialog.setConfirmButton(getString(R.string.log_out), new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                        PrefUtils.putBoolean(getContext(),KeyConst.KEY_LOGIN_LOGOUT,Statistic.KEY_LOGOUT);
+
                         Intent intent = new Intent(getActivity(), HomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

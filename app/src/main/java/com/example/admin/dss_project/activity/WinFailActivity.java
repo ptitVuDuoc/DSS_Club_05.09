@@ -29,6 +29,7 @@ public class WinFailActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()){
             case R.id.btn_back:
                 finish();
+                getSupportFragmentManager().popBackStack();
                 break;
         }
     }

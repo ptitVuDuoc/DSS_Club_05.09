@@ -40,4 +40,7 @@ public class KeyConst {
     public static final String KEY_SIZE_LIST_NOTIFI ="KEY_SIZE_LIST_NOTIFI";
     public static final String KEY_NOTIFI_DETAIL ="KEY_NOTIFI_DETAIL";
 
+    public static final String KEY_LOGIN_LOGOUT ="KEY_LOGIN_LOGOUT";
+
+    public static final String KEY_CLICK_ITEM_NOTIFI = "KEY_CLICK_ITEM_NOTIFI";
 }

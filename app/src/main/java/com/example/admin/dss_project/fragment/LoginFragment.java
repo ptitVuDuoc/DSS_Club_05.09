@@ -137,6 +137,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                             ((HomeActivity)getActivity()).addFragment(sendOtpFragment);
                         }else {
                             PrefUtils.putString(getContext(),KeyConst.NUMBER_PHONE_STATISTIC,jsonObject.get(KeyConst.NUMBER_PHONE).getAsString());
+                            PrefUtils.putBoolean(getContext(),KeyConst.KEY_LOGIN_LOGOUT,Statistic.KEY_LOGIN);
                             Intent intent = new Intent(getActivity(), MainAppActivity.class);
                             getActivity().finish();
                             intent.putExtra(KeyConst.USER, response.body());

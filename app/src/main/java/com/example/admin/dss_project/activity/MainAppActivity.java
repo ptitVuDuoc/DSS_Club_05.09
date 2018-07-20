@@ -3,8 +3,10 @@ package com.example.admin.dss_project.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -69,6 +72,7 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
     private CardView menuBottom;
     private APIRegisterUser mAPIServiceGetSize;
     private TextView txtCountNewNotifi;
+    private int countNotifi = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +83,26 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         init();
         txtScan.setTextColor(getResources().getColor(R.color.color_select_tab));
         iconScan.setColorFilter(getResources().getColor(R.color.color_select_tab));
+
+        String idNotifi = getIntent().getStringExtra(KeyConst.KEY_ID_NOTIFI);
+
+        if(idNotifi != null){
+            Intent intent = new Intent(MainAppActivity.this,DetailNotifiActivity.class);
+            intent.putExtra(KeyConst.KEY_ID_NOTIFI, idNotifi);
+            startActivity(intent);
+        }
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                mMessageReceiver, new IntentFilter(Statistic.ACTION_BROAD_CAST));
+
     }
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setSizeNotifi();
+        }
+    };
 
     public void launchActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -181,6 +204,7 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(Call<GetSizeNotifi> call, Response<GetSizeNotifi> response) {
                 if (response != null) {
                     if (response.body().getIsSuccess()) {
+                        countNotifi = response.body().getCount();
                         int intNotifi = response.body().getCount() - PrefUtils.getInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI);
                         if(intNotifi > 0){
                             findViewById(R.id.bg_cricle).setVisibility(View.VISIBLE);
@@ -241,8 +265,6 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
 
         APIRegisterUser mAPIService = ApiUtils.getAPIService();
         JsonObject jsonObject = new JsonObject();
-//        jsonObject.addProperty(KeyConst.TOKEN, Statistic.token);
-//        jsonObject.addProperty(KeyConst.NUMBER_PHONE, PrefUtils.getString(getApplicationContext(), KeyConst.NUMBER_PHONE_STATISTIC));
 
         mAPIService.postRawJSONCheckExistsQRcode(jsonObject).enqueue(new Callback<CheckExistsQRcode>() {
             @Override
@@ -276,6 +298,8 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
 
                 findViewById(R.id.bg_cricle).setVisibility(View.GONE);
                 txtCountNewNotifi.setVisibility(View.GONE);
+
+                PrefUtils.putInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI,countNotifi);
 
                 break;
 
@@ -419,6 +443,22 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         super.onResume();
         countClickListGift = 0;
         getScoresUser();
+    }
+
+    @Override
+    protected void onStop() {
+
+        int intNotifi = countNotifi - PrefUtils.getInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI);
+        if(intNotifi > 0){
+            findViewById(R.id.bg_cricle).setVisibility(View.VISIBLE);
+            txtCountNewNotifi.setVisibility(View.VISIBLE);
+            txtCountNewNotifi.setText(""+intNotifi);
+        }else {
+            findViewById(R.id.bg_cricle).setVisibility(View.GONE);
+            txtCountNewNotifi.setVisibility(View.GONE);
+        }
+
+        super.onStop();
     }
 
     private void getScoresUser(){

@@ -62,26 +62,6 @@ public class NotificationActivity extends AppCompatActivity implements ListNotif
         addControl();
         initList();
         callAPI();
-        setSizeNotifi();
-    }
-
-    private void setSizeNotifi(){
-        final JsonObject jsonObject = new JsonObject();
-        mAPIServiceGetSize = ApiUtils.getAPIService();
-        mAPIServiceGetSize.postRawJSONGetCountNotification(jsonObject).enqueue(new Callback<GetSizeNotifi>() {
-            @Override
-            public void onResponse(Call<GetSizeNotifi> call, Response<GetSizeNotifi> response) {
-                if (response != null) {
-                    if (response.body().getIsSuccess()) {
-                        PrefUtils.putInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI,response.body().getCount());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetSizeNotifi> call, Throwable t) {
-            }
-        });
     }
 
     private void addEvent() {

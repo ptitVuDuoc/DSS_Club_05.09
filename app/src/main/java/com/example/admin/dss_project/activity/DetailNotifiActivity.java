@@ -44,8 +44,11 @@ public class DetailNotifiActivity extends AppCompatActivity implements View.OnCl
 
     private void init() {
 
+
         notifi = (Notifi) getIntent().getSerializableExtra(KeyConst.KEY_NOTIFI_DETAIL);
+
         String idNotifi = getIntent().getStringExtra(KeyConst.KEY_ID_NOTIFI);
+
         txtTitleDetailNotifi = findViewById(R.id.txt_title_detail_notifi);
         progressBarOne = findViewById(R.id.progressBarOne);
         progressBarOne.setMax(100);
@@ -59,6 +62,9 @@ public class DetailNotifiActivity extends AppCompatActivity implements View.OnCl
 
             callAPI(idNotifi);
 
+            int numberNotifi = PrefUtils.getInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI) + 1;
+            PrefUtils.putInt(getApplicationContext(),KeyConst.KEY_SIZE_LIST_NOTIFI,numberNotifi);
+
         }else if(notifi != null){
             txtTitleDetailNotifi.setText(notifi.getTieuDe());
             webView.loadUrl(notifi.getLinkWeb());
@@ -68,8 +74,6 @@ public class DetailNotifiActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void callAPI(String id){
-
-        Log.d("xxxxxx1111",""+id);
 
         mAPIService = ApiUtils.getAPIService();
         final JsonObject jsonObject = new JsonObject();

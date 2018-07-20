@@ -6,7 +6,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://113.190.254.198:7777/DssApi.svc/Web/";
+    public static final String BASE_URL = "http://113.190.254.198:17777/DssApi.svc/Web/";
 
     public static APIRegisterUser getAPIService() {
         return RetrofitClient.getClient(BASE_URL).create(APIRegisterUser.class);

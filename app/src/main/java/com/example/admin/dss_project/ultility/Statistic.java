@@ -9,6 +9,12 @@ public class Statistic {
 
     public static final int KEY_EDIT_ACCOUNT = 1;
     public static final int KEY_CHANGE_PASS = 2;
+
+    public static final boolean KEY_LOGIN = true;
+    public static final boolean KEY_LOGOUT = false;
+
+    public static final String ACTION_BROAD_CAST = "ACTION_BROAD_CAST";
+
     public static  String DAY_START_REGISTER_SIREA ;
     public static  String DAY_START_REGISTER_GIFT ;
     public static  String DAY_END_REGISTER_SIREA ;

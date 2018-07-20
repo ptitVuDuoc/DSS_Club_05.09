@@ -10,11 +10,15 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.admin.dss_project.R;
 import com.example.admin.dss_project.activity.DetailNotifiActivity;
 import com.example.admin.dss_project.activity.HomeActivity;
+import com.example.admin.dss_project.activity.MainAppActivity;
+import com.example.admin.dss_project.activity.SplashActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -30,13 +34,23 @@ public class MyFireBaseMess extends FirebaseMessagingService {
         Map data = remoteMessage.getData();
         String id  = (String) data.get("id");
         sendNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody(),id);
+
+        updateNotifiNew();
+
         super.onMessageReceived(remoteMessage);
     }
 
+    private void updateNotifiNew() {
+        Intent intent = new Intent(Statistic.ACTION_BROAD_CAST);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
     private void sendNotification(String title,String messageBody,String id) {
-        Intent intent = new Intent(this, DetailNotifiActivity.class);
+
+        Intent intent = new Intent(this,DetailNotifiActivity.class);
+
         intent.putExtra(KeyConst.KEY_ID_NOTIFI,id);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -50,6 +64,7 @@ public class MyFireBaseMess extends FirebaseMessagingService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,"0")
+                .setContentIntent(pendingIntent)
                 .setSmallIcon(R.mipmap.ic_launcher)
 //                .setContentTitle("DSS - Club")
                 .setContentTitle(title)
