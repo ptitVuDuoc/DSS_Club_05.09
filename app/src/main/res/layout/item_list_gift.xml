@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/margin_padding_35"
                 android:layout_gravity="center_horizontal|center_vertical" />
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/text_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

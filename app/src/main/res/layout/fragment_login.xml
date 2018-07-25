@@ -139,7 +139,7 @@
             android:layout_below="@+id/view_center"
             android:layout_marginTop="@dimen/margin_padding_50">
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
@@ -159,7 +159,7 @@
             android:layout_marginRight="@dimen/margin_padding_30"
             android:layout_marginLeft="@dimen/margin_padding_30">
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/forgot_password"
@@ -176,7 +176,7 @@
             android:layout_below="@+id/btn_forgot"
             android:layout_centerHorizontal="true">
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_do_you_have_an_acc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 android:textColor="@color/color_text_home"
                 android:textSize="@dimen/font_size_large" />
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

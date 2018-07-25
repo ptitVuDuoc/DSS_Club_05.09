@@ -15,7 +15,20 @@
             android:id="@+id/view_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_padding_210"
-            android:src="@drawable/win_fail" />
+            android:src="@drawable/win_success"/>
+
+        <com.example.admin.club.custom.view.MyCusttomTextNofi
+            android:id="@+id/txt_gift_name"
+            android:layout_width="@dimen/margin_padding_200"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_text"
+            android:layout_marginTop="@dimen/margin_padding_40"
+            android:textSize="@dimen/font_size_xxlarge"
+            android:gravity="center"/>
+
 
         <ImageView
             android:id="@+id/btn_back"

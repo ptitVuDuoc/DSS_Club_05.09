@@ -6,11 +6,14 @@ android {
     defaultConfig {
         applicationId "com.example.admin.dss_project"
         minSdkVersion 17
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        project.ext.set("archivesBaseName", "DSS_Club_" + defaultConfig.versionName)
+
     }
     buildTypes {
         release {
@@ -46,4 +49,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:12.0.0'
     implementation 'com.google.firebase:firebase-messaging:12.0.1'
     implementation 'com.google.firebase:firebase-auth:12.0.1'
+    implementation 'com.karumi:dexter:4.2.0'
 }

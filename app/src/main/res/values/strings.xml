@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DSS Club</string>
+    <string name="app_name">DSS IP Club</string>
 
 
     <string name="select_camera">Select a Camera</string>
@@ -95,12 +95,12 @@
     <string name="edit_Acc_success">Sửa thông tin thành công!</string>
     <string name="edit_Acc_fail">Sủa thông tin không thành công!</string>
     <string name="save_info">Lưu thông tin</string>
-    <string name="enter_seri">Nhập seria</string>
-    <string name="register_seri">Đăng kí seria</string>
-    <string name="code_seria">Mã seria</string>
-    <string name="register_seria_success">Đăng kí seria thành công!</string>
-    <string name="register_seria_fail">Đăng kí seria không thành công!</string>
-    <string name="detail_register">Chi tiết thông tin đăng kí seria</string>
+    <string name="enter_seri">Nhập serial</string>
+    <string name="register_seri">Đăng kí serial</string>
+    <string name="code_seria">Mã serial</string>
+    <string name="register_seria_success">Đăng kí serial thành công!</string>
+    <string name="register_seria_fail">Đăng kí serial không thành công!</string>
+    <string name="detail_register">Chi tiết thông tin đăng kí serial</string>
     <string name="code_product">Mã hàng hóa:</string>
     <string name="number_seria">Số seri:</string>
     <string name="code_reward">Mã số dự thưởng:</string>
@@ -133,16 +133,23 @@
     <string name="txt_status">Tình trạng:</string>
     <string name="add">Thêm</string>
     <string name="san_continue">Quét tiếp</string>
-    <string name="list_seria_register">Danh sách seria</string>
-    <string name="enter_code_seria">Nhập mã seria</string>
+    <string name="list_seria_register">Danh sách serial</string>
+    <string name="enter_code_seria">Nhập mã serial</string>
     <string name="delete_success">Xóa thành công!</string>
     <string name="success_infor_regiter_seria">Thành công!</string>
-    <string name="list_infor_regiter_seria">Thông tin đăng kí seria</string>
-    <string name="error_infor_regiter_seria">Lỗi mã seria</string>
+    <string name="list_infor_regiter_seria">Thông tin đăng kí serial</string>
+    <string name="error_infor_regiter_seria">Lỗi mã serial</string>
     <string name="register_infor_detail">Thông tin chi tiết</string>
     <string name="win_now">Hệ thống không có chương trình quét mã trúng thưởng trong thời gian hiện tại</string>
     <string name="win_reward">Chương trình quét mã trúng thưởng</string>
     <string name="your_win_success">Bạn đã trúng</string>
     <string name="title_activity_winfail">WinfailActivity</string>
     <string name="title_notification">Thông báo</string>
+    <string name="qr_code">QRcode</string>
+    <string name="retry">Retry</string>
+
+    <string name="need_per">Need Permissions</string>
+    <string name="this_app_needs_per">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="goto_setting">GOTO SETTINGS</string>
+
 </resources>

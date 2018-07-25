@@ -20,7 +20,7 @@
             android:layout_height="@dimen/margin_padding_35"
             android:src="@drawable/stroke_btn_history_gif"/>
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <com.example.admin.club.custom.view.MyCusttomtext
             android:id="@+id/txt_history_reward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:src="@drawable/stroke_btn_history_regis_seri"
             app:layout_constraintLeft_toRightOf="@id/btn_history_reward"/>
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <com.example.admin.club.custom.view.MyCusttomtext
             android:id="@+id/txt_history_regis_seri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

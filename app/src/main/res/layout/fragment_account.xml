@@ -23,7 +23,7 @@
             android:layout_marginLeft="@dimen/margin_padding_15"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <com.example.admin.club.custom.view.MyCusttomtext
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
             android:layout_marginTop="@dimen/margin_padding_15" />
 
-        <com.example.admin.dss_project.custom.view.MyCusttomtext
+        <com.example.admin.club.custom.view.MyCusttomtext
             android:id="@+id/txt_name_acc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_height="@dimen/margin_padding_15"
                 android:src="@drawable/ic_star" />
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_scores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_height="@dimen/margin_padding_35"
                 android:background="#E8E9ED">
 
-                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                <com.example.admin.club.custom.view.MyCusttomtext
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_size_standard"
@@ -122,44 +122,44 @@
 
             </LinearLayout>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 style="@style/txt_acc_title"
                 android:text = "@string/agency"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_name_agency"
                 style="@style/txt_acc_content"/>
 
             <View
                 style="@style/view_line_acc"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 style="@style/txt_acc_title"
                 android:text = "@string/email"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_email"
                 style="@style/txt_acc_content"/>
 
             <View
                 style="@style/view_line_acc"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 style="@style/txt_acc_title"
                 android:text = "@string/address"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_address"
                 style="@style/txt_acc_content"/>
 
             <View
                 style="@style/view_line_acc"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 style="@style/txt_acc_title"
                 android:text = "@string/birthday"/>
 
-            <com.example.admin.dss_project.custom.view.MyCusttomtext
+            <com.example.admin.club.custom.view.MyCusttomtext
                 android:id="@+id/txt_birthday"
                 style="@style/txt_acc_content"/>
 
@@ -169,7 +169,7 @@
                 android:layout_marginTop="@dimen/margin_padding_15"
                 android:background="#E8E9ED">
 
-                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                <com.example.admin.club.custom.view.MyCusttomtext
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_size_standard"
@@ -193,7 +193,7 @@
                     android:layout_height="@dimen/margin_padding_25"
                     android:src="@drawable/ic_chang_pass"/>
 
-                <com.example.admin.dss_project.custom.view.MyCusttomtext
+                <com.example.admin.club.custom.view.MyCusttomtext
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/change_password_title"
