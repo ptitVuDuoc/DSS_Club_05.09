@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DSS IP Club</string>
+    <string name="app_name">Dss Club</string>
 
 
     <string name="select_camera">Select a Camera</string>
@@ -151,5 +151,7 @@
     <string name="need_per">Need Permissions</string>
     <string name="this_app_needs_per">This app needs permission to use this feature. You can grant them in app settings.</string>
     <string name="goto_setting">GOTO SETTINGS</string>
+    <string name="offline">Mạng ngoại tuyến. Bạn cần bật mạng để sử dụng ứng dụng.</string>
+    <string name="info_register">Quý khách vui lòng điền chính xác và đầy đủ thông tin cá nhân. Quà tặng hoặc các vật phẩm đổi sẽ được gửi về theo địa chỉ quý khách đã đăng ký.</string>
 
 </resources>

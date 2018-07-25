@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 android:id="@+id/txt_seria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="@dimen/x_small"/>
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_marginTop="@dimen/margin_padding_5"
                 app:layout_constraintLeft_toLeftOf="@+id/ic_status"/>
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 android:id="@+id/txt_scores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -4,11 +4,12 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.admin.dss_project"
+//        applicationId "com.example.admin.dss_project"
+        applicationId "com.dss.dssClub"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 

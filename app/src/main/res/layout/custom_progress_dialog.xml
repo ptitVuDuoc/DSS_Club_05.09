@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.example.admin.club.custom.view.indicators.AVLoadingIndicatorView
+    <com.dss.dssClub.custom.view.indicators.AVLoadingIndicatorView
         android:id="@+id/avloading_indicators"
         style="@style/AVLoadingIndicatorView"
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         app:indicatorColor="#f51c14"
         app:indicatorName="BallPulseIndicator" />
 
-    <com.example.admin.club.custom.view.MyCusttomtext
+    <com.dss.dssClub.custom.view.MyCusttomtext
         android:id="@+id/text_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

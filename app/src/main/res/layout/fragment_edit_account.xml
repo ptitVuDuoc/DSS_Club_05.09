@@ -22,7 +22,7 @@
             android:layout_marginLeft="@dimen/margin_padding_15"
             android:src="@drawable/ic_back" />
 
-        <com.example.admin.club.custom.view.MyCusttomtext
+        <com.dss.dssClub.custom.view.MyCusttomtext
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -45,7 +45,7 @@
             android:layout_marginRight="@dimen/margin_padding_25"
             android:layout_marginLeft="@dimen/margin_padding_25">
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/txt_regis"
@@ -54,7 +54,7 @@
                 android:layout_marginBottom="@dimen/margin_padding_25"
                 android:textStyle="italic"/>
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_name" />
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_agency" />
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_email" />
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 style="@style/enter_edittext"
                 android:hint="@string/enter_address" />
 
-            <com.example.admin.club.custom.view.MyCusttomtext
+            <com.dss.dssClub.custom.view.MyCusttomtext
                 style="@style/txt_regis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 android:layout_marginBottom="@dimen/margin_padding_30"
                 android:background="@drawable/btn_login">
 
-                <com.example.admin.club.custom.view.MyCusttomtext
+                <com.dss.dssClub.custom.view.MyCusttomtext
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

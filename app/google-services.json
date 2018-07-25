@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "110438871808",
-    "firebase_url": "https://dss-project-9ce72.firebaseio.com",
-    "project_id": "dss-project-9ce72",
-    "storage_bucket": "dss-project-9ce72.appspot.com"
+    "project_number": "273215775309",
+    "firebase_url": "https://dssclub-87513.firebaseio.com",
+    "project_id": "dssclub-87513",
+    "storage_bucket": "dssclub-87513.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:110438871808:android:a0f8aeac7dbd2bb7",
+        "mobilesdk_app_id": "1:273215775309:android:23ceb444e847bd16",
         "android_client_info": {
-          "package_name": "com.example.admin.dss_project"
+          "package_name": "com.dss.dssClub"
         }
       },
       "oauth_client": [
         {
-          "client_id": "110438871808-eedpk3h4stk5nlcoc2f5b7agkpsfc1ad.apps.googleusercontent.com",
+          "client_id": "273215775309-544gv77qjdgrbug234s46qaa93a7dce1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.admin.dss_project",
+            "package_name": "com.dss.dssClub",
             "certificate_hash": "41a6e979efbfe405bd675018eb07655c71dc9420"
           }
         },
         {
-          "client_id": "110438871808-15ur8pvf2j4fq0e3mefv5njalrpb38t2.apps.googleusercontent.com",
+          "client_id": "273215775309-vboqqlgdj1hairh7g1uh0hhbpq7qtdk1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD695hOt1mup51qvaNAshxVxBtNHwRWnKE"
+          "current_key": "AIzaSyCjP0OK4x72E9n2iS4DBgrY9gNP1PA5XUU"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "110438871808-15ur8pvf2j4fq0e3mefv5njalrpb38t2.apps.googleusercontent.com",
+              "client_id": "273215775309-vboqqlgdj1hairh7g1uh0hhbpq7qtdk1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

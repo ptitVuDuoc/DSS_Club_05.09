@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.example.admin.club.custom.view.MyCusttomtext
+        <com.dss.dssClub.custom.view.MyCusttomtext
             android:id="@+id/txt_name"
             android:layout_width="@dimen/margin_padding_120"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:ellipsize="end"
             android:maxLines="1" />
 
-        <com.example.admin.club.custom.view.MyCusttomtext
+        <com.dss.dssClub.custom.view.MyCusttomtext
             android:id="@+id/txt_scores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/btn_reward"
             android:layout_marginLeft="@dimen/margin_padding_15"/>
 
-        <com.example.admin.club.custom.view.MyCusttomtext
+        <com.dss.dssClub.custom.view.MyCusttomtext
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/reward"
@@ -166,7 +166,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-                <com.example.admin.club.custom.view.MyCusttomtext
+                <com.dss.dssClub.custom.view.MyCusttomtext
                     android:id="@+id/txt_scan"
                     android:text="@string/scan"
                     style="@style/txt_menu_bottom"
@@ -191,7 +191,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-                <com.example.admin.club.custom.view.MyCusttomtext
+                <com.dss.dssClub.custom.view.MyCusttomtext
                     android:id="@+id/txt_win"
                     android:text="@string/qr_code"
                     style="@style/txt_menu_bottom"
@@ -217,7 +217,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-                <com.example.admin.club.custom.view.MyCusttomtext
+                <com.dss.dssClub.custom.view.MyCusttomtext
                     android:id="@+id/txt_history"
                     android:text="@string/history"
                     style="@style/txt_menu_bottom"
@@ -243,7 +243,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-                <com.example.admin.club.custom.view.MyCusttomtext
+                <com.dss.dssClub.custom.view.MyCusttomtext
                     android:id="@+id/txt_account"
                     android:text="@string/account"
                     style="@style/txt_menu_bottom"
