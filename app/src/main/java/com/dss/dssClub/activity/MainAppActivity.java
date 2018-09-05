@@ -18,7 +18,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -319,7 +318,7 @@ public class MainAppActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.btn_nofi:
 
-                Intent intent = new Intent(MainAppActivity.this,NotificationActivity.class);
+                Intent intent = new Intent(MainAppActivity.this,ListNotificationActivity.class);
                 startActivity(intent);
 
                 findViewById(R.id.bg_cricle).setVisibility(View.GONE);

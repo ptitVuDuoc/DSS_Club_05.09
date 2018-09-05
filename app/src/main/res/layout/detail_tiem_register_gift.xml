@@ -73,6 +73,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/quantity_gift"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_standard"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_padding_15"/>
+
+        <TextView
+            android:id="@+id/txt_quantity_gift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_small"
+            android:layout_marginTop="@dimen/margin_padding_5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/date_register_seria"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_size_standard"

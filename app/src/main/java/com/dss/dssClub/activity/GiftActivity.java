@@ -108,7 +108,6 @@ public class GiftActivity extends AppCompatActivity {
                         pDialog.setContentText(getString(R.string.reward_fail) + response.body().getMessage());
                     }
                     if (pDialog != null) {
-//                        pDialog.setConfirmText(getString(R.string.confirm));
                         btnConfirmDialog.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -127,7 +126,7 @@ public class GiftActivity extends AppCompatActivity {
         });
     }
 
-    private void updateScoresAcc(Context context, final ProgressDialog progressDialogPl){
+    public void updateScoresAcc(Context context, final ProgressDialog progressDialogPl){
         progressDialogPl.show();
         mAPIService = ApiUtils.getAPIService();
         final String numberphone = PrefUtils.getString(context, KeyConst.NUMBER_PHONE_STATISTIC);

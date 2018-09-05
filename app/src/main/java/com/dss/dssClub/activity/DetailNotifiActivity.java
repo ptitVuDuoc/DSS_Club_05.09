@@ -69,8 +69,6 @@ public class DetailNotifiActivity extends AppCompatActivity implements View.OnCl
             txtTitleDetailNotifi.setText(notifi.getTieuDe());
             webView.loadUrl(notifi.getLinkWeb());
         }
-
-
     }
 
     private void callAPI(String id){

@@ -81,6 +81,9 @@ public interface APIRegisterUser {
     @POST("RegisterGift")
     Call<RewardGift> postRawJSONRewradGift(@Body JsonObject locationPost);
 
+    @POST("RegisterGiftWithQuantity")
+    Call<RewardGift> postRawJSONRewradMoreGift(@Body JsonObject locationPost);
+
     @POST("GetGiftInfo")
     Call<DetailGift> postRawJSONDetailGift(@Body JsonObject locationPost);
 

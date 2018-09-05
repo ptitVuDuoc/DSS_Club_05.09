@@ -13,6 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.dss.dssClub.R;
 import com.dss.dssClub.activity.DetailNotifiActivity;
+import com.dss.dssClub.activity.NotifiActivity;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -41,7 +42,7 @@ public class MyFireBaseMess extends FirebaseMessagingService {
 
     private void sendNotification(String title, String messageBody, String id) {
 
-        Intent intent = new Intent(this, DetailNotifiActivity.class);
+        Intent intent = new Intent(this, NotifiActivity.class);
 
         intent.putExtra(KeyConst.KEY_ID_NOTIFI, id);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

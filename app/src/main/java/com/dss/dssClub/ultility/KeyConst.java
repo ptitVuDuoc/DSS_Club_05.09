@@ -33,6 +33,7 @@ public class KeyConst {
     public static final String END_DAY = "NgayKetThuc";
     public static final String PAGE_NUMBER = "PageNumber";
     public static final String ID_GIFT = "QuaTangID";
+    public static final String QUANTITY_GIFT = "SoLuong";
     public static final String BUNLDE_LIST_GIFT = "BUNLDE_LIST_GIFT";
     public static final String BUNLDE_ID_GIFT = "BUNLDE_ID_GIFT";
     public static final String BUNLDE_CODE_SERIA ="BUNLDE_CODE_SERIA";

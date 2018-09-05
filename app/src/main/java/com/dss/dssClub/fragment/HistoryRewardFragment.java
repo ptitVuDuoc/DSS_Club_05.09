@@ -290,11 +290,13 @@ public class HistoryRewardFragment extends BaseFragment implements View.OnClickL
         TextView txtStatus = view.findViewById(R.id.txt_status);
         TextView txtCodeGift = view.findViewById(R.id.txt_code_gift);
         TextView txtDateRegister = view.findViewById(R.id.txt_date_register);
+        TextView txtQuantityGift = view.findViewById(R.id.txt_quantity_gift);
 
         txtName.setText(contentDialogBottomSheet.getTenQuaTang());
         txtStatus.setText(contentDialogBottomSheet.getTinhTrang());
         txtCodeGift.setText(contentDialogBottomSheet.getMaQuaTang());
         txtDateRegister.setText(contentDialogBottomSheet.getNgayDangKy());
+        txtQuantityGift.setText(contentDialogBottomSheet.getSoLuong()+"");
     }
 
     @Override

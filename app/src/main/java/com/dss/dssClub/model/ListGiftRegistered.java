@@ -14,6 +14,9 @@ public class ListGiftRegistered {
     @SerializedName("RowNumber")
     @Expose
     private Integer rowNumber;
+    @SerializedName("SoLuong")
+    @Expose
+    private int soLuong;
     @SerializedName("TenQuaTang")
     @Expose
     private String tenQuaTang;
@@ -43,6 +46,14 @@ public class ListGiftRegistered {
 
     public void setRowNumber(Integer rowNumber) {
         this.rowNumber = rowNumber;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
     public String getTenQuaTang() {

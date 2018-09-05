@@ -28,22 +28,18 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
-
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".activity.HomeActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
-        </activity>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activity.MainAppActivity"
             android:screenOrientation="portrait" />
@@ -71,13 +67,13 @@
             android:name=".activity.WinSuccessActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.NotificationActivity"
+            android:name=".activity.ListNotificationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DetailNotifiActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".activity.NotifiActivity"></activity>
     </application>
 
 </manifest>

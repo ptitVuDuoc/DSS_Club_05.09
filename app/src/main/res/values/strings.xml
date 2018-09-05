@@ -123,6 +123,7 @@
     <string name="reward_fail">Đổi quà không thành công!</string>
     <string name="confirm_reward">Xác nhận đổi quà</string>
     <string name="how_to_reward">Bạn có chắc chắn muốn đổi quà này!</string>
+    <string name="how_to_reward_more">Bạn có chắc chắn muốn đổi quà này</string>
     <string name="reward_gift">Đổi quà</string>
     <string name="confirm">Xác nhận</string>
     <string name="title_info_gift">Thông tin quà tặng</string>
@@ -153,5 +154,9 @@
     <string name="goto_setting">GOTO SETTINGS</string>
     <string name="offline">Mạng ngoại tuyến. Bạn cần bật mạng để sử dụng ứng dụng.</string>
     <string name="info_register">Quý khách vui lòng điền chính xác và đầy đủ thông tin cá nhân. Quà tặng hoặc các vật phẩm đổi sẽ được gửi về theo địa chỉ quý khách đã đăng ký.</string>
+    <string name="number_gift">Số lượng đổi</string>
+    <string name="see_detail">Xem chi tiết</string>
+    <string name="enter_quantity_gift">Nhập số lượng quà cần đổi!</string>
+    <string name="quantity_gift">Số lượng:</string>
 
 </resources>

@@ -6,20 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 
 import com.dss.dssClub.R;
 import com.dss.dssClub.adapter.ListNotifiAdapter;
-import com.dss.dssClub.adapter.ListSeriaRegisterAdapter;
 import com.dss.dssClub.custom.view.MyProgressDialog;
 import com.dss.dssClub.listen.OnLoadMoreListener;
 import com.dss.dssClub.model.GetListNotifi;
-import com.dss.dssClub.model.GetSizeNotifi;
 import com.dss.dssClub.model.Notifi;
-import com.dss.dssClub.model.RewardGift;
 import com.dss.dssClub.retrofit.APIRegisterUser;
 import com.dss.dssClub.retrofit.ApiUtils;
 import com.dss.dssClub.ultility.KeyConst;
@@ -34,12 +28,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NotificationActivity extends AppCompatActivity implements ListNotifiAdapter.OnStickerListener, View.OnClickListener ,OnLoadMoreListener{
+public class ListNotificationActivity extends AppCompatActivity implements ListNotifiAdapter.OnStickerListener, View.OnClickListener ,OnLoadMoreListener{
 
     private RecyclerView recyclerView;
     private ListNotifiAdapter listNotifiAdapter;
@@ -52,7 +45,7 @@ public class NotificationActivity extends AppCompatActivity implements ListNotif
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_list_notification);
         init();
     }
 
@@ -70,7 +63,7 @@ public class NotificationActivity extends AppCompatActivity implements ListNotif
 
     private void addControl() {
 
-        progressDialogPl = MyProgressDialog.newInstance(NotificationActivity.this, getApplicationContext().getResources().getString(R.string.Please));
+        progressDialogPl = MyProgressDialog.newInstance(ListNotificationActivity.this, getApplicationContext().getResources().getString(R.string.Please));
         recyclerView = findViewById(R.id.recycler_list_notifi);
     }
 
@@ -131,7 +124,7 @@ public class NotificationActivity extends AppCompatActivity implements ListNotif
     @Override
     public void onItemClickListener(Notifi notifi) {
 
-        Intent intent = new Intent(NotificationActivity.this,DetailNotifiActivity.class);
+        Intent intent = new Intent(ListNotificationActivity.this,NotifiActivity.class);
         intent.putExtra(KeyConst.KEY_NOTIFI_DETAIL, (Serializable) notifi);
         startActivity(intent);
 
